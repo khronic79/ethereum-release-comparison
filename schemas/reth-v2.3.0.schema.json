@@ -1,0 +1,5993 @@
+{
+  "$defs": {
+    "AccountInfo": {
+      "properties": {
+        "balance": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "code": {
+          "$ref": "#/$defs/Hex"
+        },
+        "nonce": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "balance",
+        "code",
+        "nonce"
+      ],
+      "type": "object"
+    },
+    "Any": {},
+    "BlobTransactionSidecar": {
+      "properties": {
+        "blobs": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        },
+        "commitments": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        },
+        "proofs": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "blobs",
+        "commitments",
+        "proofs"
+      ],
+      "type": "object"
+    },
+    "BlobTransactionSidecarEip7594": {
+      "properties": {
+        "blobs": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        },
+        "cellProofs": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        },
+        "commitments": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "blobs",
+        "cellProofs",
+        "commitments"
+      ],
+      "type": "object"
+    },
+    "Block": {
+      "properties": {
+        "body": {
+          "$ref": "#/$defs/BlockBody"
+        },
+        "header": {
+          "$ref": "#/$defs/Header"
+        }
+      },
+      "required": [
+        "body",
+        "header"
+      ],
+      "type": "object"
+    },
+    "BlockBody": {
+      "properties": {
+        "ommers": {
+          "items": {
+            "$ref": "#/$defs/Header"
+          },
+          "type": "array"
+        },
+        "transactions": {
+          "items": {
+            "$ref": "#/$defs/Any"
+          },
+          "type": "array"
+        },
+        "withdrawals": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Withdrawals"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "ommers",
+        "transactions"
+      ],
+      "type": "object"
+    },
+    "BlockId": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Hash": {
+              "$ref": "#/$defs/RpcBlockHash"
+            }
+          },
+          "required": [
+            "Hash"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Number": {
+              "$ref": "#/$defs/BlockNumberOrTag"
+            }
+          },
+          "required": [
+            "Number"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "BlockNumberOrTag": {
+      "oneOf": [
+        {
+          "enum": [
+            "Latest",
+            "Finalized",
+            "Safe",
+            "Earliest",
+            "Pending"
+          ],
+          "type": "string"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Number": {
+              "format": "uint64",
+              "minimum": 0.0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Number"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "BlockOverrides": {
+      "properties": {
+        "baseFee": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "beaconRoot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blobBaseFee": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockHash": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "coinbase": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gasLimit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "number": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "random": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "Bundle": {
+      "properties": {
+        "blockOverride": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BlockOverrides"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transactions": {
+          "items": {
+            "$ref": "#/$defs/TransactionRequest"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "transactions"
+      ],
+      "type": "object"
+    },
+    "EIP1186AccountProofResponse": {
+      "properties": {
+        "accountProof": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        },
+        "address": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "balance": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "codeHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "nonce": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "storageHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "storageProof": {
+          "items": {
+            "$ref": "#/$defs/EIP1186StorageProof"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "accountProof",
+        "address",
+        "balance",
+        "codeHash",
+        "nonce",
+        "storageHash",
+        "storageProof"
+      ],
+      "type": "object"
+    },
+    "EIP1186StorageProof": {
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/JsonStorageKey"
+        },
+        "proof": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        },
+        "value": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "key",
+        "proof",
+        "value"
+      ],
+      "type": "object"
+    },
+    "EthBundleHash": {
+      "properties": {
+        "bundleHash": {
+          "$ref": "#/$defs/Hex32"
+        }
+      },
+      "required": [
+        "bundleHash"
+      ],
+      "type": "object"
+    },
+    "EthCallBundle": {
+      "properties": {
+        "baseFee": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockNumber": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "coinbase": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gasLimit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stateBlockNumber": {
+          "$ref": "#/$defs/BlockNumberOrTag"
+        },
+        "timeout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timestamp": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transactionIndex": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransactionIndex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "txs": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "blockNumber",
+        "stateBlockNumber",
+        "txs"
+      ],
+      "type": "object"
+    },
+    "EthCallBundleResponse": {
+      "properties": {
+        "bundleGasPrice": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "bundleHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "coinbaseDiff": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "ethSentToCoinbase": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "gasFees": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "results": {
+          "items": {
+            "$ref": "#/$defs/EthCallBundleTransactionResult"
+          },
+          "type": "array"
+        },
+        "stateBlockNumber": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "totalGasUsed": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "bundleGasPrice",
+        "bundleHash",
+        "coinbaseDiff",
+        "ethSentToCoinbase",
+        "gasFees",
+        "results",
+        "stateBlockNumber",
+        "totalGasUsed"
+      ],
+      "type": "object"
+    },
+    "EthCallBundleTransactionResult": {
+      "properties": {
+        "coinbaseDiff": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "ethSentToCoinbase": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "fromAddress": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "gasFees": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "gasPrice": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "gasUsed": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "revert": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "toAddress": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "txHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "coinbaseDiff",
+        "ethSentToCoinbase",
+        "fromAddress",
+        "gasFees",
+        "gasPrice",
+        "gasUsed",
+        "txHash"
+      ],
+      "type": "object"
+    },
+    "EthCallResponse": {
+      "properties": {
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "EthCancelBundle": {
+      "properties": {
+        "replacementUuid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "replacementUuid"
+      ],
+      "type": "object"
+    },
+    "EthCancelPrivateTransaction": {
+      "properties": {
+        "txHash": {
+          "$ref": "#/$defs/Hex32"
+        }
+      },
+      "required": [
+        "txHash"
+      ],
+      "type": "object"
+    },
+    "EthCapabilities": {
+      "properties": {
+        "blocks": {
+          "$ref": "#/$defs/EthCapabilitiesResource"
+        },
+        "head": {
+          "$ref": "#/$defs/EthCapabilitiesHead"
+        },
+        "logs": {
+          "$ref": "#/$defs/EthCapabilitiesResource"
+        },
+        "receipts": {
+          "$ref": "#/$defs/EthCapabilitiesResource"
+        },
+        "state": {
+          "$ref": "#/$defs/EthCapabilitiesResource"
+        },
+        "stateproofs": {
+          "$ref": "#/$defs/EthCapabilitiesResource"
+        },
+        "tx": {
+          "$ref": "#/$defs/EthCapabilitiesResource"
+        }
+      },
+      "required": [
+        "blocks",
+        "head",
+        "logs",
+        "receipts",
+        "state",
+        "stateproofs",
+        "tx"
+      ],
+      "type": "object"
+    },
+    "EthCapabilitiesDeleteStrategy": {
+      "properties": {
+        "retentionBlocks": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/$defs/EthCapabilitiesDeleteStrategyKind"
+        }
+      },
+      "required": [
+        "retentionBlocks",
+        "type"
+      ],
+      "type": "object"
+    },
+    "EthCapabilitiesDeleteStrategyKind": {
+      "enum": [
+        "window"
+      ],
+      "type": "string"
+    },
+    "EthCapabilitiesHead": {
+      "properties": {
+        "hash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "number": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "hash",
+        "number"
+      ],
+      "type": "object"
+    },
+    "EthCapabilitiesResource": {
+      "properties": {
+        "deleteStrategy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EthCapabilitiesDeleteStrategy"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "oldestBlock": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "disabled"
+      ],
+      "type": "object"
+    },
+    "EthConfig": {
+      "properties": {
+        "cache": {
+          "$ref": "#/$defs/EthStateCacheConfig"
+        },
+        "compute_state_root_for_eth_simulate": {
+          "type": "boolean"
+        },
+        "eth_proof_window": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "fee_history_cache": {
+          "$ref": "#/$defs/FeeHistoryCacheConfig"
+        },
+        "force_blob_sidecar_upcasting": {
+          "type": "boolean"
+        },
+        "gas_oracle": {
+          "$ref": "#/$defs/GasPriceOracleConfig"
+        },
+        "max_batch_size": {
+          "format": "uint",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "max_blocking_io_requests": {
+          "format": "uint",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "max_blocks_per_filter": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "max_logs_per_response": {
+          "format": "uint",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "max_trace_filter_blocks": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "max_tracing_requests": {
+          "format": "uint",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "pending_block_kind": {
+          "$ref": "#/$defs/PendingBlockKind"
+        },
+        "proof_permits": {
+          "format": "uint",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "raw_tx_forwarder": {
+          "$ref": "#/$defs/ForwardConfig"
+        },
+        "rpc_evm_memory_limit": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "rpc_gas_cap": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "rpc_max_simulate_blocks": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "send_raw_transaction_sync_timeout": {
+          "$ref": "#/$defs/Any"
+        },
+        "stale_filter_ttl": {
+          "$ref": "#/$defs/Any"
+        }
+      },
+      "required": [
+        "cache",
+        "compute_state_root_for_eth_simulate",
+        "eth_proof_window",
+        "fee_history_cache",
+        "force_blob_sidecar_upcasting",
+        "gas_oracle",
+        "max_batch_size",
+        "max_blocking_io_requests",
+        "max_blocks_per_filter",
+        "max_logs_per_response",
+        "max_trace_filter_blocks",
+        "max_tracing_requests",
+        "pending_block_kind",
+        "proof_permits",
+        "raw_tx_forwarder",
+        "rpc_evm_memory_limit",
+        "rpc_gas_cap",
+        "rpc_max_simulate_blocks",
+        "send_raw_transaction_sync_timeout",
+        "stale_filter_ttl"
+      ],
+      "type": "object"
+    },
+    "EthSendBundle": {
+      "properties": {
+        "blockNumber": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "droppingTxHashes": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": "array"
+        },
+        "inner": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Any"
+          },
+          "type": "object"
+        },
+        "maxTimestamp": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "minTimestamp": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "refundPercent": {
+          "format": "uint8",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "refundRecipient": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "refundTxHashes": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": "array"
+        },
+        "replacementUuid": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revertingTxHashes": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": "array"
+        },
+        "txs": {
+          "items": {
+            "$ref": "#/$defs/Hex"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "blockNumber",
+        "droppingTxHashes",
+        "inner",
+        "refundTxHashes",
+        "revertingTxHashes",
+        "txs"
+      ],
+      "type": "object"
+    },
+    "EthSendPrivateTransaction": {
+      "properties": {
+        "maxBlockNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "preferences": {
+          "$ref": "#/$defs/PrivateTransactionPreferences"
+        },
+        "tx": {
+          "$ref": "#/$defs/Hex"
+        }
+      },
+      "required": [
+        "preferences",
+        "tx"
+      ],
+      "type": "object"
+    },
+    "EthStateCacheConfig": {
+      "properties": {
+        "maxBals": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxBlocks": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxCachedTxHashes": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxConcurrentDbRequests": {
+          "format": "uint",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxHeaders": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxReceipts": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "maxBals",
+        "maxBlocks",
+        "maxCachedTxHashes",
+        "maxConcurrentDbRequests",
+        "maxHeaders",
+        "maxReceipts"
+      ],
+      "type": "object"
+    },
+    "FeeHistory": {
+      "properties": {
+        "baseFeePerBlobGas": {
+          "items": {
+            "$ref": "#/$defs/Quantity"
+          },
+          "type": "array"
+        },
+        "baseFeePerGas": {
+          "items": {
+            "$ref": "#/$defs/Quantity"
+          },
+          "type": "array"
+        },
+        "blobGasUsedRatio": {
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "gasUsedRatio": {
+          "items": {
+            "format": "double",
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "oldestBlock": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "reward": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/Quantity"
+            },
+            "type": "array"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "baseFeePerBlobGas",
+        "baseFeePerGas",
+        "blobGasUsedRatio",
+        "gasUsedRatio",
+        "oldestBlock"
+      ],
+      "type": "object"
+    },
+    "FeeHistoryCacheConfig": {
+      "properties": {
+        "maxBlocks": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "resolution": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "maxBlocks",
+        "resolution"
+      ],
+      "type": "object"
+    },
+    "FillTransaction": {
+      "properties": {
+        "raw": {
+          "$ref": "#/$defs/Hex"
+        },
+        "tx": {
+          "$ref": "#/$defs/Any"
+        }
+      },
+      "required": [
+        "raw",
+        "tx"
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "properties": {
+        "address": {
+          "$ref": "#/$defs/FilterSet"
+        },
+        "block_option": {
+          "$ref": "#/$defs/FilterBlockOption"
+        },
+        "topics": {
+          "items": {
+            "$ref": "#/$defs/FilterSet"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "address",
+        "block_option",
+        "topics"
+      ],
+      "type": "object"
+    },
+    "FilterBlockOption": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Range": {
+              "properties": {
+                "from_block": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/BlockNumberOrTag"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "to_block": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/BlockNumberOrTag"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "type": "object"
+            }
+          },
+          "required": [
+            "Range"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "AtBlockHash": {
+              "$ref": "#/$defs/Hex32"
+            }
+          },
+          "required": [
+            "AtBlockHash"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "FilterChanges": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/Any"
+          },
+          "type": "array"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": "array"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/Transaction"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "FilterId": {
+      "anyOf": [
+        {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "FilterSet": {
+      "properties": {
+        "set": {
+          "items": {
+            "$ref": "#/$defs/Any"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "set"
+      ],
+      "type": "object"
+    },
+    "ForwardConfig": {
+      "properties": {
+        "tx_forwarder": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Any"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "GasPriceOracleConfig": {
+      "properties": {
+        "blocks": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "defaultSuggestedFee": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ignorePrice": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxBlockHistory": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxHeaderHistory": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxPrice": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxRewardPercentileCount": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "percentile": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "blocks",
+        "maxBlockHistory",
+        "maxHeaderHistory",
+        "maxRewardPercentileCount",
+        "percentile"
+      ],
+      "type": "object"
+    },
+    "Header": {
+      "properties": {
+        "baseFeePerGas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blobGasUsed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockAccessListHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "difficulty": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "excessBlobGas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "extraData": {
+          "$ref": "#/$defs/Hex"
+        },
+        "gasLimit": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "gasUsed": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "logsBloom": {
+          "$ref": "#/$defs/Hex"
+        },
+        "miner": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "mixHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "nonce": {
+          "$ref": "#/$defs/Hex"
+        },
+        "number": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "parentBeaconBlockRoot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parentHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "receiptsRoot": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "requestsHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha3Uncles": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "slotNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stateRoot": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "transactionsRoot": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "withdrawalsRoot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "difficulty",
+        "extraData",
+        "gasLimit",
+        "gasUsed",
+        "logsBloom",
+        "miner",
+        "mixHash",
+        "nonce",
+        "number",
+        "parentHash",
+        "receiptsRoot",
+        "sha3Uncles",
+        "stateRoot",
+        "timestamp",
+        "transactionsRoot"
+      ],
+      "type": "object"
+    },
+    "Hex": {
+      "pattern": "^0x[0-9a-fA-F]*$",
+      "title": "hex",
+      "type": "string"
+    },
+    "Hex20": {
+      "pattern": "^0x[0-9a-fA-F]{40}$",
+      "title": "address",
+      "type": "string"
+    },
+    "Hex32": {
+      "pattern": "^0x[0-9a-fA-F]{64}$",
+      "title": "hash",
+      "type": "string"
+    },
+    "Index": {
+      "type": "object"
+    },
+    "JsonStorageKey": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Hex32"
+        },
+        {
+          "$ref": "#/$defs/Quantity"
+        }
+      ]
+    },
+    "Log": {
+      "properties": {
+        "address": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "data": {
+          "$ref": "#/$defs/Hex"
+        },
+        "topics": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "address",
+        "data",
+        "topics"
+      ],
+      "type": "object"
+    },
+    "Params": {
+      "oneOf": [
+        {
+          "enum": [
+            "None"
+          ],
+          "type": "string"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Logs": {
+              "$ref": "#/$defs/Filter"
+            }
+          },
+          "required": [
+            "Logs"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Bool": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "Bool"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "TransactionReceipts": {
+              "$ref": "#/$defs/TransactionReceiptsParams"
+            }
+          },
+          "required": [
+            "TransactionReceipts"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "PendingBlockKind": {
+      "enum": [
+        "Empty",
+        "None",
+        "Full"
+      ],
+      "type": "string"
+    },
+    "PendingTransactionFilterKind": {
+      "enum": [
+        "Hashes",
+        "Full"
+      ],
+      "type": "string"
+    },
+    "Privacy": {
+      "properties": {
+        "builders": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "hints": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrivacyHint"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PrivacyHint": {
+      "properties": {
+        "calldata": {
+          "type": "boolean"
+        },
+        "contract_address": {
+          "type": "boolean"
+        },
+        "function_selector": {
+          "type": "boolean"
+        },
+        "hash": {
+          "type": "boolean"
+        },
+        "logs": {
+          "type": "boolean"
+        },
+        "tx_hash": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "calldata",
+        "contract_address",
+        "function_selector",
+        "hash",
+        "logs",
+        "tx_hash"
+      ],
+      "type": "object"
+    },
+    "PrivateTransactionPreferences": {
+      "properties": {
+        "fast": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "privacy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Privacy"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "validity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Validity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "PubSubSyncStatus": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "$ref": "#/$defs/SyncStatusMetadata"
+        }
+      ]
+    },
+    "Quantity": {
+      "pattern": "^0x([1-9a-fA-F][0-9a-fA-F]*|0)$",
+      "title": "quantity",
+      "type": "string"
+    },
+    "Refund": {
+      "properties": {
+        "bodyIdx": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "percent": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "bodyIdx",
+        "percent"
+      ],
+      "type": "object"
+    },
+    "RefundConfig": {
+      "properties": {
+        "address": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "percent": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "address",
+        "percent"
+      ],
+      "type": "object"
+    },
+    "RpcBlockHash": {
+      "properties": {
+        "blockHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "requireCanonical": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "blockHash"
+      ],
+      "type": "object"
+    },
+    "SimBlock": {
+      "properties": {
+        "blockOverrides": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BlockOverrides"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calls": {
+          "items": {
+            "$ref": "#/$defs/TransactionRequest"
+          },
+          "type": "array"
+        },
+        "stateOverrides": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Any"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "calls"
+      ],
+      "type": "object"
+    },
+    "SimCallResult": {
+      "properties": {
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SimulateError"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gasUsed": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "logs": {
+          "items": {
+            "$ref": "#/$defs/Log"
+          },
+          "type": "array"
+        },
+        "maxUsedGas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "returnData": {
+          "$ref": "#/$defs/Hex"
+        },
+        "status": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "gasUsed",
+        "logs",
+        "returnData",
+        "status"
+      ],
+      "type": "object"
+    },
+    "SimulateError": {
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    "SimulatePayload": {
+      "properties": {
+        "blockStateCalls": {
+          "items": {
+            "$ref": "#/$defs/SimBlock"
+          },
+          "type": "array"
+        },
+        "returnFullTransactions": {
+          "type": "boolean"
+        },
+        "traceTransfers": {
+          "type": "boolean"
+        },
+        "validation": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "blockStateCalls",
+        "returnFullTransactions",
+        "traceTransfers",
+        "validation"
+      ],
+      "type": "object"
+    },
+    "SimulatedBlock": {
+      "properties": {
+        "body": {
+          "$ref": "#/$defs/BlockBody"
+        },
+        "calls": {
+          "items": {
+            "$ref": "#/$defs/SimCallResult"
+          },
+          "type": "array"
+        },
+        "header": {
+          "$ref": "#/$defs/Header"
+        }
+      },
+      "required": [
+        "body",
+        "calls",
+        "header"
+      ],
+      "type": "object"
+    },
+    "Stage": {
+      "properties": {
+        "block": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "block",
+        "name"
+      ],
+      "type": "object"
+    },
+    "StateContext": {
+      "properties": {
+        "blockNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BlockId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transactionIndex": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransactionIndex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "SubscriptionKind": {
+      "enum": [
+        "NewHeads",
+        "Logs",
+        "NewPendingTransactions",
+        "Syncing",
+        "TransactionReceipts"
+      ],
+      "type": "string"
+    },
+    "SubscriptionResult": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/WithOtherFields"
+        },
+        {
+          "$ref": "#/$defs/Log"
+        },
+        {
+          "$ref": "#/$defs/Hex32"
+        },
+        {
+          "$ref": "#/$defs/Transaction"
+        },
+        {
+          "$ref": "#/$defs/PubSubSyncStatus"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/TransactionReceipt"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "SyncInfo": {
+      "properties": {
+        "currentBlock": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "highestBlock": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "stages": {
+          "items": {
+            "$ref": "#/$defs/Stage"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "startingBlock": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "warpChunksAmount": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "warpChunksProcessed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "currentBlock",
+        "highestBlock",
+        "startingBlock"
+      ],
+      "type": "object"
+    },
+    "SyncStatus": {
+      "oneOf": [
+        {
+          "enum": [
+            "None"
+          ],
+          "type": "string"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Info": {
+              "$ref": "#/$defs/SyncInfo"
+            }
+          },
+          "required": [
+            "Info"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "SyncStatusMetadata": {
+      "properties": {
+        "currentBlock": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "highestBlock": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "startingBlock": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "syncing": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "currentBlock",
+        "startingBlock",
+        "syncing"
+      ],
+      "type": "object"
+    },
+    "Transaction": {
+      "additionalProperties": true,
+      "properties": {
+        "accessList": {
+          "type": "array"
+        },
+        "authorizationList": {
+          "type": "array"
+        },
+        "blobVersionedHashes": {
+          "type": "array"
+        },
+        "blockHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockTimestamp": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chainId": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "from": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "gas": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "gasPrice": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "hash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "input": {
+          "$ref": "#/$defs/Hex"
+        },
+        "maxFeePerBlobGas": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "maxFeePerGas": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "maxPriorityFeePerGas": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "nonce": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "r": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "s": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transactionIndex": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "v": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "value": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "yParity": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "type": "object"
+    },
+    "TransactionConditional": {
+      "properties": {
+        "blockNumberMax": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockNumberMin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "knownAccounts": {
+          "$ref": "#/$defs/Any"
+        },
+        "timestampMax": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timestampMin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "knownAccounts"
+      ],
+      "type": "object"
+    },
+    "TransactionIndex": {
+      "oneOf": [
+        {
+          "enum": [
+            "All"
+          ],
+          "type": "string"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "Index": {
+              "format": "uint",
+              "minimum": 0.0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Index"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "TransactionReceipt": {
+      "additionalProperties": true,
+      "properties": {
+        "blobGasPrice": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blobGasUsed": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockHash": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "blockNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contractAddress": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cumulativeGasUsed": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "effectiveGasPrice": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "from": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "gasUsed": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "logs": {
+          "items": {
+            "$ref": "#/$defs/Log"
+          },
+          "type": "array"
+        },
+        "logsBloom": {
+          "$ref": "#/$defs/Hex"
+        },
+        "root": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex32"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transactionHash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "transactionIndex": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "type": "object"
+    },
+    "TransactionReceiptsParams": {
+      "properties": {
+        "transactionHashes": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "TransactionRequest": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BlobTransactionSidecar"
+        },
+        {
+          "$ref": "#/$defs/BlobTransactionSidecarEip7594"
+        }
+      ],
+      "properties": {
+        "accessList": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Any"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authorizationList": {
+          "items": {
+            "$ref": "#/$defs/Any"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "blobVersionedHashes": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "chainId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gasPrice": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxFeePerBlobGas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxFeePerGas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxPriorityFeePerGas": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nonce": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Any"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "TxpoolContent": {
+      "properties": {
+        "pending": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Transaction"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "queued": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Transaction"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "type": "object"
+    },
+    "TxpoolContentFrom": {
+      "properties": {
+        "pending": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Transaction"
+          },
+          "type": "object"
+        },
+        "queued": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Transaction"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "type": "object"
+    },
+    "TxpoolInspect": {
+      "properties": {
+        "pending": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/TxpoolInspectSummary"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        },
+        "queued": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "$ref": "#/$defs/TxpoolInspectSummary"
+            },
+            "type": "object"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "type": "object"
+    },
+    "TxpoolInspectSummary": {
+      "properties": {
+        "gas": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "gas_price": {
+          "format": "uint128",
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hex20"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "gas",
+        "gas_price",
+        "value"
+      ],
+      "type": "object"
+    },
+    "TxpoolStatus": {
+      "properties": {
+        "pending": {
+          "$ref": "#/$defs/Quantity"
+        },
+        "queued": {
+          "$ref": "#/$defs/Quantity"
+        }
+      },
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "type": "object"
+    },
+    "Validity": {
+      "properties": {
+        "refund": {
+          "items": {
+            "$ref": "#/$defs/Refund"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "refundConfig": {
+          "items": {
+            "$ref": "#/$defs/RefundConfig"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "WithOtherFields": {
+      "properties": {
+        "inner": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Any"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "inner"
+      ],
+      "type": "object"
+    },
+    "Withdrawals": {
+      "type": "object"
+    },
+    "Work": {
+      "properties": {
+        "number": {
+          "format": "uint64",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "pow_hash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "seed_hash": {
+          "$ref": "#/$defs/Hex32"
+        },
+        "target": {
+          "$ref": "#/$defs/Hex32"
+        }
+      },
+      "required": [
+        "pow_hash",
+        "seed_hash",
+        "target"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "methods": {
+    "eth_accounts": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/Hex20"
+        },
+        "type": "array"
+      }
+    },
+    "eth_baseFee": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Quantity"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_blobBaseFee": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_blockNumber": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_call": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 4,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/TransactionRequest"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockOverrides"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_id": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "block_overrides": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockOverrides"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "request": {
+                "$ref": "#/$defs/TransactionRequest"
+              },
+              "state_overrides": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex"
+      }
+    },
+    "eth_callBundle": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/EthCallBundle"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "request": {
+                "$ref": "#/$defs/EthCallBundle"
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/EthCallBundleResponse"
+      }
+    },
+    "eth_callMany": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 3,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "items": {
+                  "$ref": "#/$defs/Bundle"
+                },
+                "type": "array"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/StateContext"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "bundles": {
+                "items": {
+                  "$ref": "#/$defs/Bundle"
+                },
+                "type": "array"
+              },
+              "state_context": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/StateContext"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "state_override": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "bundles"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/EthCallResponse"
+          },
+          "type": "array"
+        },
+        "type": "array"
+      }
+    },
+    "eth_cancelBundle": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/EthCancelBundle"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "request": {
+                "$ref": "#/$defs/EthCancelBundle"
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "null"
+      }
+    },
+    "eth_cancelPrivateTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/EthCancelPrivateTransaction"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "request": {
+                "$ref": "#/$defs/EthCancelPrivateTransaction"
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "eth_capabilities": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/EthCapabilities"
+      }
+    },
+    "eth_chainId": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Quantity"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_coinbase": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex20"
+      }
+    },
+    "eth_config": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/EthConfig"
+      }
+    },
+    "eth_createAccessList": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 3,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/TransactionRequest"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "request": {
+                "$ref": "#/$defs/TransactionRequest"
+              },
+              "state_override": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Any"
+      }
+    },
+    "eth_estimateGas": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 4,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/TransactionRequest"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockOverrides"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "block_overrides": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockOverrides"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "request": {
+                "$ref": "#/$defs/TransactionRequest"
+              },
+              "state_override": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Any"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_feeHistory": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 3,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Quantity"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "items": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_count": {
+                "$ref": "#/$defs/Quantity"
+              },
+              "newest_block": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              "reward_percentiles": {
+                "items": {
+                  "format": "double",
+                  "type": "number"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "block_count",
+              "newest_block"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FeeHistory"
+      }
+    },
+    "eth_fillTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/TransactionRequest"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "request": {
+                "$ref": "#/$defs/TransactionRequest"
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FillTransaction"
+      }
+    },
+    "eth_gasPrice": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_getAccount": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "$ref": "#/$defs/BlockId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block": {
+                "$ref": "#/$defs/BlockId"
+              }
+            },
+            "required": [
+              "address",
+              "block"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Any"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getAccountInfo": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "$ref": "#/$defs/BlockId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block": {
+                "$ref": "#/$defs/BlockId"
+              }
+            },
+            "required": [
+              "address",
+              "block"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/AccountInfo"
+      }
+    },
+    "eth_getBalance": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "address"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_getBlockAccessList": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_id": {
+                "$ref": "#/$defs/BlockId"
+              }
+            },
+            "required": [
+              "block_id"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Any"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockAccessListByBlockHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Any"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockAccessListByBlockNumber": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Any"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockAccessListRaw": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block": {
+                "$ref": "#/$defs/BlockId"
+              }
+            },
+            "required": [
+              "block"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Hex"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockByHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "full": {
+                "type": "boolean"
+              },
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash",
+              "full"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Block"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockByNumber": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "full": {
+                "type": "boolean"
+              },
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number",
+              "full"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Block"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockReceipts": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_id": {
+                "$ref": "#/$defs/BlockId"
+              }
+            },
+            "required": [
+              "block_id"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/TransactionReceipt"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      }
+    },
+    "eth_getBlockTransactionCountByHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Quantity"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getBlockTransactionCountByNumber": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Quantity"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getCode": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block_id": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "address"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex"
+      }
+    },
+    "eth_getFilterChanges": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/FilterId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/FilterId"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterChanges"
+      }
+    },
+    "eth_getFilterLogs": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/FilterId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/FilterId"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/Log"
+        },
+        "type": "array"
+      }
+    },
+    "eth_getHeaderByHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Header"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getHeaderByNumber": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Header"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getLogs": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Filter"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "filter": {
+                "$ref": "#/$defs/Filter"
+              }
+            },
+            "required": [
+              "filter"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/Log"
+        },
+        "type": "array"
+      }
+    },
+    "eth_getProof": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 3,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "items": {
+                  "$ref": "#/$defs/JsonStorageKey"
+                },
+                "type": "array"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "keys": {
+                "items": {
+                  "$ref": "#/$defs/JsonStorageKey"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "address",
+              "keys"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/EIP1186AccountProofResponse"
+      }
+    },
+    "eth_getRawTransactionByBlockHashAndIndex": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              },
+              {
+                "$ref": "#/$defs/Index"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              },
+              "index": {
+                "$ref": "#/$defs/Index"
+              }
+            },
+            "required": [
+              "hash",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Hex"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getRawTransactionByBlockNumberAndIndex": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "$ref": "#/$defs/Index"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "index": {
+                "$ref": "#/$defs/Index"
+              },
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Hex"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getRawTransactionByHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Hex"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getStorageAt": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 3,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "$ref": "#/$defs/JsonStorageKey"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "index": {
+                "$ref": "#/$defs/JsonStorageKey"
+              }
+            },
+            "required": [
+              "address",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    },
+    "eth_getStorageValues": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "additionalProperties": {
+                  "items": {
+                    "$ref": "#/$defs/JsonStorageKey"
+                  },
+                  "type": "array"
+                },
+                "type": "object"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "requests": {
+                "additionalProperties": {
+                  "items": {
+                    "$ref": "#/$defs/JsonStorageKey"
+                  },
+                  "type": "array"
+                },
+                "type": "object"
+              }
+            },
+            "required": [
+              "requests"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "additionalProperties": {
+          "items": {
+            "$ref": "#/$defs/Hex32"
+          },
+          "type": "array"
+        },
+        "type": "object"
+      }
+    },
+    "eth_getTransactionByBlockHashAndIndex": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              },
+              {
+                "$ref": "#/$defs/Index"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              },
+              "index": {
+                "$ref": "#/$defs/Index"
+              }
+            },
+            "required": [
+              "hash",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Transaction"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionByBlockNumberAndIndex": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "$ref": "#/$defs/Index"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "index": {
+                "$ref": "#/$defs/Index"
+              },
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Transaction"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionByHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Transaction"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionBySenderAndNonce": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "$ref": "#/$defs/Quantity"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "nonce": {
+                "$ref": "#/$defs/Quantity"
+              }
+            },
+            "required": [
+              "address",
+              "nonce"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Transaction"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionCount": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "address"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_getTransactionReceipt": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/TransactionReceipt"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getUncleByBlockHashAndIndex": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              },
+              {
+                "$ref": "#/$defs/Index"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              },
+              "index": {
+                "$ref": "#/$defs/Index"
+              }
+            },
+            "required": [
+              "hash",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Block"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getUncleByBlockNumberAndIndex": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "$ref": "#/$defs/Index"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "index": {
+                "$ref": "#/$defs/Index"
+              },
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number",
+              "index"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Block"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getUncleCountByBlockHash": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hash"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Quantity"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getUncleCountByBlockNumber": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "number": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [
+              "number"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/Quantity"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "eth_getWork": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Work"
+      }
+    },
+    "eth_hashrate": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_maxPriorityFeePerGas": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_mining": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "eth_newBlockFilter": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterId"
+      }
+    },
+    "eth_newFilter": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Filter"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "filter": {
+                "$ref": "#/$defs/Filter"
+              }
+            },
+            "required": [
+              "filter"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterId"
+      }
+    },
+    "eth_newPendingTransactionFilter": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/PendingTransactionFilterKind"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/PendingTransactionFilterKind"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterId"
+      }
+    },
+    "eth_pendingTransactions": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/Transaction"
+        },
+        "type": "array"
+      }
+    },
+    "eth_protocolVersion": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "eth_sendBundle": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/EthSendBundle"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "bundle": {
+                "$ref": "#/$defs/EthSendBundle"
+              }
+            },
+            "required": [
+              "bundle"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/EthBundleHash"
+      }
+    },
+    "eth_sendPrivateRawTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "bytes": {
+                "$ref": "#/$defs/Hex"
+              }
+            },
+            "required": [
+              "bytes"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    },
+    "eth_sendPrivateTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/EthSendPrivateTransaction"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "request": {
+                "$ref": "#/$defs/EthSendPrivateTransaction"
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    },
+    "eth_sendRawTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "bytes": {
+                "$ref": "#/$defs/Hex"
+              }
+            },
+            "required": [
+              "bytes"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    },
+    "eth_sendRawTransactionConditional": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex"
+              },
+              {
+                "$ref": "#/$defs/TransactionConditional"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "bytes": {
+                "$ref": "#/$defs/Hex"
+              },
+              "condition": {
+                "$ref": "#/$defs/TransactionConditional"
+              }
+            },
+            "required": [
+              "bytes",
+              "condition"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    },
+    "eth_sendRawTransactionSync": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "bytes": {
+                "$ref": "#/$defs/Hex"
+              }
+            },
+            "required": [
+              "bytes"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/TransactionReceipt"
+      }
+    },
+    "eth_sendTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/TransactionRequest"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "request": {
+                "$ref": "#/$defs/TransactionRequest"
+              }
+            },
+            "required": [
+              "request"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    },
+    "eth_sign": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "$ref": "#/$defs/Hex"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "message": {
+                "$ref": "#/$defs/Hex"
+              }
+            },
+            "required": [
+              "address",
+              "message"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex"
+      }
+    },
+    "eth_signTransaction": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/TransactionRequest"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "transaction": {
+                "$ref": "#/$defs/TransactionRequest"
+              }
+            },
+            "required": [
+              "transaction"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex"
+      }
+    },
+    "eth_signTypedData": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              },
+              {
+                "$ref": "#/$defs/Any"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/Hex20"
+              },
+              "data": {
+                "$ref": "#/$defs/Any"
+              }
+            },
+            "required": [
+              "address",
+              "data"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex"
+      }
+    },
+    "eth_simulateV1": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/SimulatePayload"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "block_number": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/BlockId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "opts": {
+                "$ref": "#/$defs/SimulatePayload"
+              }
+            },
+            "required": [
+              "opts"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "items": {
+          "$ref": "#/$defs/SimulatedBlock"
+        },
+        "type": "array"
+      }
+    },
+    "eth_submitHashrate": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Quantity"
+              },
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "hashrate": {
+                "$ref": "#/$defs/Quantity"
+              },
+              "id": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "hashrate",
+              "id"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "eth_submitWork": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 3,
+            "minItems": 3,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex"
+              },
+              {
+                "$ref": "#/$defs/Hex32"
+              },
+              {
+                "$ref": "#/$defs/Hex32"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "mix_digest": {
+                "$ref": "#/$defs/Hex32"
+              },
+              "nonce": {
+                "$ref": "#/$defs/Hex"
+              },
+              "pow_hash": {
+                "$ref": "#/$defs/Hex32"
+              }
+            },
+            "required": [
+              "nonce",
+              "pow_hash",
+              "mix_digest"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "eth_subscribe": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 2,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/SubscriptionKind"
+              },
+              {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Params"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "$ref": "#/$defs/SubscriptionKind"
+              },
+              "params": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Params"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/SubscriptionResult"
+      }
+    },
+    "eth_syncing": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/SyncStatus"
+      }
+    },
+    "eth_uninstallFilter": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/FilterId"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/FilterId"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "net_listening": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "net_peerCount": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Quantity"
+      }
+    },
+    "net_version": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "string"
+      }
+    },
+    "txpool_content": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolContent"
+      }
+    },
+    "txpool_contentFrom": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex20"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "from": {
+                "$ref": "#/$defs/Hex20"
+              }
+            },
+            "required": [
+              "from"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolContentFrom"
+      }
+    },
+    "txpool_inspect": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolInspect"
+      }
+    },
+    "txpool_status": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolStatus"
+      }
+    },
+    "web3_clientVersion": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 0,
+            "minItems": 0,
+            "prefixItems": [],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {},
+            "required": [],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "type": "string"
+      }
+    },
+    "web3_sha3": {
+      "params": {
+        "anyOf": [
+          {
+            "items": false,
+            "maxItems": 1,
+            "minItems": 1,
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Hex"
+              }
+            ],
+            "type": "array"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "input": {
+                "$ref": "#/$defs/Hex"
+              }
+            },
+            "required": [
+              "input"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/Hex32"
+      }
+    }
+  }
+}

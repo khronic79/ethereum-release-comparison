@@ -1,0 +1,1070 @@
+{
+  "eth_syncing": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn syncing(&self) -> RpcResult<SyncStatus>",
+    "params": [],
+    "result": "RpcResult<SyncStatus>"
+  },
+  "eth_chainId": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn chain_id(&self) -> RpcResult<Option<U64>>",
+    "params": [],
+    "result": "RpcResult<Option<U64>>"
+  },
+  "eth_blockNumber": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_number(&self) -> RpcResult<U256>",
+    "params": [],
+    "result": "RpcResult<U256>"
+  },
+  "eth_call": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn call(\n        &self,\n        request: TxReq,\n        block_id: Option<BlockId>,\n        state_overrides: Option<StateOverride>,\n        block_overrides: Option<Box<BlockOverrides>>,\n    ) -> RpcResult<Bytes>",
+    "params": [
+      {
+        "name": "request",
+        "type": "TxReq"
+      },
+      {
+        "name": "block_id",
+        "type": "Option<BlockId>"
+      },
+      {
+        "name": "state_overrides",
+        "type": "Option<StateOverride>"
+      },
+      {
+        "name": "block_overrides",
+        "type": "Option<Box<BlockOverrides>>"
+      }
+    ],
+    "result": "RpcResult<Bytes>"
+  },
+  "eth_getCode": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn get_code(&self, address: Address, block_id: Option<BlockId>) -> RpcResult<Bytes>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "block_id",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<Bytes>"
+  },
+  "eth_getBlockByHash": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_by_hash(&self, hash: B256, full: bool) -> RpcResult<Option<B>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      },
+      {
+        "name": "full",
+        "type": "bool"
+      }
+    ],
+    "result": "RpcResult<Option<B>>"
+  },
+  "eth_getBlockByNumber": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_by_number(&self, number: BlockNumberOrTag, full: bool) -> RpcResult<Option<B>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      },
+      {
+        "name": "full",
+        "type": "bool"
+      }
+    ],
+    "result": "RpcResult<Option<B>>"
+  },
+  "eth_getBlockReceipts": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_receipts(&self, block_id: BlockId) -> RpcResult<Option<Vec<R>>>",
+    "params": [
+      {
+        "name": "block_id",
+        "type": "BlockId"
+      }
+    ],
+    "result": "RpcResult<Option<Vec<R>>>"
+  },
+  "eth_sendRawTransaction": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_raw_transaction(&self, bytes: Bytes) -> RpcResult<B256>",
+    "params": [
+      {
+        "name": "bytes",
+        "type": "Bytes"
+      }
+    ],
+    "result": "RpcResult<B256>"
+  },
+  "eth_getTransactionReceipt": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn transaction_receipt(&self, hash: B256) -> RpcResult<Option<R>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<R>>"
+  },
+  "eth_getLogs": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn logs(&self, filter: Filter) -> RpcResult<Vec<Log>>",
+    "params": [
+      {
+        "name": "filter",
+        "type": "Filter"
+      }
+    ],
+    "result": "RpcResult<Vec<Log>>"
+  },
+  "eth_getProof": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn get_proof(\n        &self,\n        address: Address,\n        keys: Vec<JsonStorageKey>,\n        block_number: Option<BlockId>,\n    ) -> RpcResult<EIP1186AccountProofResponse>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "keys",
+        "type": "Vec<JsonStorageKey>"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<EIP1186AccountProofResponse>"
+  },
+  "eth_getBlockAccessListByBlockHash": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_access_list_by_block_hash(&self, hash: B256) -> RpcResult<Option<Value>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<Value>>"
+  },
+  "eth_getBlockAccessListByBlockNumber": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_access_list_by_block_number(\n        &self,\n        number: BlockNumberOrTag,\n    ) -> RpcResult<Option<Value>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      }
+    ],
+    "result": "RpcResult<Option<Value>>"
+  },
+  "eth_getBlockAccessList": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_access_list(&self, block_id: BlockId) -> RpcResult<Option<Value>>",
+    "params": [
+      {
+        "name": "block_id",
+        "type": "BlockId"
+      }
+    ],
+    "result": "RpcResult<Option<Value>>"
+  },
+  "eth_getBlockAccessListRaw": {
+    "file": "crates/rpc/rpc-api/src/engine.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_access_list_raw(&self, block: BlockId) -> RpcResult<Option<Bytes>>",
+    "params": [
+      {
+        "name": "block",
+        "type": "BlockId"
+      }
+    ],
+    "result": "RpcResult<Option<Bytes>>"
+  },
+  "net_version": {
+    "file": "crates/rpc/rpc-api/src/net.rs",
+    "trait_ns": "net",
+    "raw": "fn version(&self) -> RpcResult<String>",
+    "params": [],
+    "result": "RpcResult<String>"
+  },
+  "net_peerCount": {
+    "file": "crates/rpc/rpc-api/src/net.rs",
+    "trait_ns": "net",
+    "raw": "fn peer_count(&self) -> RpcResult<U64>",
+    "params": [],
+    "result": "RpcResult<U64>"
+  },
+  "net_listening": {
+    "file": "crates/rpc/rpc-api/src/net.rs",
+    "trait_ns": "net",
+    "raw": "fn is_listening(&self) -> RpcResult<bool>",
+    "params": [],
+    "result": "RpcResult<bool>"
+  },
+  "txpool_status": {
+    "file": "crates/rpc/rpc-api/src/txpool.rs",
+    "trait_ns": "txpool",
+    "raw": "fn txpool_status(&self) -> RpcResult<TxpoolStatus>",
+    "params": [],
+    "result": "RpcResult<TxpoolStatus>"
+  },
+  "txpool_inspect": {
+    "file": "crates/rpc/rpc-api/src/txpool.rs",
+    "trait_ns": "txpool",
+    "raw": "fn txpool_inspect(&self) -> RpcResult<TxpoolInspect>",
+    "params": [],
+    "result": "RpcResult<TxpoolInspect>"
+  },
+  "txpool_contentFrom": {
+    "file": "crates/rpc/rpc-api/src/txpool.rs",
+    "trait_ns": "txpool",
+    "raw": "fn txpool_content_from(&self, from: Address) -> RpcResult<TxpoolContentFrom<T>>",
+    "params": [
+      {
+        "name": "from",
+        "type": "Address"
+      }
+    ],
+    "result": "RpcResult<TxpoolContentFrom<T>>"
+  },
+  "txpool_content": {
+    "file": "crates/rpc/rpc-api/src/txpool.rs",
+    "trait_ns": "txpool",
+    "raw": "fn txpool_content(&self) -> RpcResult<TxpoolContent<T>>",
+    "params": [],
+    "result": "RpcResult<TxpoolContent<T>>"
+  },
+  "web3_clientVersion": {
+    "file": "crates/rpc/rpc-api/src/web3.rs",
+    "trait_ns": "web3",
+    "raw": "fn client_version(&self) -> RpcResult<String>",
+    "params": [],
+    "result": "RpcResult<String>"
+  },
+  "web3_sha3": {
+    "file": "crates/rpc/rpc-api/src/web3.rs",
+    "trait_ns": "web3",
+    "raw": "fn sha3(&self, input: Bytes) -> RpcResult<B256>",
+    "params": [
+      {
+        "name": "input",
+        "type": "Bytes"
+      }
+    ],
+    "result": "RpcResult<B256>"
+  },
+  "eth_callBundle": {
+    "file": "crates/rpc/rpc-eth-api/src/bundle.rs",
+    "trait_ns": "eth",
+    "raw": "fn call_bundle(\n        &self,\n        request: EthCallBundle,\n    ) -> jsonrpsee::core::RpcResult<EthCallBundleResponse>",
+    "params": [
+      {
+        "name": "request",
+        "type": "EthCallBundle"
+      }
+    ],
+    "result": "jsonrpsee::core::RpcResult<EthCallBundleResponse>"
+  },
+  "eth_sendBundle": {
+    "file": "crates/rpc/rpc-eth-api/src/bundle.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_bundle(&self, bundle: EthSendBundle)\n        -> jsonrpsee::core::RpcResult<EthBundleHash>",
+    "params": [
+      {
+        "name": "bundle",
+        "type": "EthSendBundle"
+      }
+    ],
+    "result": "jsonrpsee::core::RpcResult<EthBundleHash>"
+  },
+  "eth_cancelBundle": {
+    "file": "crates/rpc/rpc-eth-api/src/bundle.rs",
+    "trait_ns": "eth",
+    "raw": "fn cancel_bundle(&self, request: EthCancelBundle) -> jsonrpsee::core::RpcResult<()>",
+    "params": [
+      {
+        "name": "request",
+        "type": "EthCancelBundle"
+      }
+    ],
+    "result": "jsonrpsee::core::RpcResult<()>"
+  },
+  "eth_sendPrivateTransaction": {
+    "file": "crates/rpc/rpc-eth-api/src/bundle.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_private_transaction(\n        &self,\n        request: EthSendPrivateTransaction,\n    ) -> jsonrpsee::core::RpcResult<B256>",
+    "params": [
+      {
+        "name": "request",
+        "type": "EthSendPrivateTransaction"
+      }
+    ],
+    "result": "jsonrpsee::core::RpcResult<B256>"
+  },
+  "eth_sendPrivateRawTransaction": {
+    "file": "crates/rpc/rpc-eth-api/src/bundle.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_private_raw_transaction(&self, bytes: Bytes) -> jsonrpsee::core::RpcResult<B256>",
+    "params": [
+      {
+        "name": "bytes",
+        "type": "Bytes"
+      }
+    ],
+    "result": "jsonrpsee::core::RpcResult<B256>"
+  },
+  "eth_cancelPrivateTransaction": {
+    "file": "crates/rpc/rpc-eth-api/src/bundle.rs",
+    "trait_ns": "eth",
+    "raw": "fn cancel_private_transaction(\n        &self,\n        request: EthCancelPrivateTransaction,\n    ) -> jsonrpsee::core::RpcResult<bool>",
+    "params": [
+      {
+        "name": "request",
+        "type": "EthCancelPrivateTransaction"
+      }
+    ],
+    "result": "jsonrpsee::core::RpcResult<bool>"
+  },
+  "eth_protocolVersion": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn protocol_version(&self) -> RpcResult<U64>",
+    "params": [],
+    "result": "RpcResult<U64>"
+  },
+  "eth_coinbase": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn author(&self) -> RpcResult<Address>",
+    "params": [],
+    "result": "RpcResult<Address>"
+  },
+  "eth_accounts": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn accounts(&self) -> RpcResult<Vec<Address>>",
+    "params": [],
+    "result": "RpcResult<Vec<Address>>"
+  },
+  "eth_capabilities": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn capabilities(&self) -> RpcResult<EthCapabilities>",
+    "params": [],
+    "result": "RpcResult<EthCapabilities>"
+  },
+  "eth_getBlockTransactionCountByHash": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_transaction_count_by_hash(&self, hash: B256) -> RpcResult<Option<U256>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<U256>>"
+  },
+  "eth_getBlockTransactionCountByNumber": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_transaction_count_by_number(\n        &self,\n        number: BlockNumberOrTag,\n    ) -> RpcResult<Option<U256>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      }
+    ],
+    "result": "RpcResult<Option<U256>>"
+  },
+  "eth_getUncleCountByBlockHash": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_uncles_count_by_hash(&self, hash: B256) -> RpcResult<Option<U256>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<U256>>"
+  },
+  "eth_getUncleCountByBlockNumber": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn block_uncles_count_by_number(\n        &self,\n        number: BlockNumberOrTag,\n    ) -> RpcResult<Option<U256>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      }
+    ],
+    "result": "RpcResult<Option<U256>>"
+  },
+  "eth_getUncleByBlockHashAndIndex": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn uncle_by_block_hash_and_index(&self, hash: B256, index: Index)\n        -> RpcResult<Option<B>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      },
+      {
+        "name": "index",
+        "type": "Index"
+      }
+    ],
+    "result": "RpcResult<Option<B>>"
+  },
+  "eth_getUncleByBlockNumberAndIndex": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn uncle_by_block_number_and_index(\n        &self,\n        number: BlockNumberOrTag,\n        index: Index,\n    ) -> RpcResult<Option<B>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      },
+      {
+        "name": "index",
+        "type": "Index"
+      }
+    ],
+    "result": "RpcResult<Option<B>>"
+  },
+  "eth_getRawTransactionByHash": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn raw_transaction_by_hash(&self, hash: B256) -> RpcResult<Option<Bytes>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<Bytes>>"
+  },
+  "eth_getTransactionByHash": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn transaction_by_hash(&self, hash: B256) -> RpcResult<Option<T>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<T>>"
+  },
+  "eth_getRawTransactionByBlockHashAndIndex": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn raw_transaction_by_block_hash_and_index(\n        &self,\n        hash: B256,\n        index: Index,\n    ) -> RpcResult<Option<Bytes>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      },
+      {
+        "name": "index",
+        "type": "Index"
+      }
+    ],
+    "result": "RpcResult<Option<Bytes>>"
+  },
+  "eth_getTransactionByBlockHashAndIndex": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn transaction_by_block_hash_and_index(\n        &self,\n        hash: B256,\n        index: Index,\n    ) -> RpcResult<Option<T>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      },
+      {
+        "name": "index",
+        "type": "Index"
+      }
+    ],
+    "result": "RpcResult<Option<T>>"
+  },
+  "eth_getRawTransactionByBlockNumberAndIndex": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn raw_transaction_by_block_number_and_index(\n        &self,\n        number: BlockNumberOrTag,\n        index: Index,\n    ) -> RpcResult<Option<Bytes>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      },
+      {
+        "name": "index",
+        "type": "Index"
+      }
+    ],
+    "result": "RpcResult<Option<Bytes>>"
+  },
+  "eth_getTransactionByBlockNumberAndIndex": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn transaction_by_block_number_and_index(\n        &self,\n        number: BlockNumberOrTag,\n        index: Index,\n    ) -> RpcResult<Option<T>>",
+    "params": [
+      {
+        "name": "number",
+        "type": "BlockNumberOrTag"
+      },
+      {
+        "name": "index",
+        "type": "Index"
+      }
+    ],
+    "result": "RpcResult<Option<T>>"
+  },
+  "eth_getTransactionBySenderAndNonce": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn transaction_by_sender_and_nonce(\n        &self,\n        address: Address,\n        nonce: U64,\n    ) -> RpcResult<Option<T>>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "nonce",
+        "type": "U64"
+      }
+    ],
+    "result": "RpcResult<Option<T>>"
+  },
+  "eth_pendingTransactions": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn pending_transactions(&self) -> RpcResult<Vec<T>>",
+    "params": [],
+    "result": "RpcResult<Vec<T>>"
+  },
+  "eth_getBalance": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn balance(&self, address: Address, block_number: Option<BlockId>) -> RpcResult<U256>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<U256>"
+  },
+  "eth_getStorageAt": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn storage_at(\n        &self,\n        address: Address,\n        index: JsonStorageKey,\n        block_number: Option<BlockId>,\n    ) -> RpcResult<B256>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "index",
+        "type": "JsonStorageKey"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<B256>"
+  },
+  "eth_getStorageValues": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn storage_values(\n        &self,\n        requests: HashMap<Address, Vec<JsonStorageKey>>,\n        block_number: Option<BlockId>,\n    ) -> RpcResult<HashMap<Address, Vec<B256>>>",
+    "params": [
+      {
+        "name": "requests",
+        "type": "HashMap<Address, Vec<JsonStorageKey>>"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<HashMap<Address, Vec<B256>>>"
+  },
+  "eth_getTransactionCount": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn transaction_count(\n        &self,\n        address: Address,\n        block_number: Option<BlockId>,\n    ) -> RpcResult<U256>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<U256>"
+  },
+  "eth_getHeaderByNumber": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn header_by_number(&self, hash: BlockNumberOrTag) -> RpcResult<Option<H>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "BlockNumberOrTag"
+      }
+    ],
+    "result": "RpcResult<Option<H>>"
+  },
+  "eth_getHeaderByHash": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn header_by_hash(&self, hash: B256) -> RpcResult<Option<H>>",
+    "params": [
+      {
+        "name": "hash",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<Option<H>>"
+  },
+  "eth_simulateV1": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn simulate_v1(\n        &self,\n        opts: SimulatePayload<TxReq>,\n        block_number: Option<BlockId>,\n    ) -> RpcResult<Vec<SimulatedBlock<B>>>",
+    "params": [
+      {
+        "name": "opts",
+        "type": "SimulatePayload<TxReq>"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      }
+    ],
+    "result": "RpcResult<Vec<SimulatedBlock<B>>>"
+  },
+  "eth_fillTransaction": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn fill_transaction(&self, request: TxReq) -> RpcResult<FillTransaction<RawTx>>",
+    "params": [
+      {
+        "name": "request",
+        "type": "TxReq"
+      }
+    ],
+    "result": "RpcResult<FillTransaction<RawTx>>"
+  },
+  "eth_callMany": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn call_many(\n        &self,\n        bundles: Vec<Bundle<TxReq>>,\n        state_context: Option<StateContext>,\n        state_override: Option<StateOverride>,\n    ) -> RpcResult<Vec<Vec<EthCallResponse>>>",
+    "params": [
+      {
+        "name": "bundles",
+        "type": "Vec<Bundle<TxReq>>"
+      },
+      {
+        "name": "state_context",
+        "type": "Option<StateContext>"
+      },
+      {
+        "name": "state_override",
+        "type": "Option<StateOverride>"
+      }
+    ],
+    "result": "RpcResult<Vec<Vec<EthCallResponse>>>"
+  },
+  "eth_createAccessList": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn create_access_list(\n        &self,\n        request: TxReq,\n        block_number: Option<BlockId>,\n        state_override: Option<StateOverride>,\n    ) -> RpcResult<AccessListResult>",
+    "params": [
+      {
+        "name": "request",
+        "type": "TxReq"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      },
+      {
+        "name": "state_override",
+        "type": "Option<StateOverride>"
+      }
+    ],
+    "result": "RpcResult<AccessListResult>"
+  },
+  "eth_estimateGas": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn estimate_gas(\n        &self,\n        request: TxReq,\n        block_number: Option<BlockId>,\n        state_override: Option<StateOverride>,\n        block_overrides: Option<Box<BlockOverrides>>,\n    ) -> RpcResult<U256>",
+    "params": [
+      {
+        "name": "request",
+        "type": "TxReq"
+      },
+      {
+        "name": "block_number",
+        "type": "Option<BlockId>"
+      },
+      {
+        "name": "state_override",
+        "type": "Option<StateOverride>"
+      },
+      {
+        "name": "block_overrides",
+        "type": "Option<Box<BlockOverrides>>"
+      }
+    ],
+    "result": "RpcResult<U256>"
+  },
+  "eth_gasPrice": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn gas_price(&self) -> RpcResult<U256>",
+    "params": [],
+    "result": "RpcResult<U256>"
+  },
+  "eth_getAccount": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn get_account(\n        &self,\n        address: Address,\n        block: BlockId,\n    ) -> RpcResult<Option<alloy_rpc_types_eth::Account>>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "block",
+        "type": "BlockId"
+      }
+    ],
+    "result": "RpcResult<Option<alloy_rpc_types_eth::Account>>"
+  },
+  "eth_maxPriorityFeePerGas": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn max_priority_fee_per_gas(&self) -> RpcResult<U256>",
+    "params": [],
+    "result": "RpcResult<U256>"
+  },
+  "eth_baseFee": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn base_fee(&self) -> RpcResult<Option<U256>>",
+    "params": [],
+    "result": "RpcResult<Option<U256>>"
+  },
+  "eth_blobBaseFee": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn blob_base_fee(&self) -> RpcResult<U256>",
+    "params": [],
+    "result": "RpcResult<U256>"
+  },
+  "eth_feeHistory": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn fee_history(\n        &self,\n        block_count: U64,\n        newest_block: BlockNumberOrTag,\n        reward_percentiles: Option<Vec<f64>>,\n    ) -> RpcResult<FeeHistory>",
+    "params": [
+      {
+        "name": "block_count",
+        "type": "U64"
+      },
+      {
+        "name": "newest_block",
+        "type": "BlockNumberOrTag"
+      },
+      {
+        "name": "reward_percentiles",
+        "type": "Option<Vec<f64>>"
+      }
+    ],
+    "result": "RpcResult<FeeHistory>"
+  },
+  "eth_mining": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn is_mining(&self) -> RpcResult<bool>",
+    "params": [],
+    "result": "RpcResult<bool>"
+  },
+  "eth_hashrate": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn hashrate(&self) -> RpcResult<U256>",
+    "params": [],
+    "result": "RpcResult<U256>"
+  },
+  "eth_getWork": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn get_work(&self) -> RpcResult<Work>",
+    "params": [],
+    "result": "RpcResult<Work>"
+  },
+  "eth_submitHashrate": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn submit_hashrate(&self, hashrate: U256, id: B256) -> RpcResult<bool>",
+    "params": [
+      {
+        "name": "hashrate",
+        "type": "U256"
+      },
+      {
+        "name": "id",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<bool>"
+  },
+  "eth_submitWork": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn submit_work(&self, nonce: B64, pow_hash: B256, mix_digest: B256) -> RpcResult<bool>",
+    "params": [
+      {
+        "name": "nonce",
+        "type": "B64"
+      },
+      {
+        "name": "pow_hash",
+        "type": "B256"
+      },
+      {
+        "name": "mix_digest",
+        "type": "B256"
+      }
+    ],
+    "result": "RpcResult<bool>"
+  },
+  "eth_sendTransaction": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_transaction(&self, request: TxReq) -> RpcResult<B256>",
+    "params": [
+      {
+        "name": "request",
+        "type": "TxReq"
+      }
+    ],
+    "result": "RpcResult<B256>"
+  },
+  "eth_sendRawTransactionSync": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_raw_transaction_sync(&self, bytes: Bytes) -> RpcResult<R>",
+    "params": [
+      {
+        "name": "bytes",
+        "type": "Bytes"
+      }
+    ],
+    "result": "RpcResult<R>"
+  },
+  "eth_sign": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn sign(&self, address: Address, message: Bytes) -> RpcResult<Bytes>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "message",
+        "type": "Bytes"
+      }
+    ],
+    "result": "RpcResult<Bytes>"
+  },
+  "eth_signTransaction": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn sign_transaction(&self, transaction: TxReq) -> RpcResult<Bytes>",
+    "params": [
+      {
+        "name": "transaction",
+        "type": "TxReq"
+      }
+    ],
+    "result": "RpcResult<Bytes>"
+  },
+  "eth_signTypedData": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn sign_typed_data(&self, address: Address, data: TypedData) -> RpcResult<Bytes>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "data",
+        "type": "TypedData"
+      }
+    ],
+    "result": "RpcResult<Bytes>"
+  },
+  "eth_getAccountInfo": {
+    "file": "crates/rpc/rpc-eth-api/src/core.rs",
+    "trait_ns": "eth",
+    "raw": "fn get_account_info(\n        &self,\n        address: Address,\n        block: BlockId,\n    ) -> RpcResult<alloy_rpc_types_eth::AccountInfo>",
+    "params": [
+      {
+        "name": "address",
+        "type": "Address"
+      },
+      {
+        "name": "block",
+        "type": "BlockId"
+      }
+    ],
+    "result": "RpcResult<alloy_rpc_types_eth::AccountInfo>"
+  },
+  "eth_sendRawTransactionConditional": {
+    "file": "crates/rpc/rpc-eth-api/src/ext.rs",
+    "trait_ns": "eth",
+    "raw": "fn send_raw_transaction_conditional(\n        &self,\n        bytes: Bytes,\n        condition: TransactionConditional,\n    ) -> RpcResult<B256>",
+    "params": [
+      {
+        "name": "bytes",
+        "type": "Bytes"
+      },
+      {
+        "name": "condition",
+        "type": "TransactionConditional"
+      }
+    ],
+    "result": "RpcResult<B256>"
+  },
+  "eth_newFilter": {
+    "file": "crates/rpc/rpc-eth-api/src/filter.rs",
+    "trait_ns": "eth",
+    "raw": "fn new_filter(&self, filter: Filter) -> RpcResult<FilterId>",
+    "params": [
+      {
+        "name": "filter",
+        "type": "Filter"
+      }
+    ],
+    "result": "RpcResult<FilterId>"
+  },
+  "eth_newBlockFilter": {
+    "file": "crates/rpc/rpc-eth-api/src/filter.rs",
+    "trait_ns": "eth",
+    "raw": "fn new_block_filter(&self) -> RpcResult<FilterId>",
+    "params": [],
+    "result": "RpcResult<FilterId>"
+  },
+  "eth_newPendingTransactionFilter": {
+    "file": "crates/rpc/rpc-eth-api/src/filter.rs",
+    "trait_ns": "eth",
+    "raw": "fn new_pending_transaction_filter(\n        &self,\n        kind: Option<PendingTransactionFilterKind>,\n    ) -> RpcResult<FilterId>",
+    "params": [
+      {
+        "name": "kind",
+        "type": "Option<PendingTransactionFilterKind>"
+      }
+    ],
+    "result": "RpcResult<FilterId>"
+  },
+  "eth_getFilterChanges": {
+    "file": "crates/rpc/rpc-eth-api/src/filter.rs",
+    "trait_ns": "eth",
+    "raw": "fn filter_changes(&self, id: FilterId) -> RpcResult<FilterChanges<T>>",
+    "params": [
+      {
+        "name": "id",
+        "type": "FilterId"
+      }
+    ],
+    "result": "RpcResult<FilterChanges<T>>"
+  },
+  "eth_getFilterLogs": {
+    "file": "crates/rpc/rpc-eth-api/src/filter.rs",
+    "trait_ns": "eth",
+    "raw": "fn filter_logs(&self, id: FilterId) -> RpcResult<Vec<Log>>",
+    "params": [
+      {
+        "name": "id",
+        "type": "FilterId"
+      }
+    ],
+    "result": "RpcResult<Vec<Log>>"
+  },
+  "eth_uninstallFilter": {
+    "file": "crates/rpc/rpc-eth-api/src/filter.rs",
+    "trait_ns": "eth",
+    "raw": "fn uninstall_filter(&self, id: FilterId) -> RpcResult<bool>",
+    "params": [
+      {
+        "name": "id",
+        "type": "FilterId"
+      }
+    ],
+    "result": "RpcResult<bool>"
+  },
+  "eth_subscribe": {
+    "file": "crates/rpc/rpc-eth-api/src/pubsub.rs",
+    "trait_ns": "eth",
+    "raw": "fn subscribe(\n        &self,\n        kind: SubscriptionKind,\n        params: Option<Params>,\n    ) -> jsonrpsee::core::SubscriptionResult",
+    "params": [
+      {
+        "name": "kind",
+        "type": "SubscriptionKind"
+      },
+      {
+        "name": "params",
+        "type": "Option<Params>"
+      }
+    ],
+    "result": "jsonrpsee::core::SubscriptionResult"
+  },
+  "eth_config": {
+    "file": "crates/rpc/rpc-eth-api/src/helpers/config.rs",
+    "trait_ns": "eth",
+    "raw": "fn config(&self) -> RpcResult<EthConfig>",
+    "params": [],
+    "result": "RpcResult<EthConfig>"
+  }
+}

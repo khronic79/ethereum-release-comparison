@@ -1,0 +1,14 @@
+/home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/deps/serde-79568ec4c6541da9.d: /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/lib.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/integer128.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/mod.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/ser.rs /home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/build/serde-2b6dc38641ca5f93/out/private.rs
+
+/home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/deps/libserde-79568ec4c6541da9.rlib: /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/lib.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/integer128.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/mod.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/ser.rs /home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/build/serde-2b6dc38641ca5f93/out/private.rs
+
+/home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/deps/libserde-79568ec4c6541da9.rmeta: /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/lib.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/integer128.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/mod.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs /home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/ser.rs /home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/build/serde-2b6dc38641ca5f93/out/private.rs
+
+/home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/lib.rs:
+/home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/integer128.rs:
+/home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/mod.rs:
+/home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs:
+/home/khron/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/ser.rs:
+/home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/build/serde-2b6dc38641ca5f93/out/private.rs:
+
+# env-dep:OUT_DIR=/home/khron/projects/ethereum-release-comparison/tools/schema-rs/target/debug/build/serde-2b6dc38641ca5f93/out

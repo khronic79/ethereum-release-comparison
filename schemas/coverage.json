@@ -1,0 +1,604 @@
+{
+  "eth_accounts": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_baseFee": {
+    "in_spec": true,
+    "spec_file": "eth/fee_market.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_blobBaseFee": {
+    "in_spec": true,
+    "spec_file": "eth/fee_market.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_blockNumber": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_call": {
+    "in_spec": true,
+    "spec_file": "eth/execute.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_callBundle": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_callMany": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_cancelBundle": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_cancelPrivateTransaction": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_capabilities": {
+    "in_spec": true,
+    "spec_file": "eth/capabilities.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_chainId": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_coinbase": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_config": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_createAccessList": {
+    "in_spec": true,
+    "spec_file": "eth/execute.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_estimateGas": {
+    "in_spec": true,
+    "spec_file": "eth/execute.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_feeHistory": {
+    "in_spec": true,
+    "spec_file": "eth/fee_market.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_fillTransaction": {
+    "in_spec": true,
+    "spec_file": "eth/fill.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_gasPrice": {
+    "in_spec": true,
+    "spec_file": "eth/fee_market.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getAccount": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getAccountInfo": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBalance": {
+    "in_spec": true,
+    "spec_file": "eth/state.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockAccessList": {
+    "in_spec": true,
+    "spec_file": "eth/block.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockAccessListByBlockHash": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockAccessListByBlockNumber": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockAccessListRaw": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockByHash": {
+    "in_spec": true,
+    "spec_file": "eth/block.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockByNumber": {
+    "in_spec": true,
+    "spec_file": "eth/block.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockReceipts": {
+    "in_spec": true,
+    "spec_file": "eth/block.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockTransactionCountByHash": {
+    "in_spec": true,
+    "spec_file": "eth/block.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getBlockTransactionCountByNumber": {
+    "in_spec": true,
+    "spec_file": "eth/block.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getCode": {
+    "in_spec": true,
+    "spec_file": "eth/state.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getFilterChanges": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getFilterLogs": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getHeaderByHash": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getHeaderByNumber": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getLogs": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getMultiProof": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": false,
+    "v2.7.0": true
+  },
+  "eth_getProof": {
+    "in_spec": true,
+    "spec_file": "eth/state.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getRawTransactionByBlockHashAndIndex": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getRawTransactionByBlockNumberAndIndex": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getRawTransactionByHash": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getStorageAt": {
+    "in_spec": true,
+    "spec_file": "eth/state.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getStorageValues": {
+    "in_spec": true,
+    "spec_file": "eth/state.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getTransactionByBlockHashAndIndex": {
+    "in_spec": true,
+    "spec_file": "eth/transaction.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getTransactionByBlockNumberAndIndex": {
+    "in_spec": true,
+    "spec_file": "eth/transaction.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getTransactionByHash": {
+    "in_spec": true,
+    "spec_file": "eth/transaction.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getTransactionBySenderAndNonce": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getTransactionCount": {
+    "in_spec": true,
+    "spec_file": "eth/state.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getTransactionReceipt": {
+    "in_spec": true,
+    "spec_file": "eth/transaction.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getUncleByBlockHashAndIndex": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getUncleByBlockNumberAndIndex": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getUncleCountByBlockHash": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getUncleCountByBlockNumber": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_getWork": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_hashrate": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_maxPriorityFeePerGas": {
+    "in_spec": true,
+    "spec_file": "eth/fee_market.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_mining": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_newBlockFilter": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_newFilter": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_newPendingTransactionFilter": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_pendingTransactions": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_protocolVersion": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendBundle": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendPrivateRawTransaction": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendPrivateTransaction": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendRawTransaction": {
+    "in_spec": true,
+    "spec_file": "eth/submit.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendRawTransactionConditional": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendRawTransactionSync": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sendTransaction": {
+    "in_spec": true,
+    "spec_file": "eth/submit.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_sign": {
+    "in_spec": true,
+    "spec_file": "eth/sign.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_signTransaction": {
+    "in_spec": true,
+    "spec_file": "eth/sign.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_signTypedData": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_simulateV1": {
+    "in_spec": true,
+    "spec_file": "eth/execute.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_submitHashrate": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_submitWork": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_syncing": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "eth_uninstallFilter": {
+    "in_spec": true,
+    "spec_file": "eth/filter.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "net_listening": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "net_peerCount": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "net_version": {
+    "in_spec": true,
+    "spec_file": "eth/client.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "txpool_content": {
+    "in_spec": true,
+    "spec_file": "txpool/pool.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "txpool_contentFrom": {
+    "in_spec": true,
+    "spec_file": "txpool/pool.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "txpool_inspect": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "txpool_status": {
+    "in_spec": true,
+    "spec_file": "txpool/pool.yaml",
+    "reth_only": false,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "web3_clientVersion": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  },
+  "web3_sha3": {
+    "in_spec": false,
+    "spec_file": null,
+    "reth_only": true,
+    "v2.3.0": true,
+    "v2.7.0": true
+  }
+}

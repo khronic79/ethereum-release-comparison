@@ -1,0 +1,12 @@
+[package]
+name = "schema-gen"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+syn = { version = "2", features = ["full", "parsing", "extra-traits"] }
+quote = "1"
+proc-macro2 = "1"
+serde_json = "1"
+anyhow = "1"
+walkdir = "2"

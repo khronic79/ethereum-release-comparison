@@ -1,0 +1,554 @@
+{
+  "v2.3.0": {
+    "eth_newFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_newBlockFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_newPendingTransactionFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_getFilterChanges": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_getFilterLogs": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_uninstallFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_getLogs": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_sendRawTransactionConditional": [
+      "rpc-eth-api/src/ext.rs"
+    ],
+    "eth_protocolVersion": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_syncing": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_coinbase": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_accounts": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_blockNumber": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_chainId": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_capabilities": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockByHash": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockByNumber": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockTransactionCountByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockTransactionCountByNumber": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleCountByBlockHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleCountByBlockNumber": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockReceipts": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleByBlockHashAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleByBlockNumberAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getRawTransactionByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getRawTransactionByBlockHashAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionByBlockHashAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getRawTransactionByBlockNumberAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionByBlockNumberAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionBySenderAndNonce": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_pendingTransactions": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionReceipt": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBalance": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getStorageAt": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getStorageValues": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionCount": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getCode": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getHeaderByNumber": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getHeaderByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_simulateV1": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_call": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_fillTransaction": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_callMany": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_createAccessList": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_estimateGas": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_gasPrice": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getAccount": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_maxPriorityFeePerGas": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_baseFee": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_blobBaseFee": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_feeHistory": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_mining": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_hashrate": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getWork": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_submitHashrate": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_submitWork": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sendTransaction": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sendRawTransaction": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sendRawTransactionSync": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sign": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_signTransaction": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_signTypedData": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getProof": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getAccountInfo": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessListByBlockHash": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessListByBlockNumber": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessList": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessListRaw": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_callBundle": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_sendBundle": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_cancelBundle": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_sendPrivateTransaction": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_sendPrivateRawTransaction": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_cancelPrivateTransaction": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_config": [
+      "rpc-eth-api/src/helpers/config.rs"
+    ],
+    "web3_clientVersion": [
+      "rpc-api/src/web3.rs"
+    ],
+    "web3_sha3": [
+      "rpc-api/src/web3.rs"
+    ],
+    "txpool_status": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "txpool_inspect": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "txpool_contentFrom": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "txpool_content": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "net_version": [
+      "rpc-api/src/net.rs"
+    ],
+    "net_peerCount": [
+      "rpc-api/src/net.rs"
+    ],
+    "net_listening": [
+      "rpc-api/src/net.rs"
+    ]
+  },
+  "v2.7.0": {
+    "eth_newFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_newBlockFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_newPendingTransactionFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_getFilterChanges": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_getFilterLogs": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_uninstallFilter": [
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_getLogs": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/filter.rs"
+    ],
+    "eth_sendRawTransactionConditional": [
+      "rpc-eth-api/src/ext.rs"
+    ],
+    "eth_protocolVersion": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_syncing": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_coinbase": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_accounts": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_blockNumber": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_chainId": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_capabilities": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockByHash": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockByNumber": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockTransactionCountByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockTransactionCountByNumber": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleCountByBlockHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleCountByBlockNumber": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockReceipts": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleByBlockHashAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getUncleByBlockNumberAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getRawTransactionByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getRawTransactionByBlockHashAndIndex": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionByBlockHashAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getRawTransactionByBlockNumberAndIndex": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionByBlockNumberAndIndex": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionBySenderAndNonce": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_pendingTransactions": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionReceipt": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBalance": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getStorageAt": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getStorageValues": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getTransactionCount": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getCode": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getHeaderByNumber": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getHeaderByHash": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_simulateV1": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_call": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_fillTransaction": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_callMany": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_createAccessList": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_estimateGas": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_gasPrice": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getAccount": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_maxPriorityFeePerGas": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_baseFee": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_blobBaseFee": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_feeHistory": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_mining": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_hashrate": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getWork": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_submitHashrate": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_submitWork": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sendTransaction": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sendRawTransaction": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sendRawTransactionSync": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_sign": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_signTransaction": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_signTypedData": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getProof": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getMultiProof": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getAccountInfo": [
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessListByBlockHash": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessListByBlockNumber": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessList": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_getBlockAccessListRaw": [
+      "rpc-api/src/engine.rs",
+      "rpc-eth-api/src/core.rs"
+    ],
+    "eth_callBundle": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_sendBundle": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_cancelBundle": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_sendPrivateTransaction": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_sendPrivateRawTransaction": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_cancelPrivateTransaction": [
+      "rpc-eth-api/src/bundle.rs"
+    ],
+    "eth_config": [
+      "rpc-eth-api/src/helpers/config.rs"
+    ],
+    "web3_clientVersion": [
+      "rpc-api/src/web3.rs"
+    ],
+    "web3_sha3": [
+      "rpc-api/src/web3.rs"
+    ],
+    "txpool_status": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "txpool_inspect": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "txpool_contentFrom": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "txpool_content": [
+      "rpc-api/src/txpool.rs"
+    ],
+    "net_version": [
+      "rpc-api/src/net.rs"
+    ],
+    "net_peerCount": [
+      "rpc-api/src/net.rs"
+    ],
+    "net_listening": [
+      "rpc-api/src/net.rs"
+    ]
+  }
+}

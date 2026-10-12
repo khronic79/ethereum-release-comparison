@@ -1,0 +1,1188 @@
+{
+  "methods": {
+    "eth_accounts": {
+      "params": [],
+      "result": "Vec<Address>",
+      "types": {
+        "Address": "#special:hex:20"
+      }
+    },
+    "eth_baseFee": {
+      "params": [],
+      "result": "Option<U256>",
+      "types": {
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_blobBaseFee": {
+      "params": [],
+      "result": "U256",
+      "types": {
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_blockNumber": {
+      "params": [],
+      "result": "U256",
+      "types": {
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_call": {
+      "params": [
+        {
+          "name": "request",
+          "type": "alloy_rpc_types_eth::TransactionRequest"
+        },
+        {
+          "name": "block_id",
+          "type": "Option<BlockId>"
+        },
+        {
+          "name": "state_overrides",
+          "type": "Option<StateOverride>"
+        },
+        {
+          "name": "block_overrides",
+          "type": "Option<Box<BlockOverrides>>"
+        }
+      ],
+      "result": "Bytes",
+      "types": {
+        "BlockId": "eips::enum",
+        "BlockOverrides": "rpc-types-eth::struct",
+        "Bytes": "#special:hex",
+        "StateOverride": "rpc-types-eth::type",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_callBundle": {
+      "params": [
+        {
+          "name": "request",
+          "type": "EthCallBundle"
+        }
+      ],
+      "result": "EthCallBundleResponse",
+      "types": {
+        "EthCallBundle": "rpc-types-mev::struct",
+        "EthCallBundleResponse": "rpc-types-mev::struct"
+      }
+    },
+    "eth_callMany": {
+      "params": [
+        {
+          "name": "bundles",
+          "type": "Vec<Bundle<alloy_rpc_types_eth::TransactionRequest>>"
+        },
+        {
+          "name": "state_context",
+          "type": "Option<StateContext>"
+        },
+        {
+          "name": "state_override",
+          "type": "Option<StateOverride>"
+        }
+      ],
+      "result": "Vec<Vec<EthCallResponse>>",
+      "types": {
+        "Bundle": "rpc-types-eth::struct",
+        "EthCallResponse": "rpc-types-eth::struct",
+        "StateContext": "rpc-types-eth::struct",
+        "StateOverride": "rpc-types-eth::type",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_cancelBundle": {
+      "params": [
+        {
+          "name": "request",
+          "type": "EthCancelBundle"
+        }
+      ],
+      "result": "()",
+      "types": {
+        "EthCancelBundle": "rpc-types-mev::struct"
+      }
+    },
+    "eth_cancelPrivateTransaction": {
+      "params": [
+        {
+          "name": "request",
+          "type": "EthCancelPrivateTransaction"
+        }
+      ],
+      "result": "bool",
+      "types": {
+        "EthCancelPrivateTransaction": "rpc-types-mev::struct"
+      }
+    },
+    "eth_capabilities": {
+      "params": [],
+      "result": "EthCapabilities",
+      "types": {
+        "EthCapabilities": "rpc-eth-types::struct"
+      }
+    },
+    "eth_chainId": {
+      "params": [],
+      "result": "Option<U64>",
+      "types": {
+        "U64": "#special:quantity"
+      }
+    },
+    "eth_coinbase": {
+      "params": [],
+      "result": "Address",
+      "types": {
+        "Address": "#special:hex:20"
+      }
+    },
+    "eth_config": {
+      "params": [],
+      "result": "EthConfig",
+      "types": {
+        "EthConfig": "eips::struct"
+      }
+    },
+    "eth_createAccessList": {
+      "params": [
+        {
+          "name": "request",
+          "type": "alloy_rpc_types_eth::TransactionRequest"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        },
+        {
+          "name": "state_override",
+          "type": "Option<StateOverride>"
+        }
+      ],
+      "result": "AccessListResult",
+      "types": {
+        "AccessListResult": "#special:object",
+        "BlockId": "eips::enum",
+        "StateOverride": "rpc-types-eth::type",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_estimateGas": {
+      "params": [
+        {
+          "name": "request",
+          "type": "alloy_rpc_types_eth::TransactionRequest"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        },
+        {
+          "name": "state_override",
+          "type": "Option<StateOverride>"
+        },
+        {
+          "name": "block_overrides",
+          "type": "Option<Box<BlockOverrides>>"
+        }
+      ],
+      "result": "U256",
+      "types": {
+        "BlockId": "eips::enum",
+        "BlockOverrides": "rpc-types-eth::struct",
+        "StateOverride": "rpc-types-eth::type",
+        "TransactionRequest": "rpc-types-eth::struct",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_feeHistory": {
+      "params": [
+        {
+          "name": "block_count",
+          "type": "U64"
+        },
+        {
+          "name": "newest_block",
+          "type": "BlockNumberOrTag"
+        },
+        {
+          "name": "reward_percentiles",
+          "type": "Option<Vec<f64>>"
+        }
+      ],
+      "result": "FeeHistory",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "FeeHistory": "rpc-types-eth::struct",
+        "U64": "#special:quantity"
+      }
+    },
+    "eth_fillTransaction": {
+      "params": [
+        {
+          "name": "request",
+          "type": "alloy_rpc_types_eth::TransactionRequest"
+        }
+      ],
+      "result": "FillTransaction<RawTx>",
+      "types": {
+        "FillTransaction": "rpc-types-eth::struct",
+        "RawTx": "#special:todo:generic",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_gasPrice": {
+      "params": [],
+      "result": "U256",
+      "types": {
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getAccount": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "block",
+          "type": "BlockId"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Account>",
+      "types": {
+        "Account": "consensus::type",
+        "Address": "#special:hex:20",
+        "BlockId": "eips::enum"
+      }
+    },
+    "eth_getAccountInfo": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "block",
+          "type": "BlockId"
+        }
+      ],
+      "result": "alloy_rpc_types_eth::AccountInfo",
+      "types": {
+        "AccountInfo": "rpc-types-eth::struct",
+        "Address": "#special:hex:20",
+        "BlockId": "eips::enum"
+      }
+    },
+    "eth_getBalance": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "U256",
+      "types": {
+        "Address": "#special:hex:20",
+        "BlockId": "eips::enum",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getBlockAccessList": {
+      "params": [
+        {
+          "name": "block_id",
+          "type": "BlockId"
+        }
+      ],
+      "result": "Option<Value>",
+      "types": {
+        "BlockId": "eips::enum",
+        "Value": "#special:any"
+      }
+    },
+    "eth_getBlockAccessListByBlockHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<Value>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Value": "#special:any"
+      }
+    },
+    "eth_getBlockAccessListByBlockNumber": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        }
+      ],
+      "result": "Option<Value>",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "Value": "#special:any"
+      }
+    },
+    "eth_getBlockAccessListRaw": {
+      "params": [
+        {
+          "name": "block",
+          "type": "BlockId"
+        }
+      ],
+      "result": "Option<Bytes>",
+      "types": {
+        "BlockId": "eips::enum",
+        "Bytes": "#special:hex"
+      }
+    },
+    "eth_getBlockByHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        },
+        {
+          "name": "full",
+          "type": "bool"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Block>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Block": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getBlockByNumber": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        },
+        {
+          "name": "full",
+          "type": "bool"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Block>",
+      "types": {
+        "Block": "rpc-types-eth::struct",
+        "BlockNumberOrTag": "eips::enum"
+      }
+    },
+    "eth_getBlockReceipts": {
+      "params": [
+        {
+          "name": "block_id",
+          "type": "BlockId"
+        }
+      ],
+      "result": "Option<Vec<alloy_rpc_types_eth::TransactionReceipt>>",
+      "types": {
+        "BlockId": "eips::enum",
+        "TransactionReceipt": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getBlockTransactionCountByHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<U256>",
+      "types": {
+        "B256": "#special:hex:32",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getBlockTransactionCountByNumber": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        }
+      ],
+      "result": "Option<U256>",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getCode": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "block_id",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "Bytes",
+      "types": {
+        "Address": "#special:hex:20",
+        "BlockId": "eips::enum",
+        "Bytes": "#special:hex"
+      }
+    },
+    "eth_getFilterChanges": {
+      "params": [
+        {
+          "name": "id",
+          "type": "FilterId"
+        }
+      ],
+      "result": "FilterChanges<alloy_rpc_types_eth::Transaction, alloy_rpc_types_eth::Log>",
+      "types": {
+        "FilterChanges": "rpc-types-eth::enum",
+        "FilterId": "rpc-types-eth::enum",
+        "Log": "rpc-types-eth::struct",
+        "Transaction": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getFilterLogs": {
+      "params": [
+        {
+          "name": "id",
+          "type": "FilterId"
+        }
+      ],
+      "result": "Vec<alloy_rpc_types_eth::Log>",
+      "types": {
+        "FilterId": "rpc-types-eth::enum",
+        "Log": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getHeaderByHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Header>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Header": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getHeaderByNumber": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "BlockNumberOrTag"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Header>",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "Header": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getLogs": {
+      "params": [
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "result": "Vec<alloy_rpc_types_eth::Log>",
+      "types": {
+        "Filter": "rpc-types-eth::struct",
+        "Log": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getMultiProof": {
+      "params": [
+        {
+          "name": "targets",
+          "type": "Vec<(Address, Vec<B256>)>"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "Vec<EIP1186AccountProofResponse>",
+      "types": {
+        "Address": "#special:hex:20",
+        "B256": "#special:hex:32",
+        "BlockId": "eips::enum",
+        "EIP1186AccountProofResponse": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getProof": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "keys",
+          "type": "Vec<JsonStorageKey>"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "EIP1186AccountProofResponse",
+      "types": {
+        "Address": "#special:hex:20",
+        "BlockId": "eips::enum",
+        "EIP1186AccountProofResponse": "rpc-types-eth::struct",
+        "JsonStorageKey": "serde::enum"
+      }
+    },
+    "eth_getRawTransactionByBlockHashAndIndex": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        },
+        {
+          "name": "index",
+          "type": "Index"
+        }
+      ],
+      "result": "Option<Bytes>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Bytes": "#special:hex",
+        "Index": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getRawTransactionByBlockNumberAndIndex": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        },
+        {
+          "name": "index",
+          "type": "Index"
+        }
+      ],
+      "result": "Option<Bytes>",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "Bytes": "#special:hex",
+        "Index": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getRawTransactionByHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<Bytes>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Bytes": "#special:hex"
+      }
+    },
+    "eth_getStorageAt": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "index",
+          "type": "JsonStorageKey"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "Address": "#special:hex:20",
+        "B256": "#special:hex:32",
+        "BlockId": "eips::enum",
+        "JsonStorageKey": "serde::enum"
+      }
+    },
+    "eth_getStorageValues": {
+      "params": [
+        {
+          "name": "requests",
+          "type": "HashMap<Address, Vec<JsonStorageKey>>"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "HashMap<Address, Vec<B256>>",
+      "types": {
+        "Address": "#special:hex:20",
+        "B256": "#special:hex:32",
+        "BlockId": "eips::enum",
+        "JsonStorageKey": "serde::enum"
+      }
+    },
+    "eth_getTransactionByBlockHashAndIndex": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        },
+        {
+          "name": "index",
+          "type": "Index"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Index": "rpc-types-eth::struct",
+        "Transaction": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getTransactionByBlockNumberAndIndex": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        },
+        {
+          "name": "index",
+          "type": "Index"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "Index": "rpc-types-eth::struct",
+        "Transaction": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getTransactionByHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Transaction": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getTransactionBySenderAndNonce": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "nonce",
+          "type": "U64"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "Address": "#special:hex:20",
+        "Transaction": "rpc-types-eth::struct",
+        "U64": "#special:quantity"
+      }
+    },
+    "eth_getTransactionCount": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "U256",
+      "types": {
+        "Address": "#special:hex:20",
+        "BlockId": "eips::enum",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getTransactionReceipt": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::TransactionReceipt>",
+      "types": {
+        "B256": "#special:hex:32",
+        "TransactionReceipt": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getUncleByBlockHashAndIndex": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        },
+        {
+          "name": "index",
+          "type": "Index"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Block>",
+      "types": {
+        "B256": "#special:hex:32",
+        "Block": "rpc-types-eth::struct",
+        "Index": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getUncleByBlockNumberAndIndex": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        },
+        {
+          "name": "index",
+          "type": "Index"
+        }
+      ],
+      "result": "Option<alloy_rpc_types_eth::Block>",
+      "types": {
+        "Block": "rpc-types-eth::struct",
+        "BlockNumberOrTag": "eips::enum",
+        "Index": "rpc-types-eth::struct"
+      }
+    },
+    "eth_getUncleCountByBlockHash": {
+      "params": [
+        {
+          "name": "hash",
+          "type": "B256"
+        }
+      ],
+      "result": "Option<U256>",
+      "types": {
+        "B256": "#special:hex:32",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getUncleCountByBlockNumber": {
+      "params": [
+        {
+          "name": "number",
+          "type": "BlockNumberOrTag"
+        }
+      ],
+      "result": "Option<U256>",
+      "types": {
+        "BlockNumberOrTag": "eips::enum",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_getWork": {
+      "params": [],
+      "result": "Work",
+      "types": {
+        "Work": "rpc-types-eth::struct"
+      }
+    },
+    "eth_hashrate": {
+      "params": [],
+      "result": "U256",
+      "types": {
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_maxPriorityFeePerGas": {
+      "params": [],
+      "result": "U256",
+      "types": {
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_mining": {
+      "params": [],
+      "result": "bool",
+      "types": {}
+    },
+    "eth_newBlockFilter": {
+      "params": [],
+      "result": "FilterId",
+      "types": {
+        "FilterId": "rpc-types-eth::enum"
+      }
+    },
+    "eth_newFilter": {
+      "params": [
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "result": "FilterId",
+      "types": {
+        "Filter": "rpc-types-eth::struct",
+        "FilterId": "rpc-types-eth::enum"
+      }
+    },
+    "eth_newPendingTransactionFilter": {
+      "params": [
+        {
+          "name": "kind",
+          "type": "Option<PendingTransactionFilterKind>"
+        }
+      ],
+      "result": "FilterId",
+      "types": {
+        "FilterId": "rpc-types-eth::enum",
+        "PendingTransactionFilterKind": "rpc-types-eth::enum"
+      }
+    },
+    "eth_pendingTransactions": {
+      "params": [],
+      "result": "Vec<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "Transaction": "rpc-types-eth::struct"
+      }
+    },
+    "eth_protocolVersion": {
+      "params": [],
+      "result": "U64",
+      "types": {
+        "U64": "#special:quantity"
+      }
+    },
+    "eth_sendBundle": {
+      "params": [
+        {
+          "name": "bundle",
+          "type": "EthSendBundle"
+        }
+      ],
+      "result": "EthBundleHash",
+      "types": {
+        "EthBundleHash": "rpc-types-mev::struct",
+        "EthSendBundle": "rpc-types-mev::struct"
+      }
+    },
+    "eth_sendPrivateRawTransaction": {
+      "params": [
+        {
+          "name": "bytes",
+          "type": "Bytes"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "B256": "#special:hex:32",
+        "Bytes": "#special:hex"
+      }
+    },
+    "eth_sendPrivateTransaction": {
+      "params": [
+        {
+          "name": "request",
+          "type": "EthSendPrivateTransaction"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "B256": "#special:hex:32",
+        "EthSendPrivateTransaction": "rpc-types-mev::struct"
+      }
+    },
+    "eth_sendRawTransaction": {
+      "params": [
+        {
+          "name": "bytes",
+          "type": "Bytes"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "B256": "#special:hex:32",
+        "Bytes": "#special:hex"
+      }
+    },
+    "eth_sendRawTransactionConditional": {
+      "params": [
+        {
+          "name": "bytes",
+          "type": "Bytes"
+        },
+        {
+          "name": "condition",
+          "type": "TransactionConditional"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "B256": "#special:hex:32",
+        "Bytes": "#special:hex",
+        "TransactionConditional": "rpc-types-eth::struct"
+      }
+    },
+    "eth_sendRawTransactionSync": {
+      "params": [
+        {
+          "name": "bytes",
+          "type": "Bytes"
+        },
+        {
+          "name": "timeout_ms",
+          "type": "Option<u64>"
+        }
+      ],
+      "result": "alloy_rpc_types_eth::TransactionReceipt",
+      "types": {
+        "Bytes": "#special:hex",
+        "TransactionReceipt": "rpc-types-eth::struct"
+      }
+    },
+    "eth_sendTransaction": {
+      "params": [
+        {
+          "name": "request",
+          "type": "alloy_rpc_types_eth::TransactionRequest"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "B256": "#special:hex:32",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_sign": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "message",
+          "type": "Bytes"
+        }
+      ],
+      "result": "Bytes",
+      "types": {
+        "Address": "#special:hex:20",
+        "Bytes": "#special:hex"
+      }
+    },
+    "eth_signTransaction": {
+      "params": [
+        {
+          "name": "transaction",
+          "type": "alloy_rpc_types_eth::TransactionRequest"
+        }
+      ],
+      "result": "Bytes",
+      "types": {
+        "Bytes": "#special:hex",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_signTypedData": {
+      "params": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "data",
+          "type": "TypedData"
+        }
+      ],
+      "result": "Bytes",
+      "types": {
+        "Address": "#special:hex:20",
+        "Bytes": "#special:hex",
+        "TypedData": "#special:any"
+      }
+    },
+    "eth_simulateV1": {
+      "params": [
+        {
+          "name": "opts",
+          "type": "SimulatePayload<alloy_rpc_types_eth::TransactionRequest>"
+        },
+        {
+          "name": "block_number",
+          "type": "Option<BlockId>"
+        }
+      ],
+      "result": "Vec<SimulatedBlock<alloy_rpc_types_eth::Block>>",
+      "types": {
+        "Block": "rpc-types-eth::struct",
+        "BlockId": "eips::enum",
+        "SimulatePayload": "rpc-types-eth::struct",
+        "SimulatedBlock": "rpc-types-eth::struct",
+        "TransactionRequest": "rpc-types-eth::struct"
+      }
+    },
+    "eth_submitHashrate": {
+      "params": [
+        {
+          "name": "hashrate",
+          "type": "U256"
+        },
+        {
+          "name": "id",
+          "type": "B256"
+        }
+      ],
+      "result": "bool",
+      "types": {
+        "B256": "#special:hex:32",
+        "U256": "#special:quantity"
+      }
+    },
+    "eth_submitWork": {
+      "params": [
+        {
+          "name": "nonce",
+          "type": "B64"
+        },
+        {
+          "name": "pow_hash",
+          "type": "B256"
+        },
+        {
+          "name": "mix_digest",
+          "type": "B256"
+        }
+      ],
+      "result": "bool",
+      "types": {
+        "B256": "#special:hex:32",
+        "B64": "#special:hex"
+      }
+    },
+    "eth_subscribe": {
+      "params": [
+        {
+          "name": "kind",
+          "type": "SubscriptionKind"
+        },
+        {
+          "name": "params",
+          "type": "Option<Params>"
+        }
+      ],
+      "result": "jsonrpsee::core::SubscriptionResult",
+      "types": {
+        "Params": "rpc-types-eth::enum",
+        "SubscriptionKind": "rpc-types-eth::enum",
+        "SubscriptionResult": "rpc-types-eth::enum"
+      }
+    },
+    "eth_syncing": {
+      "params": [],
+      "result": "SyncStatus",
+      "types": {
+        "SyncStatus": "rpc-types-eth::enum"
+      }
+    },
+    "eth_uninstallFilter": {
+      "params": [
+        {
+          "name": "id",
+          "type": "FilterId"
+        }
+      ],
+      "result": "bool",
+      "types": {
+        "FilterId": "rpc-types-eth::enum"
+      }
+    },
+    "net_listening": {
+      "params": [],
+      "result": "bool",
+      "types": {}
+    },
+    "net_peerCount": {
+      "params": [],
+      "result": "U64",
+      "types": {
+        "U64": "#special:quantity"
+      }
+    },
+    "net_version": {
+      "params": [],
+      "result": "String",
+      "types": {}
+    },
+    "txpool_content": {
+      "params": [],
+      "result": "TxpoolContent<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "Transaction": "rpc-types-eth::struct",
+        "TxpoolContent": "rpc-types-txpool::struct"
+      }
+    },
+    "txpool_contentFrom": {
+      "params": [
+        {
+          "name": "from",
+          "type": "Address"
+        }
+      ],
+      "result": "TxpoolContentFrom<alloy_rpc_types_eth::Transaction>",
+      "types": {
+        "Address": "#special:hex:20",
+        "Transaction": "rpc-types-eth::struct",
+        "TxpoolContentFrom": "rpc-types-txpool::struct"
+      }
+    },
+    "txpool_inspect": {
+      "params": [],
+      "result": "TxpoolInspect",
+      "types": {
+        "TxpoolInspect": "rpc-types-txpool::struct"
+      }
+    },
+    "txpool_status": {
+      "params": [],
+      "result": "TxpoolStatus",
+      "types": {
+        "TxpoolStatus": "rpc-types-txpool::struct"
+      }
+    },
+    "web3_clientVersion": {
+      "params": [],
+      "result": "String",
+      "types": {}
+    },
+    "web3_sha3": {
+      "params": [
+        {
+          "name": "input",
+          "type": "Bytes"
+        }
+      ],
+      "result": "B256",
+      "types": {
+        "B256": "#special:hex:32",
+        "Bytes": "#special:hex"
+      }
+    }
+  },
+  "unresolved": {}
+}

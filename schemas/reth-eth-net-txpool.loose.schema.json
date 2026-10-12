@@ -1,0 +1,5522 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/reth/rpc.schema.json",
+  "title": "Reth JSON-RPC request/response schema (eth, net, web3, txpool)",
+  "description": "Generated from ethereum/execution-apis OpenRPC. Strict object validation. A validating proxy: extract request.method, validate request.params against methods[method].params and the result against methods[method].result.",
+  "x-source": "ethereum/execution-apis",
+  "methods": {
+    "eth_accounts": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns a list of addresses owned by client.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "title": "Accounts",
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/address"
+        }
+      }
+    },
+    "eth_baseFee": {
+      "source": "execution-apis:eth/fee_market.yaml",
+      "summary": "Returns the base fee per gas of the next block in wei.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "title": "Base fee",
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_blobBaseFee": {
+      "source": "execution-apis:eth/fee_market.yaml",
+      "summary": "Returns the base fee per blob gas in wei.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "title": "Blob gas base fee",
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_blockNumber": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns the number of most recent block.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_call": {
+      "source": "execution-apis:eth/execute.yaml",
+      "summary": "Executes a new message call immediately without creating a transaction on the block chain.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/GenericTransaction"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/GenericTransaction"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/bytes"
+      }
+    },
+    "eth_capabilities": {
+      "source": "execution-apis:eth/capabilities.yaml",
+      "summary": "Returns effective capabilities for routing decisions.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/EthCapabilities"
+      }
+    },
+    "eth_chainId": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns the chain ID of the current network.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_coinbase": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns the client coinbase address.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/address"
+      }
+    },
+    "eth_config": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns the client's current configuration including fork information.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/ConfigurationResponse"
+      }
+    },
+    "eth_createAccessList": {
+      "source": "execution-apis:eth/execute.yaml",
+      "summary": "Generates an access list for a transaction.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/GenericTransaction"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/GenericTransaction"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "title": "Access list result",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "accessList": {
+            "title": "accessList",
+            "$ref": "#/$defs/AccessList"
+          },
+          "error": {
+            "title": "error",
+            "type": "string"
+          },
+          "gasUsed": {
+            "title": "Gas used",
+            "$ref": "#/$defs/uint"
+          }
+        }
+      }
+    },
+    "eth_estimateGas": {
+      "source": "execution-apis:eth/execute.yaml",
+      "summary": "Generates and returns an estimate of how much gas is necessary to allow the transaction to complete.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/GenericTransaction"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/GenericTransaction"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_feeHistory": {
+      "source": "execution-apis:eth/fee_market.yaml",
+      "summary": "Transaction fee history",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/uint"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "title": "rewardPercentiles",
+                "type": "array",
+                "items": {
+                  "title": "rewardPercentile",
+                  "description": "Floating point value between 0 and 100.",
+                  "type": "number"
+                }
+              }
+            ],
+            "minItems": 3,
+            "maxItems": 3,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "blockCount": {
+                "$ref": "#/$defs/uint"
+              },
+              "newestBlock": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              "rewardPercentiles": {
+                "title": "rewardPercentiles",
+                "type": "array",
+                "items": {
+                  "title": "rewardPercentile",
+                  "description": "Floating point value between 0 and 100.",
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "blockCount",
+              "newestBlock",
+              "rewardPercentiles"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "title": "feeHistoryResults",
+        "description": "Fee history results.",
+        "type": "object",
+        "required": [
+          "oldestBlock",
+          "baseFeePerGas",
+          "gasUsedRatio"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "oldestBlock": {
+            "title": "oldestBlock",
+            "description": "Lowest number block of returned range.",
+            "$ref": "#/$defs/uint"
+          },
+          "baseFeePerGas": {
+            "title": "baseFeePerGasArray",
+            "description": "An array of block base fees per gas. This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks.",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/uint"
+            }
+          },
+          "baseFeePerBlobGas": {
+            "title": "baseFeePerBlobGasArray",
+            "description": "An array of block base fees per blob gas. This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-4844 blocks.",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/uint"
+            }
+          },
+          "gasUsedRatio": {
+            "title": "gasUsedRatio",
+            "description": "An array of block gas used ratios. These are calculated as the ratio of gasUsed and gasLimit.",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/ratio"
+            }
+          },
+          "blobGasUsedRatio": {
+            "title": "blobGasUsedRatio",
+            "description": "An array of block blob gas used ratios. These are calculated as the ratio of blobGasUsed and the max blob gas per block.",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/ratio"
+            }
+          },
+          "reward": {
+            "title": "rewardArray",
+            "description": "A two-dimensional array of effective priority fees per gas at the requested block percentiles.",
+            "type": "array",
+            "items": {
+              "title": "rewardPercentile",
+              "description": "An array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.",
+              "type": "array",
+              "items": {
+                "title": "rewardPercentile",
+                "description": "A given percentile sample of effective priority fees per gas from a single block in ascending order, weighted by gas used. Zeroes are returned if the block is empty.",
+                "$ref": "#/$defs/uint"
+              }
+            }
+          }
+        }
+      }
+    },
+    "eth_fillTransaction": {
+      "source": "execution-apis:eth/fill.yaml",
+      "summary": "Fills in missing transaction fields to be signed and submitted.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/GenericTransaction"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/GenericTransaction"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FillTransactionResult"
+      }
+    },
+    "eth_gasPrice": {
+      "source": "execution-apis:eth/fee_market.yaml",
+      "summary": "Returns the current price per gas in wei.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "title": "Gas price",
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_getBalance": {
+      "source": "execution-apis:eth/state.yaml",
+      "summary": "Returns the balance of the account of given address.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Address": {
+                "$ref": "#/$defs/address"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Address"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_getBlockAccessList": {
+      "source": "execution-apis:eth/block.yaml",
+      "summary": "Returns the block access list for a given block.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Block"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/BlockAccessList"
+          }
+        ]
+      }
+    },
+    "eth_getBlockByHash": {
+      "source": "execution-apis:eth/block.yaml",
+      "summary": "Returns information about a block by hash.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/hash32"
+              },
+              {
+                "title": "hydrated",
+                "type": "boolean"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block hash": {
+                "$ref": "#/$defs/hash32"
+              },
+              "Hydrated transactions": {
+                "title": "hydrated",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "Block hash",
+              "Hydrated transactions"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/Block"
+          }
+        ]
+      }
+    },
+    "eth_getBlockByNumber": {
+      "source": "execution-apis:eth/block.yaml",
+      "summary": "Returns information about a block by number.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "title": "hydrated",
+                "type": "boolean"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              "Hydrated transactions": {
+                "title": "hydrated",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "Block",
+              "Hydrated transactions"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/Block"
+          }
+        ]
+      }
+    },
+    "eth_getBlockReceipts": {
+      "source": "execution-apis:eth/block.yaml",
+      "summary": "Returns the receipts of a block by number or hash.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Block"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "title": "Receipts information",
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/ReceiptInfo"
+            }
+          }
+        ]
+      }
+    },
+    "eth_getBlockTransactionCountByHash": {
+      "source": "execution-apis:eth/block.yaml",
+      "summary": "Returns the number of transactions in a block from a block matching the given block hash.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/hash32"
+              }
+            ],
+            "minItems": 0,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block hash": {
+                "$ref": "#/$defs/hash32"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "title": "Transaction count",
+            "$ref": "#/$defs/uint"
+          }
+        ]
+      }
+    },
+    "eth_getBlockTransactionCountByNumber": {
+      "source": "execution-apis:eth/block.yaml",
+      "summary": "Returns the number of transactions in a block matching the given block number.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            ],
+            "minItems": 0,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "title": "Transaction count",
+            "$ref": "#/$defs/uint"
+          }
+        ]
+      }
+    },
+    "eth_getCode": {
+      "source": "execution-apis:eth/state.yaml",
+      "summary": "Returns code at a given address.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Address": {
+                "$ref": "#/$defs/address"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Address"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/bytes"
+      }
+    },
+    "eth_getFilterChanges": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Polling method for the filter with the given ID (created using `eth_newFilter`). Returns an array of logs, block hashes, or transaction hashes since last poll, depending on the installed filter.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/uint"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Filter identifier": {
+                "$ref": "#/$defs/uint"
+              }
+            },
+            "required": [
+              "Filter identifier"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterResults"
+      }
+    },
+    "eth_getFilterLogs": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Returns an array of all logs matching the filter with the given ID (created using `eth_newFilter`).",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/uint"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Filter identifier": {
+                "$ref": "#/$defs/uint"
+              }
+            },
+            "required": [
+              "Filter identifier"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterResults"
+      }
+    },
+    "eth_getLogs": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Returns an array of all logs matching the specified filter.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Filter"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Filter": {
+                "$ref": "#/$defs/Filter"
+              }
+            },
+            "required": [
+              "Filter"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/FilterResults"
+      }
+    },
+    "eth_getProof": {
+      "source": "execution-apis:eth/state.yaml",
+      "summary": "Returns the merkle proof for a given account and optionally some storage keys.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              },
+              {
+                "title": "Storage keys",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/bytesMax32"
+                }
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 3,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Address": {
+                "$ref": "#/$defs/address"
+              },
+              "StorageKeys": {
+                "title": "Storage keys",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/bytesMax32"
+                }
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Address",
+              "StorageKeys"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/AccountProof"
+      }
+    },
+    "eth_getStorageAt": {
+      "source": "execution-apis:eth/state.yaml",
+      "summary": "Returns the value from a storage position at a given address.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              },
+              {
+                "$ref": "#/$defs/bytesMax32"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 3,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Address": {
+                "$ref": "#/$defs/address"
+              },
+              "Storage slot": {
+                "$ref": "#/$defs/bytesMax32"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Address",
+              "Storage slot"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/bytes"
+      }
+    },
+    "eth_getStorageValues": {
+      "source": "execution-apis:eth/state.yaml",
+      "summary": "Returns the values of multiple storage slots for multiple accounts in a single request.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "title": "Storage requests",
+                "type": "object",
+                "additionalProperties": {
+                  "title": "Storage keys",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/bytesMax32"
+                  }
+                }
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Requests": {
+                "title": "Storage requests",
+                "type": "object",
+                "additionalProperties": {
+                  "title": "Storage keys",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/bytesMax32"
+                  }
+                }
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Requests"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "title": "Storage values",
+        "type": "object",
+        "additionalProperties": {
+          "title": "Slot values",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        }
+      }
+    },
+    "eth_getTransactionByBlockHashAndIndex": {
+      "source": "execution-apis:eth/transaction.yaml",
+      "summary": "Returns information about a transaction by block hash and transaction index position.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/hash32"
+              },
+              {
+                "$ref": "#/$defs/uint"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block hash": {
+                "$ref": "#/$defs/hash32"
+              },
+              "Transaction index": {
+                "$ref": "#/$defs/uint"
+              }
+            },
+            "required": [
+              "Block hash",
+              "Transaction index"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/TransactionInfo"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionByBlockNumberAndIndex": {
+      "source": "execution-apis:eth/transaction.yaml",
+      "summary": "Returns information about a transaction by block number and transaction index position.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              {
+                "$ref": "#/$defs/uint"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTag"
+              },
+              "Transaction index": {
+                "$ref": "#/$defs/uint"
+              }
+            },
+            "required": [
+              "Block",
+              "Transaction index"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/TransactionInfo"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionByHash": {
+      "source": "execution-apis:eth/transaction.yaml",
+      "summary": "Returns the information about a transaction requested by transaction hash.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/hash32"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction hash": {
+                "$ref": "#/$defs/hash32"
+              }
+            },
+            "required": [
+              "Transaction hash"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/TransactionInfo"
+          }
+        ]
+      }
+    },
+    "eth_getTransactionCount": {
+      "source": "execution-apis:eth/state.yaml",
+      "summary": "Returns the nonce of an account in the state. NOTE: The name eth_getTransactionCount reflects the historical fact that an account's nonce and sent transaction count were the same. After the Pectra fork, with the inclusion of EIP-7702, this is no longer true.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Address": {
+                "$ref": "#/$defs/address"
+              },
+              "Block": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Address"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_getTransactionReceipt": {
+      "source": "execution-apis:eth/transaction.yaml",
+      "summary": "Returns the receipt of a transaction by transaction hash.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/hash32"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction hash": {
+                "$ref": "#/$defs/hash32"
+              }
+            },
+            "required": [
+              "Transaction hash"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/notFound"
+          },
+          {
+            "$ref": "#/$defs/ReceiptInfo"
+          }
+        ]
+      }
+    },
+    "eth_maxPriorityFeePerGas": {
+      "source": "execution-apis:eth/fee_market.yaml",
+      "summary": "Returns the current maxPriorityFeePerGas per gas in wei.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "title": "Max priority fee per gas",
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_newBlockFilter": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Creates a filter in the node, allowing for later polling. Registers client interest in new blocks, and returns an identifier.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_newFilter": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Install a log filter in the server, allowing for later polling. Registers client interest in logs matching the filter, and returns an identifier.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/Filter"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Filter": {
+                "$ref": "#/$defs/Filter"
+              }
+            },
+            "required": [
+              "Filter"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_newPendingTransactionFilter": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Creates a filter in the node, allowing for later polling. Registers client interest in new transactions, and returns an identifier.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_sendRawTransaction": {
+      "source": "execution-apis:eth/submit.yaml",
+      "summary": "Submits a raw transaction. You can create and sign a transaction externally using a library such as [web3.js](https://web3js.readthedocs.io/) or [ethers.js](https://docs.ethers.org/). For [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) transactions, the raw form must be the network form. This means it includes the blobs, KZG commitments, and KZG proofs. For [EIP-7594](https://eips.ethereum.org/EIPS/eip-7594) transactions, the raw format must be the network form. This means it includes the blobs, KZG commitments, and cell proofs. The logic for handling the new transaction during fork boundaries are 1. When receiving an encoded transaction with cell proofs before the PeerDAS fork activates, we reject it. Only blob proofs are accepted into the pool. 2. At the time of fork activation, the implementer could (not mandatory) - Drop all old-format transactions - Convert old proofs to new format (computationally expensive) - Convert only when including in a locally produced block 3. After the fork has activated, only txs with cell proofs are accepted via p2p relay. 4. On RPC (eth_sendRawTransaction), txs with blob proofs may still be accepted and will be auto-converted by the node. At implementer discretion, this facility can be deprecated later when users have switched to new client libraries that can create cell proofs.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/bytes"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/bytes"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/hash32"
+      }
+    },
+    "eth_sendTransaction": {
+      "source": "execution-apis:eth/submit.yaml",
+      "summary": "Signs and submits a transaction.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/GenericTransaction"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/GenericTransaction"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/hash32"
+      }
+    },
+    "eth_sign": {
+      "source": "execution-apis:eth/sign.yaml",
+      "summary": "Returns an EIP-191 signature over the provided data.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              },
+              {
+                "$ref": "#/$defs/bytes"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Address": {
+                "$ref": "#/$defs/address"
+              },
+              "Message": {
+                "$ref": "#/$defs/bytes"
+              }
+            },
+            "required": [
+              "Address",
+              "Message"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/bytes65"
+      }
+    },
+    "eth_signTransaction": {
+      "source": "execution-apis:eth/sign.yaml",
+      "summary": "Returns an RLP encoded transaction signed by the specified account.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/GenericTransaction"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Transaction": {
+                "$ref": "#/$defs/GenericTransaction"
+              }
+            },
+            "required": [
+              "Transaction"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/SignTransactionResult"
+      }
+    },
+    "eth_simulateV1": {
+      "source": "execution-apis:eth/execute.yaml",
+      "summary": "Executes a sequence of message calls building on each other's state without creating transactions on the block chain, optionally overriding block and state data",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/EthSimulatePayload"
+              },
+              {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Payload": {
+                "$ref": "#/$defs/EthSimulatePayload"
+              },
+              "Block tag": {
+                "$ref": "#/$defs/BlockNumberOrTagOrHash"
+              }
+            },
+            "required": [
+              "Payload"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/EthSimulateResult"
+      }
+    },
+    "eth_subscribe": {
+      "source": "execution-apis:eth/subscribe.yaml",
+      "summary": "Subscribes to events on the node.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "title": "Subscription kind",
+                "type": "string",
+                "enum": [
+                  "newHeads",
+                  "logs",
+                  "newPendingTransactions",
+                  "transactionReceipts"
+                ]
+              },
+              {
+                "title": "Kind-specific argument",
+                "oneOf": [
+                  {
+                    "title": "Logs filter (for `logs`)",
+                    "$ref": "#/$defs/Filter"
+                  },
+                  {
+                    "title": "Full-transaction flag (for `newPendingTransactions`)",
+                    "type": "boolean"
+                  },
+                  {
+                    "title": "Transaction receipts filter (for `transactionReceipts`)",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "transactionHashes": {
+                        "title": "Transaction hashes to watch",
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/$defs/hash32"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 2,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "title": "Subscription kind",
+                "type": "string",
+                "enum": [
+                  "newHeads",
+                  "logs",
+                  "newPendingTransactions",
+                  "transactionReceipts"
+                ]
+              },
+              "arg": {
+                "title": "Kind-specific argument",
+                "oneOf": [
+                  {
+                    "title": "Logs filter (for `logs`)",
+                    "$ref": "#/$defs/Filter"
+                  },
+                  {
+                    "title": "Full-transaction flag (for `newPendingTransactions`)",
+                    "type": "boolean"
+                  },
+                  {
+                    "title": "Transaction receipts filter (for `transactionReceipts`)",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "transactionHashes": {
+                        "title": "Transaction hashes to watch",
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/$defs/hash32"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "eth_syncing": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns an object with data about the sync status or false.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/SyncingStatus"
+      }
+    },
+    "eth_uninstallFilter": {
+      "source": "execution-apis:eth/filter.yaml",
+      "summary": "Uninstalls a filter with given id.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/uint"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Filter identifier": {
+                "$ref": "#/$defs/uint"
+              }
+            },
+            "required": [
+              "Filter identifier"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "eth_unsubscribe": {
+      "source": "execution-apis:eth/subscribe.yaml",
+      "summary": "Cancels an existing subscription created with `eth_subscribe`.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/uint"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Subscription ID": {
+                "$ref": "#/$defs/uint"
+              }
+            },
+            "required": [
+              "Subscription ID"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "net_listening": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns true if the client is actively listening for network connections.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "title": "Listening",
+        "type": "boolean"
+      }
+    },
+    "net_peerCount": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns the number of peers currently connected to the client.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/uint"
+      }
+    },
+    "net_version": {
+      "source": "execution-apis:eth/client.yaml",
+      "summary": "Returns the current network ID. This is usually equivalent to the chainID, but may differ from it for some legacy networks or special testnets.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/uintDecimal"
+      }
+    },
+    "txpool_content": {
+      "source": "execution-apis:txpool/pool.yaml",
+      "summary": "Returns the contents of the transaction pool.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolContent"
+      }
+    },
+    "txpool_contentFrom": {
+      "source": "execution-apis:txpool/pool.yaml",
+      "summary": "Returns the transactions in the pool from a specific address.",
+      "params": {
+        "anyOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "$ref": "#/$defs/address"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1,
+            "items": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "address": {
+                "$ref": "#/$defs/address"
+              }
+            },
+            "required": [
+              "address"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolContentFromResult"
+      }
+    },
+    "txpool_status": {
+      "source": "execution-apis:txpool/pool.yaml",
+      "summary": "Returns the number of pending and queued transactions in the pool.",
+      "params": {
+        "type": "array",
+        "maxItems": 0,
+        "items": false
+      },
+      "result": {
+        "$ref": "#/$defs/TxpoolStatus"
+      }
+    }
+  },
+  "$defs": {
+    "Withdrawal": {
+      "type": "object",
+      "title": "Validator withdrawal",
+      "required": [
+        "index",
+        "validatorIndex",
+        "address",
+        "amount"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "title": "index of withdrawal",
+          "$ref": "#/$defs/uint64"
+        },
+        "validatorIndex": {
+          "title": "index of validator that generated withdrawal",
+          "$ref": "#/$defs/uint64"
+        },
+        "address": {
+          "title": "recipient address for withdrawal value",
+          "$ref": "#/$defs/address"
+        },
+        "amount": {
+          "title": "value contained in withdrawal",
+          "$ref": "#/$defs/uint256"
+        }
+      }
+    },
+    "Withdrawals": {
+      "title": "Validator withdrawals list",
+      "description": "This array can have a maximum length of 16.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Withdrawal"
+      }
+    },
+    "TxpoolStatus": {
+      "type": "object",
+      "title": "Transaction pool status",
+      "description": "The number of pending and queued transactions in the pool.",
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "properties": {
+        "pending": {
+          "title": "pending count",
+          "description": "Number of transactions ready for inclusion in the next block(s)",
+          "$ref": "#/$defs/uint"
+        },
+        "queued": {
+          "title": "queued count",
+          "description": "Number of transactions with nonce gaps awaiting preceding transactions before they can be executed",
+          "$ref": "#/$defs/uint"
+        }
+      }
+    },
+    "PendingTransactionInfo": {
+      "type": "object",
+      "title": "Pending transaction information",
+      "description": "Transaction in the pool, not yet included in a block.",
+      "allOf": [
+        {
+          "title": "Contextual information",
+          "required": [
+            "from",
+            "hash"
+          ],
+          "properties": {
+            "blockHash": {
+              "title": "block hash",
+              "description": "Always null for pending transactions",
+              "type": "null"
+            },
+            "blockNumber": {
+              "title": "block number",
+              "description": "Always null for pending transactions",
+              "type": "null"
+            },
+            "blockTimestamp": {
+              "title": "block timestamp",
+              "description": "Always null for pending transactions",
+              "type": "null"
+            },
+            "from": {
+              "title": "from address",
+              "$ref": "#/$defs/address"
+            },
+            "hash": {
+              "title": "transaction hash",
+              "$ref": "#/$defs/hash32"
+            },
+            "transactionIndex": {
+              "title": "transaction index",
+              "description": "Always null for pending transactions",
+              "type": "null"
+            }
+          }
+        },
+        {
+          "$ref": "#/$defs/TransactionSigned"
+        }
+      ]
+    },
+    "TxpoolContentByAddress": {
+      "type": "object",
+      "title": "Transactions by nonce",
+      "description": "Map of nonce to transaction object",
+      "additionalProperties": {
+        "$ref": "#/$defs/PendingTransactionInfo"
+      }
+    },
+    "TxpoolContentAddressMap": {
+      "type": "object",
+      "title": "Transactions by address",
+      "description": "Map of address to transactions grouped by nonce",
+      "additionalProperties": {
+        "$ref": "#/$defs/TxpoolContentByAddress"
+      }
+    },
+    "TxpoolContent": {
+      "type": "object",
+      "title": "Transaction pool content",
+      "description": "All pending and queued transactions in the pool, grouped by address and nonce.",
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "properties": {
+        "pending": {
+          "title": "pending transactions",
+          "description": "Transactions ready for inclusion in the next block(s)",
+          "$ref": "#/$defs/TxpoolContentAddressMap"
+        },
+        "queued": {
+          "title": "queued transactions",
+          "description": "Transactions with nonce gaps awaiting preceding transactions before they can be executed",
+          "$ref": "#/$defs/TxpoolContentAddressMap"
+        }
+      }
+    },
+    "TxpoolContentFromResult": {
+      "type": "object",
+      "title": "Transaction pool content from address",
+      "description": "Pending and queued transactions from a specific address, grouped by nonce.",
+      "required": [
+        "pending",
+        "queued"
+      ],
+      "properties": {
+        "pending": {
+          "title": "pending transactions",
+          "description": "Transactions ready for inclusion in the next block(s)",
+          "$ref": "#/$defs/TxpoolContentByAddress"
+        },
+        "queued": {
+          "title": "queued transactions",
+          "description": "Transactions with nonce gaps awaiting preceding transactions before they can be executed",
+          "$ref": "#/$defs/TxpoolContentByAddress"
+        }
+      }
+    },
+    "Transaction7702Unsigned": {
+      "type": "object",
+      "title": "EIP-7702 transaction",
+      "required": [
+        "type",
+        "nonce",
+        "to",
+        "gas",
+        "value",
+        "input",
+        "maxPriorityFeePerGas",
+        "maxFeePerGas",
+        "accessList",
+        "chainId",
+        "authorizationList"
+      ],
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string",
+          "pattern": "^0x4$"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint"
+        },
+        "to": {
+          "title": "to address",
+          "$ref": "#/$defs/address"
+        },
+        "gas": {
+          "title": "gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint"
+        },
+        "input": {
+          "title": "input data",
+          "$ref": "#/$defs/bytes"
+        },
+        "maxPriorityFeePerGas": {
+          "title": "max priority fee per gas",
+          "description": "Maximum fee per gas the sender is willing to pay to miners in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxFeePerGas": {
+          "title": "max fee per gas",
+          "description": "The maximum total fee per gas the sender is willing to pay (includes the network / base fee and miner / priority fee) in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The effective gas price paid by the sender in wei. For transactions not yet included in a block, this value should be set equal to the max fee per gas. This field is DEPRECATED, please transition to using effectiveGasPrice in the receipt object going forward.",
+          "$ref": "#/$defs/uint"
+        },
+        "accessList": {
+          "title": "accessList",
+          "description": "EIP-2930 access lists",
+          "$ref": "#/$defs/AccessList"
+        },
+        "chainId": {
+          "title": "chainId",
+          "description": "Chain ID that this transaction is valid on",
+          "$ref": "#/$defs/uint"
+        },
+        "authorizationList": {
+          "title": "authorizationList",
+          "$ref": "#/$defs/AuthorizationList"
+        }
+      }
+    },
+    "AuthorizationList": {
+      "title": "Authorization List",
+      "description": "List of authorizations for the transaction",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "chainId": {
+            "title": "chainId",
+            "description": "Chain ID on which this transaction is valid",
+            "$ref": "#/$defs/uint"
+          },
+          "nonce": {
+            "title": "nonce",
+            "$ref": "#/$defs/uint"
+          },
+          "address": {
+            "$ref": "#/$defs/address"
+          },
+          "yParity": {
+            "title": "yParity",
+            "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature",
+            "$ref": "#/$defs/byte"
+          },
+          "r": {
+            "title": "r",
+            "$ref": "#/$defs/uint256"
+          },
+          "s": {
+            "title": "s",
+            "$ref": "#/$defs/uint256"
+          }
+        },
+        "required": [
+          "chainId",
+          "nonce",
+          "address",
+          "yParity",
+          "r",
+          "s"
+        ]
+      }
+    },
+    "Transaction4844Unsigned": {
+      "type": "object",
+      "title": "EIP-4844 transaction.",
+      "required": [
+        "type",
+        "nonce",
+        "to",
+        "gas",
+        "value",
+        "input",
+        "maxPriorityFeePerGas",
+        "maxFeePerGas",
+        "maxFeePerBlobGas",
+        "accessList",
+        "blobVersionedHashes",
+        "chainId"
+      ],
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string",
+          "pattern": "^0x3$"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint"
+        },
+        "to": {
+          "title": "to address",
+          "$ref": "#/$defs/address"
+        },
+        "gas": {
+          "title": "gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint"
+        },
+        "input": {
+          "title": "input data",
+          "$ref": "#/$defs/bytes"
+        },
+        "maxPriorityFeePerGas": {
+          "title": "max priority fee per gas",
+          "description": "Maximum fee per gas the sender is willing to pay to miners in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxFeePerGas": {
+          "title": "max fee per gas",
+          "description": "The maximum total fee per gas the sender is willing to pay (includes the network / base fee and miner / priority fee) in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxFeePerBlobGas": {
+          "title": "max fee per blob gas",
+          "description": "The maximum total fee per gas the sender is willing to pay for blob gas in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The effective gas price paid by the sender in wei. For transactions not yet included in a block, this value should be set equal to the max fee per gas. This field is DEPRECATED, please transition to using effectiveGasPrice in the receipt object going forward.",
+          "$ref": "#/$defs/uint"
+        },
+        "accessList": {
+          "title": "accessList",
+          "description": "EIP-2930 access list",
+          "$ref": "#/$defs/AccessList"
+        },
+        "blobVersionedHashes": {
+          "title": "blobVersionedHashes",
+          "description": "List of versioned blob hashes associated with the transaction's EIP-4844 data blobs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hash32"
+          }
+        },
+        "chainId": {
+          "title": "chainId",
+          "description": "Chain ID that this transaction is valid on",
+          "$ref": "#/$defs/uint"
+        }
+      }
+    },
+    "Transaction4844UnsignedWithSidecar": {
+      "title": "Unsigned 4844 transaction with sidecar",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Transaction4844Unsigned"
+        },
+        {
+          "title": "EIP-4844 transaction signature properties.",
+          "required": [
+            "blobs",
+            "commitments",
+            "proofs"
+          ],
+          "properties": {
+            "blobs": {
+              "title": "blobs",
+              "description": "Raw blob data.",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/bytes"
+              }
+            },
+            "commitments": {
+              "title": "Blob commitments.",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/bytes"
+              }
+            },
+            "proofs": {
+              "title": "Blob proofs.",
+              "description": "Pre-PeerDAS this contains one KZG proof per blob (length == len(blobs)). Post-PeerDAS this contains cell proofs with length == 128 * len(blobs).",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/bytes"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AccessListEntry": {
+      "title": "Access list entry",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "address",
+        "storageKeys"
+      ],
+      "properties": {
+        "address": {
+          "$ref": "#/$defs/address"
+        },
+        "storageKeys": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hash32"
+          }
+        }
+      }
+    },
+    "AccessList": {
+      "title": "Access list",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AccessListEntry"
+      }
+    },
+    "Transaction1559Unsigned": {
+      "type": "object",
+      "title": "EIP-1559 transaction.",
+      "required": [
+        "type",
+        "nonce",
+        "gas",
+        "value",
+        "input",
+        "maxFeePerGas",
+        "maxPriorityFeePerGas",
+        "gasPrice",
+        "chainId",
+        "accessList"
+      ],
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string",
+          "pattern": "^0x2$"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint"
+        },
+        "to": {
+          "title": "to address",
+          "oneOf": [
+            {
+              "title": "Contract Creation (null)",
+              "type": "null"
+            },
+            {
+              "title": "Address",
+              "$ref": "#/$defs/address"
+            }
+          ]
+        },
+        "gas": {
+          "title": "gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint"
+        },
+        "input": {
+          "title": "input data",
+          "$ref": "#/$defs/bytes"
+        },
+        "maxPriorityFeePerGas": {
+          "title": "max priority fee per gas",
+          "description": "Maximum fee per gas the sender is willing to pay to miners in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxFeePerGas": {
+          "title": "max fee per gas",
+          "description": "The maximum total fee per gas the sender is willing to pay (includes the network / base fee and miner / priority fee) in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The effective gas price paid by the sender in wei. For transactions not yet included in a block, this value should be set equal to the max fee per gas. This field is DEPRECATED, please transition to using effectiveGasPrice in the receipt object going forward.",
+          "$ref": "#/$defs/uint"
+        },
+        "accessList": {
+          "title": "accessList",
+          "description": "EIP-2930 access list",
+          "$ref": "#/$defs/AccessList"
+        },
+        "chainId": {
+          "title": "chainId",
+          "description": "Chain ID that this transaction is valid on.",
+          "$ref": "#/$defs/uint"
+        }
+      }
+    },
+    "Transaction2930Unsigned": {
+      "type": "object",
+      "title": "EIP-2930 transaction.",
+      "required": [
+        "type",
+        "nonce",
+        "gas",
+        "value",
+        "input",
+        "gasPrice",
+        "chainId",
+        "accessList"
+      ],
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string",
+          "pattern": "^0x1$"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint"
+        },
+        "to": {
+          "title": "to address",
+          "oneOf": [
+            {
+              "title": "Contract Creation (null)",
+              "type": "null"
+            },
+            {
+              "title": "Address",
+              "$ref": "#/$defs/address"
+            }
+          ]
+        },
+        "gas": {
+          "title": "gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint"
+        },
+        "input": {
+          "title": "input data",
+          "$ref": "#/$defs/bytes"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The gas price willing to be paid by the sender in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "accessList": {
+          "title": "accessList",
+          "description": "EIP-2930 access list",
+          "$ref": "#/$defs/AccessList"
+        },
+        "chainId": {
+          "title": "chainId",
+          "description": "Chain ID that this transaction is valid on.",
+          "$ref": "#/$defs/uint"
+        }
+      }
+    },
+    "TransactionLegacyUnsigned": {
+      "type": "object",
+      "title": "Legacy transaction.",
+      "required": [
+        "type",
+        "nonce",
+        "gas",
+        "value",
+        "input",
+        "gasPrice"
+      ],
+      "properties": {
+        "type": {
+          "title": "type",
+          "type": "string",
+          "pattern": "^0x0$"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint"
+        },
+        "to": {
+          "title": "to address",
+          "oneOf": [
+            {
+              "title": "Contract Creation (null)",
+              "type": "null"
+            },
+            {
+              "title": "Address",
+              "$ref": "#/$defs/address"
+            }
+          ]
+        },
+        "gas": {
+          "title": "gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint"
+        },
+        "input": {
+          "title": "input data",
+          "$ref": "#/$defs/bytes"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The gas price willing to be paid by the sender in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "chainId": {
+          "title": "chainId",
+          "description": "Chain ID that this transaction is valid on.",
+          "$ref": "#/$defs/uint"
+        }
+      }
+    },
+    "TransactionUnsigned": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Transaction7702Unsigned"
+        },
+        {
+          "$ref": "#/$defs/Transaction4844Unsigned"
+        },
+        {
+          "$ref": "#/$defs/Transaction1559Unsigned"
+        },
+        {
+          "$ref": "#/$defs/Transaction2930Unsigned"
+        },
+        {
+          "$ref": "#/$defs/TransactionLegacyUnsigned"
+        }
+      ]
+    },
+    "Transaction7702Signed": {
+      "title": "Signed 7702 Transaction",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Transaction7702Unsigned"
+        },
+        {
+          "title": "EIP-7702 transaction signature properties.",
+          "required": [
+            "yParity",
+            "r",
+            "s"
+          ],
+          "properties": {
+            "yParity": {
+              "title": "yParity",
+              "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature.",
+              "$ref": "#/$defs/byte"
+            },
+            "v": {
+              "title": "v",
+              "description": "For backwards compatibility, `v` is optionally provided as an alternative to `yParity`. This field is DEPRECATED and all use of it should migrate to `yParity`.",
+              "$ref": "#/$defs/byte"
+            },
+            "r": {
+              "title": "r",
+              "$ref": "#/$defs/uint"
+            },
+            "s": {
+              "title": "s",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        }
+      ]
+    },
+    "Transaction4844Signed": {
+      "title": "Signed 4844 Transaction",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Transaction4844Unsigned"
+        },
+        {
+          "title": "EIP-4844 transaction signature properties.",
+          "required": [
+            "yParity",
+            "r",
+            "s"
+          ],
+          "properties": {
+            "yParity": {
+              "title": "yParity",
+              "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature.",
+              "$ref": "#/$defs/byte"
+            },
+            "v": {
+              "title": "v",
+              "description": "For backwards compatibility, `v` is optionally provided as an alternative to `yParity`. This field is DEPRECATED and all use of it should migrate to `yParity`.",
+              "$ref": "#/$defs/byte"
+            },
+            "r": {
+              "title": "r",
+              "$ref": "#/$defs/uint"
+            },
+            "s": {
+              "title": "s",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        }
+      ]
+    },
+    "Transaction1559Signed": {
+      "title": "Signed 1559 Transaction",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Transaction1559Unsigned"
+        },
+        {
+          "title": "EIP-1559 transaction signature properties.",
+          "required": [
+            "yParity",
+            "r",
+            "s"
+          ],
+          "properties": {
+            "yParity": {
+              "title": "yParity",
+              "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature.",
+              "$ref": "#/$defs/byte"
+            },
+            "v": {
+              "title": "v",
+              "description": "For backwards compatibility, `v` is optionally provided as an alternative to `yParity`. This field is DEPRECATED and all use of it should migrate to `yParity`.",
+              "$ref": "#/$defs/byte"
+            },
+            "r": {
+              "title": "r",
+              "$ref": "#/$defs/uint"
+            },
+            "s": {
+              "title": "s",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        }
+      ]
+    },
+    "Transaction2930Signed": {
+      "title": "Signed 2930 Transaction",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Transaction2930Unsigned"
+        },
+        {
+          "title": "EIP-2930 transaction signature properties.",
+          "required": [
+            "yParity",
+            "r",
+            "s"
+          ],
+          "properties": {
+            "yParity": {
+              "title": "yParity",
+              "description": "The parity (0 for even, 1 for odd) of the y-value of the secp256k1 signature.",
+              "$ref": "#/$defs/byte"
+            },
+            "v": {
+              "title": "v",
+              "description": "For backwards compatibility, `v` is optionally provided as an alternative to `yParity`. This field is DEPRECATED and all use of it should migrate to `yParity`.",
+              "$ref": "#/$defs/byte"
+            },
+            "r": {
+              "title": "r",
+              "$ref": "#/$defs/uint"
+            },
+            "s": {
+              "title": "s",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        }
+      ]
+    },
+    "TransactionLegacySigned": {
+      "title": "Signed Legacy Transaction",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/TransactionLegacyUnsigned"
+        },
+        {
+          "title": "Legacy transaction signature properties.",
+          "required": [
+            "v",
+            "r",
+            "s"
+          ],
+          "properties": {
+            "v": {
+              "title": "v",
+              "$ref": "#/$defs/uint"
+            },
+            "r": {
+              "title": "r",
+              "$ref": "#/$defs/uint"
+            },
+            "s": {
+              "title": "s",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        }
+      ]
+    },
+    "TransactionSigned": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Transaction7702Signed"
+        },
+        {
+          "$ref": "#/$defs/Transaction4844Signed"
+        },
+        {
+          "$ref": "#/$defs/Transaction1559Signed"
+        },
+        {
+          "$ref": "#/$defs/Transaction2930Signed"
+        },
+        {
+          "$ref": "#/$defs/TransactionLegacySigned"
+        }
+      ]
+    },
+    "TransactionInfo": {
+      "type": "object",
+      "title": "Transaction information",
+      "allOf": [
+        {
+          "title": "Contextual information",
+          "required": [
+            "blockHash",
+            "blockNumber",
+            "blockTimestamp",
+            "from",
+            "hash",
+            "transactionIndex"
+          ],
+          "properties": {
+            "blockHash": {
+              "title": "block hash",
+              "$ref": "#/$defs/hash32"
+            },
+            "blockNumber": {
+              "title": "block number",
+              "$ref": "#/$defs/uint"
+            },
+            "blockTimestamp": {
+              "title": "block timestamp",
+              "$ref": "#/$defs/uint"
+            },
+            "from": {
+              "title": "from address",
+              "$ref": "#/$defs/address"
+            },
+            "hash": {
+              "title": "transaction hash",
+              "$ref": "#/$defs/hash32"
+            },
+            "transactionIndex": {
+              "title": "transaction index",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        },
+        {
+          "$ref": "#/$defs/TransactionSigned"
+        }
+      ]
+    },
+    "GenericTransaction": {
+      "type": "object",
+      "title": "Transaction object generic to all types",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "title": "type",
+          "$ref": "#/$defs/byte"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint"
+        },
+        "to": {
+          "title": "to address",
+          "oneOf": [
+            {
+              "title": "Contract Creation (null)",
+              "type": "null"
+            },
+            {
+              "title": "Address",
+              "$ref": "#/$defs/address"
+            }
+          ]
+        },
+        "from": {
+          "title": "from address",
+          "$ref": "#/$defs/address"
+        },
+        "gas": {
+          "title": "gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint"
+        },
+        "input": {
+          "title": "input data",
+          "$ref": "#/$defs/bytes"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The gas price willing to be paid by the sender in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxPriorityFeePerGas": {
+          "title": "max priority fee per gas",
+          "description": "Maximum fee per gas the sender is willing to pay to miners in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxFeePerGas": {
+          "title": "max fee per gas",
+          "description": "The maximum total fee per gas the sender is willing to pay (includes the network / base fee and miner / priority fee) in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "maxFeePerBlobGas": {
+          "title": "max fee per blob gas",
+          "description": "The maximum total fee per gas the sender is willing to pay for blob gas in wei",
+          "$ref": "#/$defs/uint"
+        },
+        "accessList": {
+          "title": "accessList",
+          "description": "EIP-2930 access list",
+          "$ref": "#/$defs/AccessList"
+        },
+        "blobVersionedHashes": {
+          "title": "blobVersionedHashes",
+          "description": "List of versioned blob hashes associated with the transaction's EIP-4844 data blobs.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hash32"
+          }
+        },
+        "blobs": {
+          "title": "blobs",
+          "description": "Raw blob data.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        },
+        "commitments": {
+          "title": "commitments",
+          "description": "List of blob commitments as per EIP-4844.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        },
+        "proofs": {
+          "title": "proofs",
+          "description": "List of blob proofs. Pre-PeerDAS this contains one KZG proof per blob (length == len(blobs)). Post-PeerDAS this contains cell proofs with length == 128 * len(blobs).",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        },
+        "chainId": {
+          "title": "chainId",
+          "description": "Chain ID that this transaction is valid on.",
+          "$ref": "#/$defs/uint"
+        },
+        "authorizationList": {
+          "title": "authorizationList",
+          "description": "EIP-7702 authorization list",
+          "$ref": "#/$defs/AuthorizationList"
+        }
+      }
+    },
+    "SignTransactionResult": {
+      "type": "object",
+      "title": "Encoded and raw signed transaction object.",
+      "required": [
+        "raw",
+        "tx"
+      ],
+      "properties": {
+        "raw": {
+          "title": "raw",
+          "$ref": "#/$defs/bytes"
+        },
+        "tx": {
+          "title": "tx",
+          "$ref": "#/$defs/TransactionSigned"
+        }
+      }
+    },
+    "FilledTransaction": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Transaction7702Unsigned"
+        },
+        {
+          "$ref": "#/$defs/Transaction4844UnsignedWithSidecar"
+        },
+        {
+          "$ref": "#/$defs/Transaction4844Unsigned"
+        },
+        {
+          "$ref": "#/$defs/Transaction1559Unsigned"
+        },
+        {
+          "$ref": "#/$defs/Transaction2930Unsigned"
+        },
+        {
+          "$ref": "#/$defs/TransactionLegacyUnsigned"
+        }
+      ]
+    },
+    "FillTransactionResult": {
+      "type": "object",
+      "title": "Filled unsigned transaction object.",
+      "required": [
+        "tx"
+      ],
+      "properties": {
+        "tx": {
+          "title": "tx",
+          "$ref": "#/$defs/FilledTransaction"
+        }
+      }
+    },
+    "AccountProof": {
+      "title": "Account proof",
+      "type": "object",
+      "required": [
+        "address",
+        "accountProof",
+        "balance",
+        "codeHash",
+        "nonce",
+        "storageHash",
+        "storageProof"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "title": "address",
+          "$ref": "#/$defs/address"
+        },
+        "accountProof": {
+          "title": "accountProof",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        },
+        "balance": {
+          "title": "balance",
+          "$ref": "#/$defs/uint256"
+        },
+        "codeHash": {
+          "title": "codeHash",
+          "$ref": "#/$defs/hash32"
+        },
+        "nonce": {
+          "title": "nonce",
+          "$ref": "#/$defs/uint64"
+        },
+        "storageHash": {
+          "title": "storageHash",
+          "$ref": "#/$defs/hash32"
+        },
+        "storageProof": {
+          "title": "Storage proofs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StorageProof"
+          }
+        }
+      }
+    },
+    "StorageProof": {
+      "title": "Storage proof",
+      "type": "object",
+      "required": [
+        "key",
+        "value",
+        "proof"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "title": "key",
+          "$ref": "#/$defs/bytesMax32"
+        },
+        "value": {
+          "title": "value",
+          "$ref": "#/$defs/uint256"
+        },
+        "proof": {
+          "title": "proof",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        }
+      }
+    },
+    "Log": {
+      "title": "log",
+      "type": "object",
+      "required": [
+        "transactionHash"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "removed": {
+          "title": "removed",
+          "type": "boolean"
+        },
+        "logIndex": {
+          "title": "log index",
+          "$ref": "#/$defs/uint"
+        },
+        "transactionIndex": {
+          "title": "transaction index",
+          "$ref": "#/$defs/uint"
+        },
+        "transactionHash": {
+          "title": "transaction hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "blockHash": {
+          "title": "block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "blockNumber": {
+          "title": "block number",
+          "$ref": "#/$defs/uint"
+        },
+        "blockTimestamp": {
+          "title": "block timestamp",
+          "$ref": "#/$defs/uint"
+        },
+        "address": {
+          "title": "address",
+          "$ref": "#/$defs/address"
+        },
+        "data": {
+          "title": "data",
+          "$ref": "#/$defs/bytes"
+        },
+        "topics": {
+          "title": "topics",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes32"
+          }
+        }
+      }
+    },
+    "ReceiptInfo": {
+      "type": "object",
+      "title": "Receipt information",
+      "required": [
+        "blockHash",
+        "blockNumber",
+        "from",
+        "cumulativeGasUsed",
+        "gasUsed",
+        "logs",
+        "logsBloom",
+        "transactionHash",
+        "transactionIndex",
+        "effectiveGasPrice"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "title": "type",
+          "$ref": "#/$defs/byte"
+        },
+        "transactionHash": {
+          "title": "transaction hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "transactionIndex": {
+          "title": "transaction index",
+          "$ref": "#/$defs/uint"
+        },
+        "blockHash": {
+          "title": "block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "blockNumber": {
+          "title": "block number",
+          "$ref": "#/$defs/uint"
+        },
+        "from": {
+          "title": "from",
+          "$ref": "#/$defs/address"
+        },
+        "to": {
+          "title": "to",
+          "description": "Address of the receiver or null in a contract creation transaction.",
+          "oneOf": [
+            {
+              "title": "Contract Creation (null)",
+              "type": "null"
+            },
+            {
+              "title": "Recipient Address",
+              "$ref": "#/$defs/address"
+            }
+          ]
+        },
+        "cumulativeGasUsed": {
+          "title": "cumulative gas used",
+          "description": "The sum of gas used by this transaction and all preceding transactions in the same block.",
+          "$ref": "#/$defs/uint"
+        },
+        "gasUsed": {
+          "title": "gas used",
+          "description": "The amount of gas used for this specific transaction alone.",
+          "$ref": "#/$defs/uint"
+        },
+        "blobGasUsed": {
+          "title": "blob gas used",
+          "description": "The amount of blob gas used for this specific transaction. Only specified for blob transactions as defined by EIP-4844.",
+          "$ref": "#/$defs/uint"
+        },
+        "contractAddress": {
+          "title": "contract address",
+          "description": "The contract address created, if the transaction was a contract creation, otherwise null.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/address"
+            },
+            {
+              "title": "Null",
+              "type": "null"
+            }
+          ]
+        },
+        "logs": {
+          "title": "logs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Log"
+          }
+        },
+        "logsBloom": {
+          "title": "logs bloom",
+          "$ref": "#/$defs/bytes256"
+        },
+        "root": {
+          "title": "state root",
+          "description": "The post-transaction state root. Only specified for transactions included before the Byzantium upgrade.",
+          "$ref": "#/$defs/hash32"
+        },
+        "status": {
+          "title": "status",
+          "description": "Either 1 (success) or 0 (failure). Only specified for transactions included after the Byzantium upgrade.",
+          "$ref": "#/$defs/uint"
+        },
+        "effectiveGasPrice": {
+          "title": "effective gas price",
+          "description": "The actual value per gas deducted from the sender's account. Before EIP-1559, this is equal to the transaction's gas price. After, it is equal to baseFeePerGas + min(maxFeePerGas - baseFeePerGas, maxPriorityFeePerGas).",
+          "$ref": "#/$defs/uint"
+        },
+        "blobGasPrice": {
+          "title": "blob gas price",
+          "description": "The actual value per gas deducted from the sender's account for blob gas. Only specified for blob transactions as defined by EIP-4844.",
+          "$ref": "#/$defs/uint"
+        }
+      }
+    },
+    "TraceConfig": {
+      "title": "Trace configuration",
+      "description": "Configuration object accepted by debug_traceBlockByNumber and debug_traceTransaction.\nWhen the tracer field is absent or empty, the opcode (struct) logger is used and the result conforms to OpcodeTransactionTrace. The fields enableMemory, disableStack, disableStorage, enableReturnData, and limit only apply to the opcode logger and are ignored when a named tracer is set.\nWhen the tracer field is set to a named tracer (e.g. \"callTracer\", \"prestateTracer\"), the result format is tracer-specific. Defining the output schemas of named tracers is outside the scope of this specification.",
+      "type": "object",
+      "properties": {
+        "tracer": {
+          "title": "tracer name",
+          "description": "The name of a built-in or custom tracer to use. When absent or empty, the opcode (struct) logger is used.\nExample built-in tracer names in go-ethereum include: 4byteTracer, callTracer, prestateTracer, noopTracer, bigramTracer, evmdisTracer, opcountTracer, trigramTracer, unigramTracer.\nClients may support different sets of named tracers.\nCustom JavaScript tracers may also be supplied as an expression string.",
+          "type": "string"
+        },
+        "tracerConfig": {
+          "title": "tracer configuration",
+          "description": "An optional tracer-specific configuration object passed to the named tracer. Only applicable when the tracer field is set. The fields accepted here depend on the named tracer in use.",
+          "type": "object"
+        },
+        "timeout": {
+          "title": "execution timeout",
+          "description": "Optional duration string specifying a timeout for trace execution. Clients that do not support execution timeouts (e.g. streaming implementations) MAY ignore this field. When supported and the timeout is reached, the client MUST return an error; no partial results are returned. Accepts Go duration strings (e.g. \"5s\", \"300ms\", \"2m\").",
+          "type": "string"
+        },
+        "disableStorage": {
+          "title": "disable storage capture",
+          "description": "Opcode logger only. Setting to true disables storage capture in structLogs. When true, the storage field is omitted from each StructLog entry. Ignored when tracer is set. Default: false.",
+          "type": "boolean"
+        },
+        "disableStack": {
+          "title": "disable stack capture",
+          "description": "Opcode logger only. Setting to true disables stack capture in structLogs. When true, the stack field is omitted from each StructLog entry. Ignored when tracer is set. Default: false.",
+          "type": "boolean"
+        },
+        "enableMemory": {
+          "title": "enable memory capture",
+          "description": "Opcode logger only. Setting to true enables memory capture in structLogs. When false (default), the memory field is omitted from each StructLog entry. Ignored when tracer is set. Default: false.",
+          "type": "boolean"
+        },
+        "enableReturnData": {
+          "title": "enable return data capture",
+          "description": "Opcode logger only. Setting to true enables return data capture in structLogs. When false (default), the returnData field is omitted from each StructLog entry. Ignored when tracer is set. Default: false.",
+          "type": "boolean"
+        },
+        "limit": {
+          "title": "step limit",
+          "description": "Opcode logger only. Maximum number of opcode steps to capture. Zero means no limit. When the limit is reached, execution continues but no further StructLog entries are recorded. Ignored when tracer is set. Default: 0 (unlimited).",
+          "type": "integer",
+          "minimum": 0
+        },
+        "debug": {
+          "title": "debug print",
+          "description": "Opcode logger only. When true, the client may print the trace output to its internal log during execution. Has no effect on the JSON-RPC response. Ignored when tracer is set. Default: false.",
+          "type": "boolean"
+        }
+      }
+    },
+    "StructLog": {
+      "title": "Opcode execution log entry",
+      "description": "A single step in the EVM execution trace produced by the opcode (struct) logger. One entry is emitted per opcode executed.",
+      "type": "object",
+      "required": [
+        "pc",
+        "op",
+        "gas",
+        "gasCost",
+        "depth"
+      ],
+      "properties": {
+        "pc": {
+          "title": "program counter",
+          "description": "The program counter position of this opcode in the contract bytecode.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "op": {
+          "title": "opcode name",
+          "description": "The name of the EVM opcode executed at this step (e.g. \"PUSH1\", \"SSTORE\").",
+          "type": "string"
+        },
+        "gas": {
+          "title": "remaining gas",
+          "description": "The amount of gas remaining before executing this opcode.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "gasCost": {
+          "title": "gas cost",
+          "description": "The gas cost computed for this opcode step \u2014 the amount that will be deducted from the remaining gas assuming successful execution. Includes dynamic costs such as memory expansion and storage access charges (e.g. cold vs. warm SLOAD/SSTORE).",
+          "type": "integer",
+          "minimum": 0
+        },
+        "depth": {
+          "title": "call depth",
+          "description": "The call stack depth at this execution step. Starts at 1 for the outermost call.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "error": {
+          "title": "execution error",
+          "description": "The error encountered during execution of this opcode, if any. This field MUST be absent when no error occurred. Clients MUST NOT include this field as null or as an empty string when there is no error.",
+          "type": "string"
+        },
+        "refund": {
+          "title": "gas refund counter",
+          "description": "The accumulated gas refund counter at this execution step. Clients MUST include this field at every step when it is non-zero. Clients SHOULD include this field at every step even when zero.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "stack": {
+          "title": "EVM stack",
+          "description": "The contents of the EVM stack at this step, ordered from bottom (index 0) to top (last element). Each value is a 0x-prefixed uint256 quantity. This field is absent when disableStack is true.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uint256"
+          }
+        },
+        "memory": {
+          "title": "EVM memory",
+          "description": "The contents of EVM memory at this step, divided into 32-byte chunks. Each element is a 0x-prefixed, zero-padded 32-byte hex word representing a consecutive 32-byte memory slot starting at offset (index * 32). This field is absent (not null) when enableMemory is false.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes32"
+          }
+        },
+        "returnData": {
+          "title": "return data",
+          "description": "The return data from the most recent call at this step. This field is absent when enableReturnData is false.",
+          "$ref": "#/$defs/bytes"
+        },
+        "storage": {
+          "title": "contract storage",
+          "description": "A cumulative snapshot of all storage slots accessed or modified by the current contract up to and including this step. Keys are 0x-prefixed, zero-padded 32-byte storage slot indices; values are the 32-byte stored values reflecting the post-execution state of the opcode at this step (i.e., for SSTORE, the value reflects the new value just written).\nThis field is only populated at SLOAD and SSTORE opcodes. At all other opcodes, this field MUST be absent (not an empty object). This field is absent when disableStorage is true.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/bytes32"
+          }
+        }
+      }
+    },
+    "OpcodeTransactionTrace": {
+      "title": "Opcode transaction trace",
+      "description": "The result of tracing a single transaction using the opcode (struct) logger. This is the result type of debug_traceTransaction and each element's result field in the debug_traceBlockByNumber response when no named tracer is used.",
+      "type": "object",
+      "required": [
+        "gas",
+        "failed",
+        "returnValue",
+        "structLogs"
+      ],
+      "properties": {
+        "gas": {
+          "title": "gas used",
+          "description": "Total amount of gas consumed by the transaction.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "title": "failed",
+          "description": "Whether the transaction execution failed (reverted or ran out of gas).",
+          "type": "boolean"
+        },
+        "returnValue": {
+          "title": "return value",
+          "description": "The data returned by the transaction. 0x-prefixed hex-encoded bytes. MUST be \"0x\" (not an empty string) when no data was returned.",
+          "$ref": "#/$defs/bytes"
+        },
+        "structLogs": {
+          "title": "opcode execution logs",
+          "description": "The ordered sequence of opcode execution steps. Will be empty for simple ETH transfers between externally owned accounts that execute no EVM code.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StructLog"
+          }
+        }
+      }
+    },
+    "OpcodeBlockTransactionTrace": {
+      "title": "Opcode block transaction trace entry",
+      "description": "A single transaction's opcode trace result within a debug_traceBlockByNumber or debug_traceBlockByHash response when no named tracer is used. Pairs the transaction hash with its opcode trace.",
+      "type": "object",
+      "required": [
+        "txHash",
+        "result"
+      ],
+      "properties": {
+        "txHash": {
+          "title": "transaction hash",
+          "description": "The hash of the transaction this trace entry corresponds to.",
+          "$ref": "#/$defs/hash32"
+        },
+        "result": {
+          "title": "opcode transaction trace",
+          "description": "The opcode trace for this transaction.",
+          "$ref": "#/$defs/OpcodeTransactionTrace"
+        }
+      }
+    },
+    "FilterResults": {
+      "title": "Filter results",
+      "oneOf": [
+        {
+          "title": "new block or transaction hashes",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hash32"
+          }
+        },
+        {
+          "title": "new logs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Log"
+          }
+        }
+      ]
+    },
+    "Filter": {
+      "title": "filter",
+      "oneOf": [
+        {
+          "title": "Filter by block range",
+          "type": "object",
+          "properties": {
+            "fromBlock": {
+              "title": "from block",
+              "$ref": "#/$defs/BlockNumberOrTagForRange"
+            },
+            "toBlock": {
+              "title": "to block",
+              "$ref": "#/$defs/BlockNumberOrTagForRange"
+            },
+            "address": {
+              "title": "Address(es)",
+              "oneOf": [
+                {
+                  "title": "Any Address",
+                  "type": "null"
+                },
+                {
+                  "title": "Address",
+                  "$ref": "#/$defs/address"
+                },
+                {
+                  "title": "Addresses",
+                  "$ref": "#/$defs/addresses"
+                }
+              ]
+            },
+            "topics": {
+              "title": "Topics",
+              "$ref": "#/$defs/FilterTopics"
+            }
+          },
+          "not": {
+            "required": [
+              "blockHash"
+            ]
+          }
+        },
+        {
+          "title": "Filter by block hash",
+          "type": "object",
+          "properties": {
+            "blockHash": {
+              "title": "block hash",
+              "$ref": "#/$defs/hash32"
+            },
+            "address": {
+              "title": "Address(es)",
+              "oneOf": [
+                {
+                  "title": "Any Address",
+                  "type": "null"
+                },
+                {
+                  "title": "Address",
+                  "$ref": "#/$defs/address"
+                },
+                {
+                  "title": "Addresses",
+                  "$ref": "#/$defs/addresses"
+                }
+              ]
+            },
+            "topics": {
+              "title": "Topics",
+              "$ref": "#/$defs/FilterTopics"
+            }
+          },
+          "required": [
+            "blockHash"
+          ]
+        }
+      ]
+    },
+    "FilterTopics": {
+      "title": "Filter Topics",
+      "oneOf": [
+        {
+          "title": "Any Topic Match",
+          "type": "null"
+        },
+        {
+          "title": "Specified Filter Topics",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FilterTopic"
+          }
+        }
+      ]
+    },
+    "FilterTopic": {
+      "title": "Filter Topic List Entry",
+      "oneOf": [
+        {
+          "title": "Any Topic Match",
+          "type": "null"
+        },
+        {
+          "title": "Single Topic Match",
+          "$ref": "#/$defs/bytes32"
+        },
+        {
+          "title": "Multiple Topic Match",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes32"
+          }
+        }
+      ]
+    },
+    "EthSimulatePayload": {
+      "title": "Arguments for eth_simulate",
+      "type": "object",
+      "required": [
+        "blockStateCalls"
+      ],
+      "properties": {
+        "blockStateCalls": {
+          "title": "Block State Calls",
+          "description": "Definition of blocks that can contain calls and overrides",
+          "$ref": "#/$defs/BlockStateCalls"
+        },
+        "traceTransfers": {
+          "title": "Trace ETH Transfers",
+          "description": "Adds ETH transfers as ERC20 transfer events to the logs. These transfers have emitter contract parameter set as address(0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee).\nDefault: false.",
+          "type": "boolean"
+        },
+        "validation": {
+          "title": "Validation",
+          "description": "When true, the eth_simulateV1 does all validations that a normal EVM would do, except contract sender and signature checks. When false, eth_simulateV1 behaves like eth_call.\nDefault: false.",
+          "type": "boolean"
+        },
+        "returnFullTransactions": {
+          "title": "Return Full Transactions",
+          "description": "When true, the method returns full transaction objects, otherwise, just hashes are returned.",
+          "type": "boolean"
+        }
+      }
+    },
+    "BlockStateCalls": {
+      "title": "Array of block state calls to be executed at specific, optional block/state.",
+      "description": "The size of this array may be limited depending on the client as a DOS protection. 256 is a common/recommended limit as it is the same limit used by BLOCKHASH opcode.",
+      "type": "array",
+      "properties": {
+        "blockOverrides": {
+          "title": "Block overrides",
+          "description": "Block overrides can be used to replace fields in a block.\ndefault: no block override.",
+          "$ref": "#/$defs/BlockOverrides"
+        },
+        "stateOverrides": {
+          "title": "State overrides",
+          "description": "State overrides can be used to replace existing blockchain state with new state.\nDefault: no state overrides",
+          "$ref": "#/$defs/StateOverrides"
+        },
+        "calls": {
+          "type": "array",
+          "title": "calls",
+          "description": "List of transactions to execute at this block/state.\nDefault: []",
+          "items": {
+            "$ref": "#/$defs/GenericCallTransaction"
+          }
+        }
+      }
+    },
+    "StateOverrides": {
+      "title": "Dictionary of addresses in the state to be overridden",
+      "type": "object",
+      "patternProperties": {
+        "^0x[a-fA-F0-9]{40}$": {
+          "$ref": "#/$defs/AccountOverride"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AccountOverride": {
+      "title": "Details of an account to be overridden",
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/AccountOverrideState"
+        },
+        {
+          "$ref": "#/$defs/AccountOverrideStateDiff"
+        }
+      ]
+    },
+    "AccountOverrideState": {
+      "title": "Account override with whole storage replacement",
+      "description": "It is possible to override any kind of address (EOA's, contracts and precompiles)",
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "nonce": {
+          "title": "Nonce",
+          "$ref": "#/$defs/uint64"
+        },
+        "balance": {
+          "title": "Balance",
+          "$ref": "#/$defs/uint256"
+        },
+        "code": {
+          "title": "Code",
+          "$ref": "#/$defs/bytes"
+        },
+        "movePrecompileToAddress": {
+          "title": "MovePrecompileToAddress",
+          "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. When the specified address is not a precompile, the behaviour is undefined and different clients might behave differently.",
+          "$ref": "#/$defs/address"
+        },
+        "state": {
+          "title": "Storage",
+          "description": "Key-value mapping to override all slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+          "$ref": "#/$defs/AccountStorage"
+        }
+      }
+    },
+    "AccountOverrideStateDiff": {
+      "title": "Account override with partial storage modification",
+      "required": [
+        "stateDiff"
+      ],
+      "properties": {
+        "nonce": {
+          "title": "Nonce",
+          "$ref": "#/$defs/uint64"
+        },
+        "balance": {
+          "title": "Balance",
+          "$ref": "#/$defs/uint256"
+        },
+        "code": {
+          "title": "Code",
+          "$ref": "#/$defs/bytes"
+        },
+        "movePrecompileToAddress": {
+          "title": "MovePrecompileToAddress",
+          "$ref": "#/$defs/address",
+          "description": "Moves addresses precompile into the specified address. This move is done before the 'code' override is set. Can only move precompiles."
+        },
+        "stateDiff": {
+          "title": "Storage difference",
+          "description": "Key-value mapping to override individual slots in the account storage before executing the call. This functions similar to eth_call's state parameter.",
+          "$ref": "#/$defs/AccountStorage"
+        }
+      }
+    },
+    "AccountStorage": {
+      "title": "Storage slots for an account",
+      "type": "object",
+      "patternProperties": {
+        "^0x[a-fA-F0-9]{64}$": {
+          "$ref": "#/$defs/hash32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BlockOverrides": {
+      "title": "Context fields related to the block being executed",
+      "type": "object",
+      "properties": {
+        "number": {
+          "title": "Number",
+          "$ref": "#/$defs/uint64",
+          "description": "When overriding block numbers across multiple blocks, block number need to be increasing. Skipping over blocks numbers is possible. If block number is not specified, it's incremented by one for each block."
+        },
+        "prevRandao": {
+          "title": "The Previous value of randomness beacon",
+          "$ref": "#/$defs/uint256"
+        },
+        "time": {
+          "title": "Time",
+          "$ref": "#/$defs/uint64",
+          "description": "Time must either increase or remain constant relative to the previous block. If time is not specified, it's incremented by one for each block."
+        },
+        "gasLimit": {
+          "title": "Gas limit",
+          "$ref": "#/$defs/uint64"
+        },
+        "feeRecipient": {
+          "title": "Fee recipient",
+          "description": "Address set by the proposer/builder to receive priority fees. Often matches the block header `feeRecipient` field but is not the COINBASE EVM opcode.",
+          "$ref": "#/$defs/address"
+        },
+        "baseFeePerGas": {
+          "title": "Base fee per unit of gas",
+          "$ref": "#/$defs/uint256"
+        },
+        "withdrawals": {
+          "title": "Withdrawals made by validators",
+          "$ref": "#/$defs/Withdrawals"
+        },
+        "blobBaseFee": {
+          "title": "Base fee per unit of blob gas",
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "EthSimulateResult": {
+      "title": "Full results of eth_simulate",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EthSimulateBlockResultSingleSuccess"
+      }
+    },
+    "EthSimulateBlockResultSingleSuccess": {
+      "title": "Result of eth_simulate block-level, with array of calls",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/Block"
+        },
+        {
+          "type": "object",
+          "title": "Eth Simulate call results",
+          "required": [
+            "calls"
+          ],
+          "properties": {
+            "calls": {
+              "title": "Call Results",
+              "$ref": "#/$defs/CallResults"
+            }
+          }
+        }
+      ]
+    },
+    "CallResults": {
+      "title": "Results of eth_simulate within block",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/CallResultFailure"
+          },
+          {
+            "$ref": "#/$defs/CallResultSuccess"
+          }
+        ]
+      }
+    },
+    "CallResultFailure": {
+      "title": "Result of call failure",
+      "description": "The error messages are suggestions, and clients might implement different error messages. However, the error codes are enforced by the spec.",
+      "type": "object",
+      "required": [
+        "status",
+        "returnData",
+        "gasUsed",
+        "error"
+      ],
+      "properties": {
+        "status": {
+          "title": "Call Status Failure",
+          "type": "string",
+          "pattern": "^0x0$"
+        },
+        "returnData": {
+          "title": "Return data",
+          "$ref": "#/$defs/bytes"
+        },
+        "gasUsed": {
+          "title": "Return gasUsed",
+          "$ref": "#/$defs/uint64"
+        },
+        "maxUsedGas": {
+          "title": "Maximum gas used during execution before refunds",
+          "$ref": "#/$defs/uint64"
+        },
+        "error": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": 3
+                },
+                "message": {
+                  "type": "string",
+                  "pattern": "^execution reverted.*"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": -32015
+                },
+                "message": {
+                  "type": "string",
+                  "pattern": "^vm execution error.*"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "CallResultSuccess": {
+      "title": "Result of call success",
+      "type": "object",
+      "required": [
+        "status",
+        "returnData",
+        "gasUsed",
+        "logs"
+      ],
+      "properties": {
+        "status": {
+          "title": "Call Status Success",
+          "type": "string",
+          "pattern": "^0x1$"
+        },
+        "returnData": {
+          "title": "Return data",
+          "$ref": "#/$defs/bytes"
+        },
+        "gasUsed": {
+          "title": "Return gasUsed",
+          "$ref": "#/$defs/uint64"
+        },
+        "maxUsedGas": {
+          "title": "Maximum gas used during execution before refunds",
+          "$ref": "#/$defs/uint64"
+        },
+        "logs": {
+          "title": "Return logs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Log"
+          }
+        }
+      }
+    },
+    "GenericCallTransaction": {
+      "type": "object",
+      "title": "Transaction object type for call",
+      "properties": {
+        "type": {
+          "title": "type",
+          "$ref": "#/$defs/byte",
+          "description": "Default: 0x2"
+        },
+        "nonce": {
+          "title": "nonce",
+          "description": "Default: Defaults to correct nonce",
+          "$ref": "#/$defs/uint64"
+        },
+        "to": {
+          "title": "to address",
+          "$ref": "#/$defs/address",
+          "description": "Default: 0x0"
+        },
+        "from": {
+          "title": "from address",
+          "$ref": "#/$defs/address",
+          "description": "Default: null"
+        },
+        "gas": {
+          "title": "gas limit",
+          "description": "Default: Remaining gas in the current block",
+          "$ref": "#/$defs/uint64"
+        },
+        "value": {
+          "title": "value",
+          "description": "Default: 0",
+          "$ref": "#/$defs/uint256"
+        },
+        "input": {
+          "title": "input data",
+          "description": "Default: no data",
+          "$ref": "#/$defs/bytes"
+        },
+        "gasPrice": {
+          "title": "gas price",
+          "description": "The gas price willing to be paid by the sender in wei\nDefault: 0",
+          "$ref": "#/$defs/uint256"
+        },
+        "maxPriorityFeePerGas": {
+          "title": "max priority fee per gas",
+          "description": "Maximum fee per gas the sender is willing to pay to miners in wei\nDefault: 0",
+          "$ref": "#/$defs/uint256"
+        },
+        "maxFeePerGas": {
+          "title": "max fee per gas",
+          "description": "The maximum total fee per gas the sender is willing to pay (includes the network / base fee and miner / priority fee) in wei\nDefault: 0",
+          "$ref": "#/$defs/uint256"
+        },
+        "maxFeePerBlobGas": {
+          "title": "max fee per blob gas",
+          "description": "The maximum total fee per blob gas the sender is willing to pay in wei\nDefault: 0",
+          "$ref": "#/$defs/uint256"
+        },
+        "accessList": {
+          "title": "accessList",
+          "description": "EIP-2930 access list\nDefault: []",
+          "$ref": "#/$defs/AccessList"
+        },
+        "blobVersionedHashes": {
+          "title": "Blob versioned hashes",
+          "description": "EIP-4844 versioned hashes\nDefault: []",
+          "$ref": "#/$defs/bytes32"
+        }
+      }
+    },
+    "SyncingStatus": {
+      "title": "Syncing status",
+      "oneOf": [
+        {
+          "title": "Syncing progress",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "startingBlock": {
+              "title": "Starting block",
+              "$ref": "#/$defs/uint"
+            },
+            "currentBlock": {
+              "title": "Current block",
+              "$ref": "#/$defs/uint"
+            },
+            "highestBlock": {
+              "title": "Highest block",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        },
+        {
+          "title": "Not syncing",
+          "description": "Should always return false if not syncing.",
+          "type": "boolean"
+        }
+      ]
+    },
+    "ConfigurationResponse": {
+      "title": "Configuration response",
+      "description": "Response object for eth_config method containing current, next, and last fork configurations",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current": {
+          "title": "Current configuration",
+          "$ref": "#/$defs/ConfigObject"
+        },
+        "next": {
+          "title": "Next configuration",
+          "description": "Configuration for the next scheduled fork, null if no future forks scheduled",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ConfigObject"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "last": {
+          "title": "Last configuration",
+          "description": "Configuration for the last configured fork, null if no future forks scheduled",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ConfigObject"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "current",
+        "next",
+        "last"
+      ]
+    },
+    "ConfigObject": {
+      "title": "Configuration object",
+      "description": "Represents a specific fork configuration",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "activationTime": {
+          "title": "Activation time",
+          "description": "Unix timestamp when this configuration becomes active",
+          "type": "number"
+        },
+        "blobSchedule": {
+          "title": "Blob schedule",
+          "description": "Configuration for blob fee schedule",
+          "$ref": "#/$defs/BlobSchedule"
+        },
+        "chainId": {
+          "title": "Chain ID",
+          "description": "The chain ID for this configuration",
+          "$ref": "#/$defs/uint"
+        },
+        "forkId": {
+          "title": "Fork ID",
+          "description": "The FORK_HASH value as specified in EIP-6122 of the specific fork",
+          "$ref": "#/$defs/bytes4"
+        },
+        "precompiles": {
+          "title": "Precompiles",
+          "description": "Mapping of precompile names to their addresses",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/address"
+          }
+        },
+        "systemContracts": {
+          "title": "System contracts",
+          "description": "Mapping of system contract names to their addresses",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/address"
+          }
+        }
+      },
+      "required": [
+        "activationTime",
+        "blobSchedule",
+        "chainId",
+        "forkId",
+        "precompiles",
+        "systemContracts"
+      ]
+    },
+    "BlobSchedule": {
+      "title": "Blob schedule",
+      "description": "Configuration parameters for blob fee scheduling",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseFeeUpdateFraction": {
+          "title": "Base fee update fraction",
+          "description": "Fraction used for updating blob base fees",
+          "type": "integer",
+          "minimum": 0
+        },
+        "max": {
+          "title": "Maximum blobs",
+          "description": "Maximum number of blobs per block",
+          "type": "integer",
+          "minimum": 0
+        },
+        "target": {
+          "title": "Target blobs",
+          "description": "Target number of blobs per block",
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "baseFeeUpdateFraction",
+        "max",
+        "target"
+      ]
+    },
+    "EthCapabilities": {
+      "title": "Effective routing capabilities",
+      "description": "Describes the data available on the node. Each resource reports the oldest available block and the deletion strategy, allowing RPC routers to determine which historical queries a node can serve.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "head",
+        "state",
+        "tx",
+        "logs",
+        "receipts",
+        "blocks",
+        "stateproofs"
+      ],
+      "properties": {
+        "head": {
+          "title": "Current head block",
+          "description": "The latest block known to the node, useful for determining sync status.",
+          "$ref": "#/$defs/EthCapabilitiesHead"
+        },
+        "state": {
+          "description": "Account and contract state including balances, nonces, code, and storage. Determines the available range for historical state queries. Affects: eth_getBalance, eth_getCode, eth_getStorageAt, eth_getTransactionCount, eth_call, eth_estimateGas, eth_createAccessList.",
+          "$ref": "#/$defs/EthCapabilitiesEffectiveResource"
+        },
+        "tx": {
+          "description": "Transaction data and lookup indices. Determines the available range for transaction lookups by hash or block position. Affects: eth_getTransactionByHash, eth_getTransactionByBlockHashAndIndex, eth_getTransactionByBlockNumberAndIndex.",
+          "$ref": "#/$defs/EthCapabilitiesEffectiveResource"
+        },
+        "logs": {
+          "description": "Event logs emitted by smart contracts. Determines the available block range for log queries and filters. Affects: eth_getLogs, eth_getFilterLogs, eth_getFilterChanges, eth_newFilter.",
+          "$ref": "#/$defs/EthCapabilitiesEffectiveResource"
+        },
+        "receipts": {
+          "description": "Transaction execution receipts including status, gas used, and logs bloom. Determines the available range for receipt lookups. Affects: eth_getTransactionReceipt, eth_getBlockReceipts.",
+          "$ref": "#/$defs/EthCapabilitiesEffectiveResource"
+        },
+        "blocks": {
+          "description": "Block headers and bodies including transactions and uncles. Determines the available range for block retrieval. Affects: eth_getBlockByHash, eth_getBlockByNumber, eth_getBlockTransactionCountByHash, eth_getBlockTransactionCountByNumber, eth_getUncleCountByBlockHash, eth_getUncleCountByBlockNumber.",
+          "$ref": "#/$defs/EthCapabilitiesEffectiveResource"
+        },
+        "stateproofs": {
+          "description": "Merkle proofs for account and storage state. Determines the available range for proof generation. Affects: eth_getProof.",
+          "$ref": "#/$defs/EthCapabilitiesEffectiveResource"
+        }
+      }
+    },
+    "EthCapabilitiesEffectiveResource": {
+      "title": "Effective resource capability",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disabled"
+      ],
+      "properties": {
+        "disabled": {
+          "type": "boolean"
+        },
+        "oldestBlock": {
+          "$ref": "#/$defs/uint"
+        },
+        "deleteStrategy": {
+          "$ref": "#/$defs/EthCapabilitiesDeleteStrategy"
+        }
+      }
+    },
+    "EthCapabilitiesHead": {
+      "title": "Current head block",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "number",
+        "hash"
+      ],
+      "properties": {
+        "number": {
+          "title": "Head block number",
+          "$ref": "#/$defs/uint"
+        },
+        "hash": {
+          "title": "Head block hash",
+          "$ref": "#/$defs/hash32"
+        }
+      }
+    },
+    "EthCapabilitiesDeleteStrategy": {
+      "title": "Delete strategy",
+      "oneOf": [
+        {
+          "title": "Sliding window deletion",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "retentionBlocks"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "window"
+              ]
+            },
+            "retentionBlocks": {
+              "$ref": "#/$defs/uint"
+            }
+          }
+        }
+      ]
+    },
+    "Block": {
+      "title": "Block object",
+      "type": "object",
+      "required": [
+        "hash",
+        "parentHash",
+        "sha3Uncles",
+        "miner",
+        "stateRoot",
+        "transactionsRoot",
+        "receiptsRoot",
+        "logsBloom",
+        "number",
+        "gasLimit",
+        "gasUsed",
+        "timestamp",
+        "extraData",
+        "mixHash",
+        "nonce",
+        "size",
+        "transactions",
+        "uncles"
+      ],
+      "properties": {
+        "hash": {
+          "title": "Hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "parentHash": {
+          "title": "Parent block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "sha3Uncles": {
+          "title": "Ommers hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "miner": {
+          "title": "Coinbase",
+          "$ref": "#/$defs/address"
+        },
+        "stateRoot": {
+          "title": "State root",
+          "$ref": "#/$defs/hash32"
+        },
+        "transactionsRoot": {
+          "title": "Transactions root",
+          "$ref": "#/$defs/hash32"
+        },
+        "receiptsRoot": {
+          "title": "Receipts root",
+          "$ref": "#/$defs/hash32"
+        },
+        "logsBloom": {
+          "title": "Bloom filter",
+          "$ref": "#/$defs/bytes256"
+        },
+        "difficulty": {
+          "title": "Difficulty",
+          "$ref": "#/$defs/uint"
+        },
+        "number": {
+          "title": "Number",
+          "$ref": "#/$defs/uint"
+        },
+        "gasLimit": {
+          "title": "Gas limit",
+          "$ref": "#/$defs/uint"
+        },
+        "gasUsed": {
+          "title": "Gas used",
+          "$ref": "#/$defs/uint"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "$ref": "#/$defs/uint"
+        },
+        "extraData": {
+          "title": "Extra data",
+          "$ref": "#/$defs/bytes"
+        },
+        "mixHash": {
+          "title": "Mix hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "nonce": {
+          "title": "Nonce",
+          "$ref": "#/$defs/bytes8"
+        },
+        "baseFeePerGas": {
+          "title": "Base fee per gas",
+          "$ref": "#/$defs/uint"
+        },
+        "withdrawalsRoot": {
+          "title": "Withdrawals root",
+          "$ref": "#/$defs/hash32"
+        },
+        "blobGasUsed": {
+          "title": "Blob gas used",
+          "$ref": "#/$defs/uint"
+        },
+        "excessBlobGas": {
+          "title": "Excess blob gas",
+          "$ref": "#/$defs/uint"
+        },
+        "parentBeaconBlockRoot": {
+          "title": "Parent Beacon Block Root",
+          "$ref": "#/$defs/hash32"
+        },
+        "size": {
+          "title": "Block size",
+          "$ref": "#/$defs/uint"
+        },
+        "transactions": {
+          "anyOf": [
+            {
+              "title": "Transaction hashes",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/hash32"
+              }
+            },
+            {
+              "title": "Full transactions",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TransactionInfo"
+              }
+            }
+          ]
+        },
+        "withdrawals": {
+          "title": "Withdrawals",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Withdrawal"
+          }
+        },
+        "uncles": {
+          "title": "Uncles",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hash32"
+          }
+        },
+        "requestsHash": {
+          "title": "EIP-7685 requests hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "blockAccessListHash": {
+          "title": "EIP-7928 block access list hash",
+          "$ref": "#/$defs/hash32"
+        }
+      }
+    },
+    "BlockTag": {
+      "title": "Block tag",
+      "type": "string",
+      "enum": [
+        "earliest",
+        "finalized",
+        "safe",
+        "latest",
+        "pending"
+      ],
+      "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions; `pending`: A sample next block built by the client on top of `latest` and containing the set of transactions usually taken from local mempool. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block."
+    },
+    "BlockNumberOrTag": {
+      "title": "Block number or tag",
+      "oneOf": [
+        {
+          "title": "Block number",
+          "$ref": "#/$defs/uint"
+        },
+        {
+          "title": "Block tag",
+          "$ref": "#/$defs/BlockTag"
+        }
+      ]
+    },
+    "BlockTagForRange": {
+      "title": "Block tag",
+      "type": "string",
+      "enum": [
+        "earliest",
+        "finalized",
+        "safe",
+        "latest"
+      ],
+      "description": "`earliest`: The lowest numbered block the client has available; `finalized`: The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination; `safe`: The most recent block that is safe from re-orgs under honest majority and certain synchronicity assumptions; `latest`: The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions. If the `safe` or `finalized` tag cannot be resolved to a block, the method responds as it does for an unknown block."
+    },
+    "BlockNumberOrTagForRange": {
+      "title": "Block number or tag",
+      "oneOf": [
+        {
+          "title": "Block number",
+          "$ref": "#/$defs/uint"
+        },
+        {
+          "title": "Block tag",
+          "$ref": "#/$defs/BlockTagForRange"
+        }
+      ]
+    },
+    "BlockNumberOrTagOrHash": {
+      "title": "Block number, tag, or block hash",
+      "anyOf": [
+        {
+          "title": "Block number",
+          "$ref": "#/$defs/uint"
+        },
+        {
+          "title": "Block tag",
+          "$ref": "#/$defs/BlockTag"
+        },
+        {
+          "title": "Block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        {
+          "title": "EIP-1898 block number object",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "blockNumber"
+          ],
+          "properties": {
+            "blockNumber": {
+              "title": "Block number",
+              "$ref": "#/$defs/uint"
+            }
+          }
+        },
+        {
+          "title": "EIP-1898 block hash object",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "blockHash"
+          ],
+          "properties": {
+            "blockHash": {
+              "title": "Block hash",
+              "$ref": "#/$defs/hash32"
+            },
+            "requireCanonical": {
+              "title": "Require canonical",
+              "description": "Whether the block hash must belong to a canonical block, defaulting to `false`. When `true` and the referenced block is not canonical, EIP-1898 recommends `-32000: Invalid input`. A block that cannot be found takes precedence and is reported as `-32001: Resource not found`.",
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "BadBlock": {
+      "title": "Bad block",
+      "type": "object",
+      "required": [
+        "block",
+        "hash",
+        "rlp"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "block": {
+          "title": "Block",
+          "$ref": "#/$defs/Block"
+        },
+        "hash": {
+          "title": "Hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "rlp": {
+          "title": "RLP",
+          "$ref": "#/$defs/bytes"
+        }
+      }
+    },
+    "StorageChange": {
+      "title": "Storage change",
+      "type": "object",
+      "required": [
+        "index",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/uint32"
+        },
+        "value": {
+          "$ref": "#/$defs/hash32"
+        }
+      }
+    },
+    "SlotChanges": {
+      "title": "Slot changes",
+      "type": "object",
+      "required": [
+        "key",
+        "changes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/hash32"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StorageChange"
+          }
+        }
+      }
+    },
+    "BalanceChange": {
+      "title": "Balance change",
+      "type": "object",
+      "required": [
+        "index",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/uint32"
+        },
+        "value": {
+          "$ref": "#/$defs/uint256"
+        }
+      }
+    },
+    "NonceChange": {
+      "title": "Nonce change",
+      "type": "object",
+      "required": [
+        "index",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/uint32"
+        },
+        "value": {
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "CodeChange": {
+      "title": "Code change",
+      "type": "object",
+      "required": [
+        "index",
+        "code"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "$ref": "#/$defs/uint32"
+        },
+        "code": {
+          "$ref": "#/$defs/bytes"
+        }
+      }
+    },
+    "AccountAccess": {
+      "title": "Account access",
+      "type": "object",
+      "required": [
+        "address",
+        "storageChanges",
+        "storageReads",
+        "balanceChanges",
+        "nonceChanges",
+        "codeChanges"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "$ref": "#/$defs/address"
+        },
+        "storageChanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SlotChanges"
+          }
+        },
+        "storageReads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hash32"
+          }
+        },
+        "balanceChanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BalanceChange"
+          }
+        },
+        "nonceChanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NonceChange"
+          }
+        },
+        "codeChanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CodeChange"
+          }
+        }
+      }
+    },
+    "BlockAccessList": {
+      "title": "Block access list",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AccountAccess"
+      }
+    },
+    "address": {
+      "title": "hex encoded address",
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{40}$"
+    },
+    "addresses": {
+      "title": "hex encoded address",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/address"
+      }
+    },
+    "byte": {
+      "title": "hex encoded byte",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{1,2}$"
+    },
+    "bytes": {
+      "title": "hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]*$"
+    },
+    "bytesMax32": {
+      "title": "32 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{0,64}$"
+    },
+    "bytes4": {
+      "title": "4 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{8}$"
+    },
+    "bytes8": {
+      "title": "8 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{16}$"
+    },
+    "bytes16": {
+      "title": "16 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{32}$"
+    },
+    "bytes32": {
+      "title": "32 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{64}$"
+    },
+    "bytes48": {
+      "title": "48 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{96}$"
+    },
+    "bytes96": {
+      "title": "96 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{192}$"
+    },
+    "bytes256": {
+      "title": "256 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{512}$"
+    },
+    "bytes65": {
+      "title": "65 hex encoded bytes",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{130}$"
+    },
+    "ratio": {
+      "title": "normalized ratio",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "uint": {
+      "title": "hex encoded unsigned integer",
+      "type": "string",
+      "pattern": "^0x(0|[1-9a-f][0-9a-f]*)$"
+    },
+    "uint32": {
+      "title": "hex encoded 32 bit unsigned integer",
+      "type": "string",
+      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,7})$"
+    },
+    "uint64": {
+      "title": "hex encoded 64 bit unsigned integer",
+      "type": "string",
+      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,15})$"
+    },
+    "uint256": {
+      "title": "hex encoded 256 bit unsigned integer",
+      "type": "string",
+      "pattern": "^0x(0|[1-9a-f][0-9a-f]{0,63})$"
+    },
+    "uintDecimal": {
+      "title": "decimal unsigned integer string",
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$"
+    },
+    "hash32": {
+      "title": "32 byte hex value",
+      "type": "string",
+      "pattern": "^0x[0-9a-f]{64}$"
+    },
+    "notFound": {
+      "title": "Not Found (null)",
+      "type": "null"
+    },
+    "TransitionConfigurationV1": {
+      "title": "Transition configuration object",
+      "type": "object",
+      "required": [
+        "terminalTotalDifficulty",
+        "terminalBlockHash",
+        "terminalBlockNumber"
+      ],
+      "properties": {
+        "terminalTotalDifficulty": {
+          "title": "Terminal total difficulty",
+          "$ref": "#/$defs/uint256"
+        },
+        "terminalBlockHash": {
+          "title": "Terminal block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "terminalBlockNumber": {
+          "title": "Terminal block number",
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "PayloadStatusV1": {
+      "title": "Payload status object V1",
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "title": "Payload validation status",
+          "type": "string",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "SYNCING",
+            "ACCEPTED",
+            "INVALID_BLOCK_HASH"
+          ]
+        },
+        "latestValidHash": {
+          "title": "The hash of the most recent valid block",
+          "$ref": "#/$defs/hash32"
+        },
+        "validationError": {
+          "title": "Validation error message",
+          "type": "string"
+        }
+      }
+    },
+    "RestrictedPayloadStatusV1": {
+      "$ref": "#/$defs/PayloadStatusV1",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/PayloadStatusV1/properties/status",
+          "description": "Set of possible values is restricted to VALID, INVALID, SYNCING",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "SYNCING"
+          ]
+        },
+        "latestValidHash": {
+          "$ref": "#/$defs/PayloadStatusV1/properties/latestValidHash"
+        },
+        "validationError": {
+          "$ref": "#/$defs/PayloadStatusV1/properties/validationError"
+        }
+      }
+    },
+    "PayloadStatusNoInvalidBlockHash": {
+      "$ref": "#/$defs/PayloadStatusV1",
+      "title": "Payload status object deprecating INVALID_BLOCK_HASH status",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/PayloadStatusV1/properties/status",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "SYNCING",
+            "ACCEPTED"
+          ]
+        },
+        "latestValidHash": {
+          "$ref": "#/$defs/PayloadStatusV1/properties/latestValidHash"
+        },
+        "validationError": {
+          "$ref": "#/$defs/PayloadStatusV1/properties/validationError"
+        }
+      }
+    },
+    "PayloadStatusV2": {
+      "$ref": "#/$defs/PayloadStatusNoInvalidBlockHash",
+      "title": "Payload status object V2",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/PayloadStatusNoInvalidBlockHash/properties/status"
+        },
+        "latestValidHash": {
+          "$ref": "#/$defs/PayloadStatusNoInvalidBlockHash/properties/latestValidHash"
+        },
+        "validationError": {
+          "$ref": "#/$defs/PayloadStatusNoInvalidBlockHash/properties/validationError"
+        },
+        "inclusionListSatisfied": {
+          "title": "Whether the payload satisfied the inclusion list constraints",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "RestrictedPayloadStatusV2": {
+      "$ref": "#/$defs/PayloadStatusV2",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/PayloadStatusV2/properties/status",
+          "description": "Set of possible values is restricted to VALID, INVALID, SYNCING",
+          "enum": [
+            "VALID",
+            "INVALID",
+            "SYNCING"
+          ]
+        },
+        "latestValidHash": {
+          "$ref": "#/$defs/PayloadStatusV2/properties/latestValidHash"
+        },
+        "validationError": {
+          "$ref": "#/$defs/PayloadStatusV2/properties/validationError"
+        },
+        "inclusionListSatisfied": {
+          "$ref": "#/$defs/PayloadStatusV2/properties/inclusionListSatisfied"
+        }
+      }
+    },
+    "ExecutionPayloadV1": {
+      "title": "Execution payload object V1",
+      "type": "object",
+      "required": [
+        "parentHash",
+        "feeRecipient",
+        "stateRoot",
+        "receiptsRoot",
+        "logsBloom",
+        "prevRandao",
+        "blockNumber",
+        "gasLimit",
+        "gasUsed",
+        "timestamp",
+        "extraData",
+        "baseFeePerGas",
+        "blockHash",
+        "transactions"
+      ],
+      "properties": {
+        "parentHash": {
+          "title": "Parent block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "feeRecipient": {
+          "title": "Recipient of transaction priority fees",
+          "$ref": "#/$defs/address"
+        },
+        "stateRoot": {
+          "title": "State root",
+          "$ref": "#/$defs/hash32"
+        },
+        "receiptsRoot": {
+          "title": "Receipts root",
+          "$ref": "#/$defs/hash32"
+        },
+        "logsBloom": {
+          "title": "Bloom filter",
+          "$ref": "#/$defs/bytes256"
+        },
+        "prevRandao": {
+          "title": "Previous randao value",
+          "$ref": "#/$defs/bytes32"
+        },
+        "blockNumber": {
+          "title": "Block number",
+          "$ref": "#/$defs/uint64"
+        },
+        "gasLimit": {
+          "title": "Gas limit",
+          "$ref": "#/$defs/uint64"
+        },
+        "gasUsed": {
+          "title": "Gas used",
+          "$ref": "#/$defs/uint64"
+        },
+        "timestamp": {
+          "title": "Timestamp",
+          "$ref": "#/$defs/uint64"
+        },
+        "extraData": {
+          "title": "Extra data",
+          "$ref": "#/$defs/bytesMax32"
+        },
+        "baseFeePerGas": {
+          "title": "Base fee per gas",
+          "$ref": "#/$defs/uint256"
+        },
+        "blockHash": {
+          "title": "Block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "transactions": {
+          "title": "Transactions",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        }
+      }
+    },
+    "WithdrawalV1": {
+      "title": "Withdrawal object V1",
+      "type": "object",
+      "required": [
+        "index",
+        "validatorIndex",
+        "address",
+        "amount"
+      ],
+      "properties": {
+        "index": {
+          "title": "Withdrawal index",
+          "$ref": "#/$defs/uint64"
+        },
+        "validatorIndex": {
+          "title": "Validator index",
+          "$ref": "#/$defs/uint64"
+        },
+        "address": {
+          "title": "Withdrawal address",
+          "$ref": "#/$defs/address"
+        },
+        "amount": {
+          "title": "Withdrawal amount",
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "ExecutionPayloadV2": {
+      "title": "Execution payload object V2",
+      "type": "object",
+      "required": [
+        "parentHash",
+        "feeRecipient",
+        "stateRoot",
+        "receiptsRoot",
+        "logsBloom",
+        "prevRandao",
+        "blockNumber",
+        "gasLimit",
+        "gasUsed",
+        "timestamp",
+        "extraData",
+        "baseFeePerGas",
+        "blockHash",
+        "transactions",
+        "withdrawals"
+      ],
+      "properties": {
+        "parentHash": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/parentHash"
+        },
+        "feeRecipient": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/feeRecipient"
+        },
+        "stateRoot": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/stateRoot"
+        },
+        "receiptsRoot": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/receiptsRoot"
+        },
+        "logsBloom": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/logsBloom"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/prevRandao"
+        },
+        "blockNumber": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/blockNumber"
+        },
+        "gasLimit": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/gasLimit"
+        },
+        "gasUsed": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/gasUsed"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/timestamp"
+        },
+        "extraData": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/extraData"
+        },
+        "baseFeePerGas": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/baseFeePerGas"
+        },
+        "blockHash": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/blockHash"
+        },
+        "transactions": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/transactions"
+        },
+        "withdrawals": {
+          "title": "Withdrawals",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WithdrawalV1"
+          }
+        }
+      }
+    },
+    "ExecutionPayloadV3": {
+      "title": "Execution payload object V3",
+      "type": "object",
+      "required": [
+        "parentHash",
+        "feeRecipient",
+        "stateRoot",
+        "receiptsRoot",
+        "logsBloom",
+        "prevRandao",
+        "blockNumber",
+        "gasLimit",
+        "gasUsed",
+        "timestamp",
+        "extraData",
+        "baseFeePerGas",
+        "blockHash",
+        "transactions",
+        "withdrawals",
+        "blobGasUsed",
+        "excessBlobGas"
+      ],
+      "properties": {
+        "parentHash": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/parentHash"
+        },
+        "feeRecipient": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/feeRecipient"
+        },
+        "stateRoot": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/stateRoot"
+        },
+        "receiptsRoot": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/receiptsRoot"
+        },
+        "logsBloom": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/logsBloom"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/prevRandao"
+        },
+        "blockNumber": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/blockNumber"
+        },
+        "gasLimit": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/gasLimit"
+        },
+        "gasUsed": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/gasUsed"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/timestamp"
+        },
+        "extraData": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/extraData"
+        },
+        "baseFeePerGas": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/baseFeePerGas"
+        },
+        "blockHash": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/blockHash"
+        },
+        "transactions": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/transactions"
+        },
+        "withdrawals": {
+          "$ref": "#/$defs/ExecutionPayloadV2/properties/withdrawals"
+        },
+        "blobGasUsed": {
+          "title": "Blob gas used",
+          "$ref": "#/$defs/uint64"
+        },
+        "excessBlobGas": {
+          "title": "Excess blob gas",
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "ExecutionPayloadV4": {
+      "title": "Execution payload object V4",
+      "type": "object",
+      "required": [
+        "parentHash",
+        "feeRecipient",
+        "stateRoot",
+        "receiptsRoot",
+        "logsBloom",
+        "prevRandao",
+        "blockNumber",
+        "gasLimit",
+        "gasUsed",
+        "timestamp",
+        "extraData",
+        "baseFeePerGas",
+        "blockHash",
+        "transactions",
+        "withdrawals",
+        "blobGasUsed",
+        "excessBlobGas",
+        "blockAccessList",
+        "slotNumber"
+      ],
+      "properties": {
+        "parentHash": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/parentHash"
+        },
+        "feeRecipient": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/feeRecipient"
+        },
+        "stateRoot": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/stateRoot"
+        },
+        "receiptsRoot": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/receiptsRoot"
+        },
+        "logsBloom": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/logsBloom"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/prevRandao"
+        },
+        "blockNumber": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/blockNumber"
+        },
+        "gasLimit": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/gasLimit"
+        },
+        "gasUsed": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/gasUsed"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/timestamp"
+        },
+        "extraData": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/extraData"
+        },
+        "baseFeePerGas": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/baseFeePerGas"
+        },
+        "blockHash": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/blockHash"
+        },
+        "transactions": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/transactions"
+        },
+        "withdrawals": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/withdrawals"
+        },
+        "blobGasUsed": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/blobGasUsed"
+        },
+        "excessBlobGas": {
+          "$ref": "#/$defs/ExecutionPayloadV3/properties/excessBlobGas"
+        },
+        "blockAccessList": {
+          "title": "Block access list",
+          "$ref": "#/$defs/bytes"
+        },
+        "slotNumber": {
+          "title": "Slot number",
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "ExecutionPayloadBodyV1": {
+      "title": "Execution payload body object V1",
+      "type": "object",
+      "required": [
+        "transactions"
+      ],
+      "properties": {
+        "transactions": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/transactions"
+        },
+        "withdrawals": {
+          "title": "Withdrawals",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/WithdrawalV1"
+          }
+        }
+      }
+    },
+    "ExecutionPayloadBodyV2": {
+      "title": "Execution payload body object V2",
+      "type": "object",
+      "required": [
+        "transactions"
+      ],
+      "properties": {
+        "transactions": {
+          "$ref": "#/$defs/ExecutionPayloadV1/properties/transactions"
+        },
+        "withdrawals": {
+          "title": "Withdrawals",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/WithdrawalV1"
+          }
+        },
+        "blockAccessList": {
+          "title": "Block access list",
+          "description": "RLP-encoded block access list as defined in EIP-7928, or null if unavailable",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/bytes"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "BlobsBundleV1": {
+      "title": "Blobs bundle object V1",
+      "type": "object",
+      "required": [
+        "commitments",
+        "proofs",
+        "blobs"
+      ],
+      "properties": {
+        "commitments": {
+          "title": "Commitments",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes48"
+          }
+        },
+        "proofs": {
+          "title": "Proofs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes48"
+          }
+        },
+        "blobs": {
+          "title": "Blobs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        }
+      }
+    },
+    "BlobsBundleV2": {
+      "title": "Blobs bundle object V2",
+      "type": "object",
+      "required": [
+        "commitments",
+        "proofs",
+        "blobs"
+      ],
+      "properties": {
+        "commitments": {
+          "title": "Commitments",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes48"
+          }
+        },
+        "proofs": {
+          "title": "Proofs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes48"
+          }
+        },
+        "blobs": {
+          "title": "Blobs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        }
+      }
+    },
+    "ForkchoiceStateV1": {
+      "title": "Forkchoice state object V1",
+      "type": "object",
+      "required": [
+        "headBlockHash",
+        "safeBlockHash",
+        "finalizedBlockHash"
+      ],
+      "properties": {
+        "headBlockHash": {
+          "title": "Head block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "safeBlockHash": {
+          "title": "Safe block hash",
+          "$ref": "#/$defs/hash32"
+        },
+        "finalizedBlockHash": {
+          "title": "Finalized block hash",
+          "$ref": "#/$defs/hash32"
+        }
+      }
+    },
+    "ForkchoiceUpdatedResponseV1": {
+      "title": "Forkchoice updated response object V1",
+      "type": "object",
+      "required": [
+        "payloadStatus"
+      ],
+      "properties": {
+        "payloadStatus": {
+          "title": "Payload status",
+          "$ref": "#/$defs/RestrictedPayloadStatusV1"
+        },
+        "payloadId": {
+          "title": "Payload id",
+          "$ref": "#/$defs/bytes8"
+        }
+      }
+    },
+    "ForkchoiceUpdatedResponseV2": {
+      "title": "Forkchoice updated response object V2",
+      "type": "object",
+      "required": [
+        "payloadStatus"
+      ],
+      "properties": {
+        "payloadStatus": {
+          "title": "Payload status",
+          "$ref": "#/$defs/RestrictedPayloadStatusV2"
+        },
+        "payloadId": {
+          "title": "Payload id",
+          "$ref": "#/$defs/bytes8"
+        }
+      }
+    },
+    "PayloadAttributesV1": {
+      "title": "Payload attributes object V1",
+      "type": "object",
+      "required": [
+        "timestamp",
+        "prevRandao",
+        "suggestedFeeRecipient"
+      ],
+      "properties": {
+        "timestamp": {
+          "title": "Timestamp",
+          "$ref": "#/$defs/uint64"
+        },
+        "prevRandao": {
+          "title": "Previous randao value",
+          "$ref": "#/$defs/bytes32"
+        },
+        "suggestedFeeRecipient": {
+          "title": "Suggested fee recipient",
+          "$ref": "#/$defs/address"
+        }
+      }
+    },
+    "PayloadAttributesV2": {
+      "title": "Payload attributes object V2",
+      "type": "object",
+      "required": [
+        "timestamp",
+        "prevRandao",
+        "suggestedFeeRecipient",
+        "withdrawals"
+      ],
+      "properties": {
+        "timestamp": {
+          "$ref": "#/$defs/PayloadAttributesV1/properties/timestamp"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/PayloadAttributesV1/properties/prevRandao"
+        },
+        "suggestedFeeRecipient": {
+          "$ref": "#/$defs/PayloadAttributesV1/properties/suggestedFeeRecipient"
+        },
+        "withdrawals": {
+          "title": "Withdrawals",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/WithdrawalV1"
+          }
+        }
+      }
+    },
+    "PayloadAttributesV3": {
+      "title": "Payload attributes object V3",
+      "type": "object",
+      "required": [
+        "timestamp",
+        "prevRandao",
+        "suggestedFeeRecipient",
+        "withdrawals",
+        "parentBeaconBlockRoot"
+      ],
+      "properties": {
+        "timestamp": {
+          "$ref": "#/$defs/PayloadAttributesV2/properties/timestamp"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/PayloadAttributesV2/properties/prevRandao"
+        },
+        "suggestedFeeRecipient": {
+          "$ref": "#/$defs/PayloadAttributesV2/properties/suggestedFeeRecipient"
+        },
+        "withdrawals": {
+          "$ref": "#/$defs/PayloadAttributesV2/properties/withdrawals"
+        },
+        "parentBeaconBlockRoot": {
+          "title": "Parent beacon block root",
+          "$ref": "#/$defs/hash32"
+        }
+      }
+    },
+    "PayloadAttributesV4": {
+      "title": "Payload attributes object V4",
+      "type": "object",
+      "required": [
+        "timestamp",
+        "prevRandao",
+        "suggestedFeeRecipient",
+        "withdrawals",
+        "parentBeaconBlockRoot",
+        "slotNumber",
+        "targetGasLimit"
+      ],
+      "properties": {
+        "timestamp": {
+          "$ref": "#/$defs/PayloadAttributesV3/properties/timestamp"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/PayloadAttributesV3/properties/prevRandao"
+        },
+        "suggestedFeeRecipient": {
+          "$ref": "#/$defs/PayloadAttributesV3/properties/suggestedFeeRecipient"
+        },
+        "withdrawals": {
+          "$ref": "#/$defs/PayloadAttributesV3/properties/withdrawals"
+        },
+        "parentBeaconBlockRoot": {
+          "$ref": "#/$defs/PayloadAttributesV3/properties/parentBeaconBlockRoot"
+        },
+        "slotNumber": {
+          "title": "Slot number",
+          "$ref": "#/$defs/uint64"
+        },
+        "targetGasLimit": {
+          "title": "Target gas limit",
+          "$ref": "#/$defs/uint64"
+        }
+      }
+    },
+    "PayloadAttributesV5": {
+      "title": "Payload attributes object V5",
+      "type": "object",
+      "required": [
+        "timestamp",
+        "prevRandao",
+        "suggestedFeeRecipient",
+        "withdrawals",
+        "parentBeaconBlockRoot",
+        "slotNumber",
+        "targetGasLimit",
+        "inclusionListTransactions"
+      ],
+      "properties": {
+        "timestamp": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/timestamp"
+        },
+        "prevRandao": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/prevRandao"
+        },
+        "suggestedFeeRecipient": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/suggestedFeeRecipient"
+        },
+        "withdrawals": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/withdrawals"
+        },
+        "parentBeaconBlockRoot": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/parentBeaconBlockRoot"
+        },
+        "slotNumber": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/slotNumber"
+        },
+        "targetGasLimit": {
+          "$ref": "#/$defs/PayloadAttributesV4/properties/targetGasLimit"
+        },
+        "inclusionListTransactions": {
+          "title": "Inclusion list transactions",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes"
+          }
+        }
+      }
+    },
+    "BlobAndProofV1": {
+      "title": "Blob and proof object V1",
+      "type": "object",
+      "required": [
+        "blob",
+        "proof"
+      ],
+      "properties": {
+        "blob": {
+          "title": "Blob",
+          "$ref": "#/$defs/bytes"
+        },
+        "proof": {
+          "title": "proof",
+          "$ref": "#/$defs/bytes48"
+        }
+      }
+    },
+    "BlobAndProofV2": {
+      "title": "Blob and proof object V2",
+      "type": "object",
+      "required": [
+        "blob",
+        "proofs"
+      ],
+      "properties": {
+        "blob": {
+          "title": "Blob",
+          "$ref": "#/$defs/bytes"
+        },
+        "proofs": {
+          "title": "Cell Proofs",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bytes48"
+          }
+        }
+      }
+    },
+    "BlobCellsAndProofsV1": {
+      "title": "Blob cells and proofs object V1",
+      "type": "object",
+      "required": [
+        "blob_cells",
+        "proofs"
+      ],
+      "properties": {
+        "blob_cells": {
+          "title": "Blob Cells",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/bytes"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "proofs": {
+          "title": "Cell Proofs",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/bytes48"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "JSONRPCError": {
+      "title": "JSON-RPC error object",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {}
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

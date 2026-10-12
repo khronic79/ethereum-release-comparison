@@ -1,0 +1,6595 @@
+{
+  "FeeHistoryCache": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/fee_history.rs"
+    }
+  ],
+  "FeeHistoryCacheConfig": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/fee_history.rs"
+    }
+  ],
+  "FeeHistoryEntry": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/fee_history.rs"
+    }
+  ],
+  "PendingBlockEnv": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/pending_block.rs"
+    }
+  ],
+  "PendingBlockEnvOrigin": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/pending_block.rs"
+    }
+  ],
+  "PendingBlockAndReceipts": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/pending_block.rs"
+    }
+  ],
+  "PendingBlock": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/pending_block.rs"
+    }
+  ],
+  "ForwardConfig": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/tx_forward.rs"
+    }
+  ],
+  "ProviderOrBlock": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/logs_utils.rs"
+    }
+  ],
+  "FilterBlockRangeError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/logs_utils.rs"
+    }
+  ],
+  "EthReceiptConverter": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/receipt.rs"
+    }
+  ],
+  "GasPriceOracleConfig": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/gas_oracle.rs"
+    }
+  ],
+  "GasPriceOracle": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/gas_oracle.rs"
+    }
+  ],
+  "EffectiveTipLruCache": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/gas_oracle.rs"
+    }
+  ],
+  "GasPriceOracleResult": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/gas_oracle.rs"
+    }
+  ],
+  "GasCap": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/gas_oracle.rs"
+    }
+  ],
+  "EthSimulateError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/simulate.rs"
+    }
+  ],
+  "TransactionSource": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/transaction.rs"
+    }
+  ],
+  "EthSubscriptionIdProvider": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/id_provider.rs"
+    }
+  ],
+  "EthCapabilities": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/capabilities.rs"
+    }
+  ],
+  "EthCapabilitiesHead": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/capabilities.rs"
+    }
+  ],
+  "EthCapabilitiesResource": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/capabilities.rs"
+    }
+  ],
+  "EthCapabilitiesDeleteStrategy": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/capabilities.rs"
+    }
+  ],
+  "EthCapabilitiesDeleteStrategyKind": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/capabilities.rs"
+    }
+  ],
+  "CachedTransaction": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/block.rs"
+    }
+  ],
+  "BlockAndReceipts": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/block.rs"
+    }
+  ],
+  "EthResult": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/error/mod.rs"
+    }
+  ],
+  "EthApiError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/error/mod.rs"
+    }
+  ],
+  "RpcInvalidTransactionError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/error/mod.rs"
+    }
+  ],
+  "RevertError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/error/mod.rs"
+    }
+  ],
+  "RpcPoolError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/error/mod.rs"
+    }
+  ],
+  "SignError": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/error/mod.rs"
+    }
+  ],
+  "EthStateCache": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/mod.rs"
+    }
+  ],
+  "CacheServiceUnavailable": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/mod.rs"
+    }
+  ],
+  "EthStateCacheService": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/mod.rs"
+    }
+  ],
+  "CachedRevmBal": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/mod.rs"
+    }
+  ],
+  "EthStateCacheConfig": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/config.rs"
+    }
+  ],
+  "CacheMetrics": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/metrics.rs"
+    }
+  ],
+  "StateCacheDb": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/db.rs"
+    }
+  ],
+  "StateProviderTraitObjWrapper": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/db.rs"
+    }
+  ],
+  "MultiConsumerLruCache": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/cache/multi_consumer.rs"
+    }
+  ],
+  "PendingBlockKind": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/builder/config.rs"
+    }
+  ],
+  "EthConfig": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/builder/config.rs"
+    },
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7910.rs"
+    }
+  ],
+  "EthFilterConfig": [
+    {
+      "crate": "rpc-eth-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-types/src/builder/config.rs"
+    }
+  ],
+  "RpcTransaction": [
+    {
+      "crate": "rpc-convert",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/rpc.rs"
+    }
+  ],
+  "RpcReceipt": [
+    {
+      "crate": "rpc-convert",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/rpc.rs"
+    },
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/types.rs"
+    }
+  ],
+  "RpcHeader": [
+    {
+      "crate": "rpc-convert",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/rpc.rs"
+    },
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/types.rs"
+    }
+  ],
+  "RpcBlock": [
+    {
+      "crate": "rpc-convert",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/rpc.rs"
+    },
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/types.rs"
+    }
+  ],
+  "RpcTxReq": [
+    {
+      "crate": "rpc-convert",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/rpc.rs"
+    }
+  ],
+  "ConvertReceiptInput": [
+    {
+      "crate": "rpc-convert",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/transaction.rs"
+    }
+  ],
+  "TransactionConversionError": [
+    {
+      "crate": "rpc-convert",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/transaction.rs"
+    }
+  ],
+  "RpcConverter": [
+    {
+      "crate": "rpc-convert",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-convert/src/transaction.rs"
+    }
+  ],
+  "RpcError": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/types.rs"
+    },
+    {
+      "crate": "rpc-builder",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/error.rs"
+    },
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/error.rs"
+    }
+  ],
+  "RpcNodeCoreAdapter": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/node.rs"
+    }
+  ],
+  "QueryLimits": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/filter.rs"
+    }
+  ],
+  "EthConfigHandler": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/helpers/config.rs"
+    }
+  ],
+  "Result": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/helpers/signer.rs"
+    },
+    {
+      "crate": "contract",
+      "kind": "type",
+      "file": "alloy/crates/contract/src/error.rs"
+    },
+    {
+      "crate": "signer",
+      "kind": "type",
+      "file": "alloy/crates/signer/src/error.rs"
+    },
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/provider/multicall/inner_types.rs"
+    }
+  ],
+  "SimulatedBlocksResult": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/helpers/call.rs"
+    }
+  ],
+  "SignersForRpc": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/helpers/spec.rs"
+    }
+  ],
+  "BlockReceiptsResult": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/helpers/block.rs"
+    }
+  ],
+  "BlockAndReceiptsResult": [
+    {
+      "crate": "rpc-eth-api",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-eth-api/src/helpers/block.rs"
+    }
+  ],
+  "AuthHttpService": [
+    {
+      "crate": "rpc-builder",
+      "kind": "type",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/middleware.rs"
+    }
+  ],
+  "EthHandlers": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/eth.rs"
+    }
+  ],
+  "CorsDomainError": [
+    {
+      "crate": "rpc-builder",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/cors.rs"
+    }
+  ],
+  "RpcRequestMetrics": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/metrics.rs"
+    }
+  ],
+  "RpcRequestMetricsService": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/metrics.rs"
+    }
+  ],
+  "MeteredRequestFuture": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/metrics.rs"
+    }
+  ],
+  "MeteredBatchRequestsFuture": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/metrics.rs"
+    }
+  ],
+  "RpcTransport": [
+    {
+      "crate": "rpc-builder",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/metrics.rs"
+    }
+  ],
+  "ServerKind": [
+    {
+      "crate": "rpc-builder",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/error.rs"
+    }
+  ],
+  "ConflictingModules": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/error.rs"
+    }
+  ],
+  "WsHttpSamePortError": [
+    {
+      "crate": "rpc-builder",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/error.rs"
+    }
+  ],
+  "AuthServerConfig": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/auth.rs"
+    }
+  ],
+  "AuthServerConfigBuilder": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/auth.rs"
+    }
+  ],
+  "AuthRpcModule": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/auth.rs"
+    }
+  ],
+  "AuthServerHandle": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/auth.rs"
+    }
+  ],
+  "RpcRequestRateLimiter": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/rate_limiter.rs"
+    }
+  ],
+  "RpcRequestRateLimitingService": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/rate_limiter.rs"
+    }
+  ],
+  "RateLimitingRequestFuture": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/rate_limiter.rs"
+    }
+  ],
+  "RpcModuleBuilder": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "RpcModuleConfig": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "RpcModuleConfigBuilder": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "RpcRegistryInner": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "RpcServerConfig": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "TransportRpcModuleConfig": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "TransportRpcModules": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "RpcServerHandle": [
+    {
+      "crate": "rpc-builder",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-builder/src/lib.rs"
+    }
+  ],
+  "RpcModuleSelection": [
+    {
+      "crate": "rpc-server-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-server-types/src/module.rs"
+    }
+  ],
+  "RethRpcModule": [
+    {
+      "crate": "rpc-server-types",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-server-types/src/module.rs"
+    }
+  ],
+  "DefaultRpcModuleValidator": [
+    {
+      "crate": "rpc-server-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-server-types/src/module.rs"
+    }
+  ],
+  "LenientRpcModuleValidator": [
+    {
+      "crate": "rpc-server-types",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-server-types/src/module.rs"
+    }
+  ],
+  "RethPayloadStatus": [
+    {
+      "crate": "rpc-api",
+      "kind": "struct",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-api/src/reth_engine.rs"
+    }
+  ],
+  "RethNewPayloadInput": [
+    {
+      "crate": "rpc-api",
+      "kind": "enum",
+      "file": "reth/reth-v2.3.0/crates/rpc/rpc-api/src/reth_engine.rs"
+    }
+  ],
+  "Extended": [
+    {
+      "crate": "consensus",
+      "kind": "enum",
+      "file": "alloy/crates/consensus/src/extended.rs"
+    }
+  ],
+  "BlockConditionalAttributes": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/conditional.rs"
+    }
+  ],
+  "Signed": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/signed.rs"
+    }
+  ],
+  "ValueError": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/error.rs"
+    }
+  ],
+  "UnsupportedTransactionType": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/error.rs"
+    }
+  ],
+  "InvalidSignatureS": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/crypto.rs"
+    }
+  ],
+  "RecoveryError": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/crypto.rs"
+    }
+  ],
+  "UncompressedPublicKey": [
+    {
+      "crate": "consensus",
+      "kind": "type",
+      "file": "alloy/crates/consensus/src/crypto.rs"
+    }
+  ],
+  "CryptoProviderAlreadySetError": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/crypto.rs"
+    }
+  ],
+  "Account": [
+    {
+      "crate": "consensus",
+      "kind": "type",
+      "file": "alloy/crates/consensus/src/lib.rs"
+    }
+  ],
+  "Eip658Value": [
+    {
+      "crate": "consensus",
+      "kind": "enum",
+      "file": "alloy/crates/consensus/src/receipt/status.rs"
+    }
+  ],
+  "ReceiptEnvelope": [
+    {
+      "crate": "consensus",
+      "kind": "enum",
+      "file": "alloy/crates/consensus/src/receipt/envelope.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/envelope.rs"
+    }
+  ],
+  "EthereumReceipt": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/receipt2.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/receipt2.rs"
+    }
+  ],
+  "Receipt": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/receipts.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/receipts.rs"
+    }
+  ],
+  "Receipts": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/receipts.rs"
+    }
+  ],
+  "ReceiptWithBloom": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/receipt/receipts.rs"
+    }
+  ],
+  "Block": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/mod.rs"
+    },
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/block.rs"
+    }
+  ],
+  "BlockBody": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/mod.rs"
+    }
+  ],
+  "HelperRef": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/mod.rs"
+    }
+  ],
+  "HeaderInfo": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/meta.rs"
+    }
+  ],
+  "HeaderRoots": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/meta.rs"
+    }
+  ],
+  "Header": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/header.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/block/header.rs"
+    },
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/block.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/header.rs"
+    }
+  ],
+  "TxEnvelope": [
+    {
+      "crate": "consensus",
+      "kind": "type",
+      "file": "alloy/crates/consensus/src/transaction/envelope.rs"
+    }
+  ],
+  "EthereumTxEnvelope": [
+    {
+      "crate": "consensus",
+      "kind": "enum",
+      "file": "alloy/crates/consensus/src/transaction/envelope.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/envelope.rs"
+    }
+  ],
+  "TxEip4844Variant": [
+    {
+      "crate": "consensus",
+      "kind": "enum",
+      "file": "alloy/crates/consensus/src/transaction/eip4844.rs"
+    }
+  ],
+  "TxEip4844": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip4844.rs"
+    }
+  ],
+  "TxEip4844WithSidecar": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip4844.rs"
+    }
+  ],
+  "TypedTransaction": [
+    {
+      "crate": "consensus",
+      "kind": "type",
+      "file": "alloy/crates/consensus/src/transaction/typed.rs"
+    }
+  ],
+  "EthereumTypedTransaction": [
+    {
+      "crate": "consensus",
+      "kind": "enum",
+      "file": "alloy/crates/consensus/src/transaction/typed.rs"
+    }
+  ],
+  "TxEip2930": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip2930.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip2930.rs"
+    }
+  ],
+  "PooledTransaction": [
+    {
+      "crate": "consensus",
+      "kind": "type",
+      "file": "alloy/crates/consensus/src/transaction/pooled.rs"
+    }
+  ],
+  "Recovered": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/recovered.rs"
+    }
+  ],
+  "TxEip7702": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip7702.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip7702.rs"
+    }
+  ],
+  "TxLegacy": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/legacy.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/legacy.rs"
+    }
+  ],
+  "UntaggedLegacy": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/legacy.rs"
+    }
+  ],
+  "TxEip1559": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip1559.rs"
+    },
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/eip1559.rs"
+    }
+  ],
+  "TransactionMeta": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/meta.rs"
+    }
+  ],
+  "TransactionInfo": [
+    {
+      "crate": "consensus",
+      "kind": "struct",
+      "file": "alloy/crates/consensus/src/transaction/meta.rs"
+    }
+  ],
+  "RpcModules": [
+    {
+      "crate": "rpc-types",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types/src/rpc.rs"
+    }
+  ],
+  "TransactionFailedError": [
+    {
+      "crate": "network-primitives",
+      "kind": "struct",
+      "file": "alloy/crates/network-primitives/src/traits.rs"
+    }
+  ],
+  "BlockTransactions": [
+    {
+      "crate": "network-primitives",
+      "kind": "enum",
+      "file": "alloy/crates/network-primitives/src/block.rs"
+    }
+  ],
+  "BlockTransactionHashes": [
+    {
+      "crate": "network-primitives",
+      "kind": "struct",
+      "file": "alloy/crates/network-primitives/src/block.rs"
+    }
+  ],
+  "BlockTransactionsKind": [
+    {
+      "crate": "network-primitives",
+      "kind": "enum",
+      "file": "alloy/crates/network-primitives/src/block.rs"
+    }
+  ],
+  "InclusionInfo": [
+    {
+      "crate": "network-primitives",
+      "kind": "struct",
+      "file": "alloy/crates/network-primitives/src/tx_meta.rs"
+    }
+  ],
+  "StorageResult": [
+    {
+      "crate": "rpc-types-debug",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-debug/src/storage_range.rs"
+    }
+  ],
+  "StorageMap": [
+    {
+      "crate": "rpc-types-debug",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-debug/src/storage_range.rs"
+    }
+  ],
+  "StorageRangeResult": [
+    {
+      "crate": "rpc-types-debug",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-debug/src/storage_range.rs"
+    }
+  ],
+  "ExecutionWitness": [
+    {
+      "crate": "rpc-types-debug",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-debug/src/execution_witness.rs"
+    }
+  ],
+  "AccountState": [
+    {
+      "crate": "rpc-types-debug",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-debug/src/state_dump.rs"
+    },
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "StateDump": [
+    {
+      "crate": "rpc-types-debug",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-debug/src/state_dump.rs"
+    }
+  ],
+  "DerivationType": [
+    {
+      "crate": "signer-trezor",
+      "kind": "enum",
+      "file": "alloy/crates/signer-trezor/src/types.rs"
+    },
+    {
+      "crate": "signer-ledger",
+      "kind": "enum",
+      "file": "alloy/crates/signer-ledger/src/types.rs"
+    }
+  ],
+  "TrezorError": [
+    {
+      "crate": "signer-trezor",
+      "kind": "enum",
+      "file": "alloy/crates/signer-trezor/src/types.rs"
+    }
+  ],
+  "TrezorSigner": [
+    {
+      "crate": "signer-trezor",
+      "kind": "struct",
+      "file": "alloy/crates/signer-trezor/src/signer.rs"
+    }
+  ],
+  "LegacyRequest": [
+    {
+      "crate": "signer-trezor",
+      "kind": "struct",
+      "file": "alloy/crates/signer-trezor/src/signer.rs"
+    }
+  ],
+  "Eip1559Request": [
+    {
+      "crate": "signer-trezor",
+      "kind": "struct",
+      "file": "alloy/crates/signer-trezor/src/signer.rs"
+    }
+  ],
+  "TrezorSignRequest": [
+    {
+      "crate": "signer-trezor",
+      "kind": "enum",
+      "file": "alloy/crates/signer-trezor/src/signer.rs"
+    }
+  ],
+  "DualTransport": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/dual.rs"
+    }
+  ],
+  "MockResponse": [
+    {
+      "crate": "transport",
+      "kind": "type",
+      "file": "alloy/crates/transport/src/mock.rs"
+    }
+  ],
+  "Asserter": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/mock.rs"
+    }
+  ],
+  "MockTransport": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/mock.rs"
+    }
+  ],
+  "TransportError": [
+    {
+      "crate": "transport",
+      "kind": "type",
+      "file": "alloy/crates/transport/src/error.rs"
+    }
+  ],
+  "TransportResult": [
+    {
+      "crate": "transport",
+      "kind": "type",
+      "file": "alloy/crates/transport/src/error.rs"
+    }
+  ],
+  "TransportErrorKind": [
+    {
+      "crate": "transport",
+      "kind": "enum",
+      "file": "alloy/crates/transport/src/error.rs"
+    }
+  ],
+  "HttpError": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/error.rs"
+    }
+  ],
+  "BoxTransport": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/boxed.rs"
+    }
+  ],
+  "Authorization": [
+    {
+      "crate": "transport",
+      "kind": "enum",
+      "file": "alloy/crates/transport/src/common.rs"
+    }
+  ],
+  "Pbf": [
+    {
+      "crate": "transport",
+      "kind": "type",
+      "file": "alloy/crates/transport/src/lib.rs"
+    }
+  ],
+  "TransportFut": [
+    {
+      "crate": "transport",
+      "kind": "type",
+      "file": "alloy/crates/transport/src/lib.rs"
+    }
+  ],
+  "RpcFut": [
+    {
+      "crate": "transport",
+      "kind": "type",
+      "file": "alloy/crates/transport/src/lib.rs"
+    }
+  ],
+  "RetryBackoffLayer": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/retry.rs"
+    }
+  ],
+  "RateLimitRetryPolicy": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/retry.rs"
+    }
+  ],
+  "OrRetryPolicyFn": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/retry.rs"
+    }
+  ],
+  "RetryBackoffService": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/retry.rs"
+    }
+  ],
+  "FallbackService": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/fallback.rs"
+    }
+  ],
+  "FallbackLayer": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/fallback.rs"
+    }
+  ],
+  "ThrottleLayer": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/throttle.rs"
+    }
+  ],
+  "ThrottleService": [
+    {
+      "crate": "transport",
+      "kind": "struct",
+      "file": "alloy/crates/transport/src/layers/throttle.rs"
+    }
+  ],
+  "ContractInstance": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/instance.rs"
+    }
+  ],
+  "Interface": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/interface.rs"
+    }
+  ],
+  "Error": [
+    {
+      "crate": "contract",
+      "kind": "enum",
+      "file": "alloy/crates/contract/src/error.rs"
+    },
+    {
+      "crate": "signer",
+      "kind": "enum",
+      "file": "alloy/crates/signer/src/error.rs"
+    }
+  ],
+  "TryParseTransportErrorResult": [
+    {
+      "crate": "contract",
+      "kind": "enum",
+      "file": "alloy/crates/contract/src/error.rs"
+    }
+  ],
+  "EthCall": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/eth_call.rs"
+    },
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/eth_call/mod.rs"
+    }
+  ],
+  "EthCallFut": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/eth_call.rs"
+    },
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/eth_call/mod.rs"
+    }
+  ],
+  "SolCallBuilder": [
+    {
+      "crate": "contract",
+      "kind": "type",
+      "file": "alloy/crates/contract/src/call.rs"
+    }
+  ],
+  "DynCallBuilder": [
+    {
+      "crate": "contract",
+      "kind": "type",
+      "file": "alloy/crates/contract/src/call.rs"
+    }
+  ],
+  "RawCallBuilder": [
+    {
+      "crate": "contract",
+      "kind": "type",
+      "file": "alloy/crates/contract/src/call.rs"
+    }
+  ],
+  "CallBuilder": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/call.rs"
+    }
+  ],
+  "StorageSlotFinder": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/storage_slot.rs"
+    }
+  ],
+  "Event": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/event.rs"
+    },
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "ChunkedEvent": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/event.rs"
+    }
+  ],
+  "EventPoller": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/event.rs"
+    }
+  ],
+  "EventSubscription": [
+    {
+      "crate": "contract",
+      "kind": "struct",
+      "file": "alloy/crates/contract/src/event.rs"
+    }
+  ],
+  "HyperTransport": [
+    {
+      "crate": "transport-http",
+      "kind": "type",
+      "file": "alloy/crates/transport-http/src/hyper_transport.rs"
+    }
+  ],
+  "HyperClient": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/hyper_transport.rs"
+    }
+  ],
+  "HyperResponse": [
+    {
+      "crate": "transport-http",
+      "kind": "type",
+      "file": "alloy/crates/transport-http/src/hyper_transport.rs"
+    }
+  ],
+  "HyperResponseFut": [
+    {
+      "crate": "transport-http",
+      "kind": "type",
+      "file": "alloy/crates/transport-http/src/hyper_transport.rs"
+    }
+  ],
+  "ReqwestTransport": [
+    {
+      "crate": "transport-http",
+      "kind": "type",
+      "file": "alloy/crates/transport-http/src/reqwest_transport.rs"
+    }
+  ],
+  "ReqwestConnect": [
+    {
+      "crate": "transport-http",
+      "kind": "type",
+      "file": "alloy/crates/transport-http/src/reqwest_transport.rs"
+    }
+  ],
+  "HttpConnect": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/lib.rs"
+    }
+  ],
+  "Http": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/lib.rs"
+    }
+  ],
+  "AuthLayer": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/layers/auth.rs"
+    }
+  ],
+  "AuthService": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/layers/auth.rs"
+    }
+  ],
+  "TraceParentLayer": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/layers/trace.rs"
+    }
+  ],
+  "TraceParentService": [
+    {
+      "crate": "transport-http",
+      "kind": "struct",
+      "file": "alloy/crates/transport-http/src/layers/trace.rs"
+    }
+  ],
+  "ExecutionPayloadBodiesV1": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadBodiesV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "PayloadId": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "PayloadExtras": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadFieldV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadInputV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadEnvelopeV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadEnvelopeV3": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadEnvelopeV4": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadEnvelopeV5": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadEnvelopeV6": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadV1": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadV3": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadV4": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "BlobsBundleV1": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "BlobsBundleV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayload": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadBodyV1": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadBodyV2": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "PayloadAttributes": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "PayloadStatus": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "PayloadStatusEnum": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "ExecutionData": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/payload.rs"
+    }
+  ],
+  "PraguePayloadFields": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/prague.rs"
+    }
+  ],
+  "MaybePraguePayloadFields": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/prague.rs"
+    }
+  ],
+  "TestingBuildBlockRequestV1": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/testing.rs"
+    }
+  ],
+  "TransitionConfiguration": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/transition.rs"
+    }
+  ],
+  "ForkChoiceUpdateResult": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-engine/src/forkchoice.rs"
+    }
+  ],
+  "ForkchoiceState": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/forkchoice.rs"
+    }
+  ],
+  "ForkchoiceUpdateError": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/forkchoice.rs"
+    }
+  ],
+  "ForkchoiceUpdated": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/forkchoice.rs"
+    }
+  ],
+  "ForkchoiceUpdateVersion": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/version.rs"
+    }
+  ],
+  "ExecutionPayloadSidecar": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/sidecar.rs"
+    }
+  ],
+  "PayloadError": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/error.rs"
+    }
+  ],
+  "PayloadValidationError": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/error.rs"
+    }
+  ],
+  "CancunPayloadFields": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/cancun.rs"
+    }
+  ],
+  "MaybeCancunPayloadFields": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/cancun.rs"
+    }
+  ],
+  "JwtError": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/jwt.rs"
+    }
+  ],
+  "Claims": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/jwt.rs"
+    }
+  ],
+  "JwtSecret": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/jwt.rs"
+    }
+  ],
+  "ClientCode": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-engine/src/identification.rs"
+    }
+  ],
+  "ClientVersionV1": [
+    {
+      "crate": "rpc-types-engine",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-engine/src/identification.rs"
+    }
+  ],
+  "NameOrAddress": [
+    {
+      "crate": "ens",
+      "kind": "enum",
+      "file": "alloy/crates/ens/src/lib.rs"
+    }
+  ],
+  "EnsError": [
+    {
+      "crate": "ens",
+      "kind": "enum",
+      "file": "alloy/crates/ens/src/lib.rs"
+    }
+  ],
+  "IpcConnect": [
+    {
+      "crate": "transport-ipc",
+      "kind": "struct",
+      "file": "alloy/crates/transport-ipc/src/connect.rs"
+    }
+  ],
+  "MockIpcServer": [
+    {
+      "crate": "transport-ipc",
+      "kind": "struct",
+      "file": "alloy/crates/transport-ipc/src/mock.rs"
+    }
+  ],
+  "ReadJsonStream": [
+    {
+      "crate": "transport-ipc",
+      "kind": "struct",
+      "file": "alloy/crates/transport-ipc/src/lib.rs"
+    }
+  ],
+  "AnyNetwork": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/mod.rs"
+    }
+  ],
+  "AnyRpcBlock": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/mod.rs"
+    }
+  ],
+  "AnyRpcTransaction": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/mod.rs"
+    }
+  ],
+  "AnyConversionError": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/error.rs"
+    }
+  ],
+  "AnyTypedTransaction": [
+    {
+      "crate": "network",
+      "kind": "enum",
+      "file": "alloy/crates/network/src/any/either.rs"
+    }
+  ],
+  "AnyTxEnvelope": [
+    {
+      "crate": "network",
+      "kind": "enum",
+      "file": "alloy/crates/network/src/any/either.rs"
+    }
+  ],
+  "AnyTxType": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/unknowns.rs"
+    }
+  ],
+  "DeserMemo": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/unknowns.rs"
+    }
+  ],
+  "UnknownTypedTransaction": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/unknowns.rs"
+    }
+  ],
+  "UnknownTxEnvelope": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/any/unknowns.rs"
+    }
+  ],
+  "Ethereum": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/ethereum/mod.rs"
+    }
+  ],
+  "EthereumWallet": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/ethereum/wallet.rs"
+    }
+  ],
+  "BuildResult": [
+    {
+      "crate": "network",
+      "kind": "type",
+      "file": "alloy/crates/network/src/transaction/builder.rs"
+    }
+  ],
+  "UnbuiltTransactionError": [
+    {
+      "crate": "network",
+      "kind": "struct",
+      "file": "alloy/crates/network/src/transaction/builder.rs"
+    }
+  ],
+  "TransactionBuilderError": [
+    {
+      "crate": "network",
+      "kind": "enum",
+      "file": "alloy/crates/network/src/transaction/builder.rs"
+    }
+  ],
+  "AwsSigner": [
+    {
+      "crate": "signer-aws",
+      "kind": "struct",
+      "file": "alloy/crates/signer-aws/src/signer.rs"
+    }
+  ],
+  "AwsSignerError": [
+    {
+      "crate": "signer-aws",
+      "kind": "enum",
+      "file": "alloy/crates/signer-aws/src/signer.rs"
+    }
+  ],
+  "GcpKeyRingRef": [
+    {
+      "crate": "signer-gcp",
+      "kind": "struct",
+      "file": "alloy/crates/signer-gcp/src/signer.rs"
+    }
+  ],
+  "KeySpecifier": [
+    {
+      "crate": "signer-gcp",
+      "kind": "struct",
+      "file": "alloy/crates/signer-gcp/src/signer.rs"
+    }
+  ],
+  "GcpSigner": [
+    {
+      "crate": "signer-gcp",
+      "kind": "struct",
+      "file": "alloy/crates/signer-gcp/src/signer.rs"
+    }
+  ],
+  "GcpSignerError": [
+    {
+      "crate": "signer-gcp",
+      "kind": "enum",
+      "file": "alloy/crates/signer-gcp/src/signer.rs"
+    }
+  ],
+  "WsConnect": [
+    {
+      "crate": "transport-ws",
+      "kind": "struct",
+      "file": "alloy/crates/transport-ws/src/wasm.rs"
+    },
+    {
+      "crate": "transport-ws",
+      "kind": "struct",
+      "file": "alloy/crates/transport-ws/src/native.rs"
+    }
+  ],
+  "WsBackend": [
+    {
+      "crate": "transport-ws",
+      "kind": "struct",
+      "file": "alloy/crates/transport-ws/src/lib.rs"
+    }
+  ],
+  "UnsupportedSignerOperation": [
+    {
+      "crate": "signer",
+      "kind": "enum",
+      "file": "alloy/crates/signer/src/error.rs"
+    }
+  ],
+  "DelegationCapability": [
+    {
+      "crate": "eip5792",
+      "kind": "struct",
+      "file": "alloy/crates/eip5792/src/wallet.rs"
+    }
+  ],
+  "Capabilities": [
+    {
+      "crate": "eip5792",
+      "kind": "struct",
+      "file": "alloy/crates/eip5792/src/wallet.rs"
+    }
+  ],
+  "WalletCapabilities": [
+    {
+      "crate": "eip5792",
+      "kind": "struct",
+      "file": "alloy/crates/eip5792/src/wallet.rs"
+    }
+  ],
+  "SendCallsRequest": [
+    {
+      "crate": "eip5792",
+      "kind": "struct",
+      "file": "alloy/crates/eip5792/src/call.rs"
+    }
+  ],
+  "CallParams": [
+    {
+      "crate": "eip5792",
+      "kind": "struct",
+      "file": "alloy/crates/eip5792/src/call.rs"
+    }
+  ],
+  "SubscriptionResult": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/pubsub.rs"
+    }
+  ],
+  "PubSubSyncStatus": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/pubsub.rs"
+    }
+  ],
+  "SyncStatusMetadata": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/pubsub.rs"
+    }
+  ],
+  "SubscriptionKind": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/pubsub.rs"
+    }
+  ],
+  "TransactionReceiptsParams": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/pubsub.rs"
+    }
+  ],
+  "Params": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/pubsub.rs"
+    }
+  ],
+  "Index": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/index.rs"
+    }
+  ],
+  "Log": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/raw_log.rs"
+    },
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/log.rs"
+    }
+  ],
+  "SyncInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "Stage": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "Peers": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "PeerInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    },
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "PeerNetworkInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    },
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "PeerProtocolsInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "PeerEthProtocolInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "PipProtocolInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "SyncStatus": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "TransactionStats": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "ChainStatus": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/syncing.rs"
+    }
+  ],
+  "TxGasAndReward": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/fee.rs"
+    }
+  ],
+  "FeeHistory": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/fee.rs"
+    }
+  ],
+  "TransactionConditional": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "AccountStorage": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "UserOperation": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "PackedUserOperation": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "SendUserOperation": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "SendUserOperationResponse": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "UserOperationReceipt": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "UserOperationGasEstimation": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/erc4337.rs"
+    }
+  ],
+  "EthRpcErrorCode": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/error.rs"
+    }
+  ],
+  "StateOverridesBuilder": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/state.rs"
+    }
+  ],
+  "StateOverride": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-eth/src/state.rs"
+    }
+  ],
+  "AccountOverride": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/state.rs"
+    }
+  ],
+  "EvmOverrides": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/state.rs"
+    }
+  ],
+  "FilterSet": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "Topic": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "FilterBlockError": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "FilterBlockOption": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "Filter": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "ValueOrArray": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "FilterChanges": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "FilterId": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "PendingTransactionFilterKind": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "BloomFilter": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "FilteredParams": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "FilterReceiptsIter": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/filter.rs"
+    }
+  ],
+  "AccountInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "EIP1186StorageProof": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "EIP1186AccountProofResponse": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "StorageValuesRequest": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "StorageValuesResponse": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "ExtAccountInfo": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "RecoveredAccount": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/account.rs"
+    }
+  ],
+  "Work": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/work.rs"
+    }
+  ],
+  "SimBlock": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/simulate.rs"
+    }
+  ],
+  "SimulatedBlock": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/simulate.rs"
+    }
+  ],
+  "SimCallResult": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/simulate.rs"
+    }
+  ],
+  "SimulatePayload": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/simulate.rs"
+    }
+  ],
+  "SimulateError": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/simulate.rs"
+    }
+  ],
+  "Bundle": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/call.rs"
+    }
+  ],
+  "StateContext": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/call.rs"
+    }
+  ],
+  "EthCallResponse": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/call.rs"
+    }
+  ],
+  "TransactionIndex": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/call.rs"
+    }
+  ],
+  "BlockError": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/block.rs"
+    }
+  ],
+  "BlockOverrides": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/block.rs"
+    }
+  ],
+  "BadBlock": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/block.rs"
+    }
+  ],
+  "Transaction": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/mod.rs"
+    }
+  ],
+  "TransactionSerdeHelper": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/mod.rs"
+    }
+  ],
+  "ConversionError": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/error.rs"
+    }
+  ],
+  "TransactionReceipt": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/receipt.rs"
+    }
+  ],
+  "TransactionRequest": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    },
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "TransactionInputKind": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "ParseTransactionInputKindError": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "TransactionInput": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "BuildTransactionErr": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "TransactionInputError": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "FillTransaction": [
+    {
+      "crate": "rpc-types-eth",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-eth/src/transaction/request.rs"
+    }
+  ],
+  "ConnectionHandle": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/handle.rs"
+    }
+  ],
+  "ConnectionInterface": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/handle.rs"
+    }
+  ],
+  "RawSubscription": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/sub.rs"
+    }
+  ],
+  "SubscriptionItem": [
+    {
+      "crate": "pubsub",
+      "kind": "enum",
+      "file": "alloy/crates/pubsub/src/sub.rs"
+    }
+  ],
+  "Subscription": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/sub.rs"
+    }
+  ],
+  "SubAnyStream": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/sub.rs"
+    }
+  ],
+  "SubscriptionStream": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/sub.rs"
+    }
+  ],
+  "SubResultStream": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/sub.rs"
+    }
+  ],
+  "PubSubInstruction": [
+    {
+      "crate": "pubsub",
+      "kind": "enum",
+      "file": "alloy/crates/pubsub/src/ix.rs"
+    }
+  ],
+  "PubSubFrontend": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/frontend.rs"
+    }
+  ],
+  "PubSubService": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/service.rs"
+    }
+  ],
+  "RequestManager": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/managers/req.rs"
+    }
+  ],
+  "SubscriptionManager": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/managers/sub.rs"
+    }
+  ],
+  "InFlight": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/managers/in_flight.rs"
+    }
+  ],
+  "ActiveSubscription": [
+    {
+      "crate": "pubsub",
+      "kind": "struct",
+      "file": "alloy/crates/pubsub/src/managers/active_sub.rs"
+    }
+  ],
+  "EnvelopeArgs": [
+    {
+      "crate": "tx-macros",
+      "kind": "struct",
+      "file": "alloy/crates/tx-macros/src/parse.rs"
+    }
+  ],
+  "EnvelopeVariant": [
+    {
+      "crate": "tx-macros",
+      "kind": "struct",
+      "file": "alloy/crates/tx-macros/src/parse.rs"
+    }
+  ],
+  "VariantKind": [
+    {
+      "crate": "tx-macros",
+      "kind": "enum",
+      "file": "alloy/crates/tx-macros/src/parse.rs"
+    }
+  ],
+  "ProcessedVariant": [
+    {
+      "crate": "tx-macros",
+      "kind": "struct",
+      "file": "alloy/crates/tx-macros/src/parse.rs"
+    }
+  ],
+  "GroupedVariants": [
+    {
+      "crate": "tx-macros",
+      "kind": "struct",
+      "file": "alloy/crates/tx-macros/src/parse.rs"
+    }
+  ],
+  "Expander": [
+    {
+      "crate": "tx-macros",
+      "kind": "struct",
+      "file": "alloy/crates/tx-macros/src/expand.rs"
+    }
+  ],
+  "SerdeGenerator": [
+    {
+      "crate": "tx-macros",
+      "kind": "struct",
+      "file": "alloy/crates/tx-macros/src/serde.rs"
+    }
+  ],
+  "UntaggedTxTypes": [
+    {
+      "crate": "tx-macros",
+      "kind": "enum",
+      "file": "alloy/crates/tx-macros/src/serde.rs"
+    }
+  ],
+  "TurnkeySigner": [
+    {
+      "crate": "signer-turnkey",
+      "kind": "struct",
+      "file": "alloy/crates/signer-turnkey/src/signer.rs"
+    }
+  ],
+  "TurnkeySignerError": [
+    {
+      "crate": "signer-turnkey",
+      "kind": "enum",
+      "file": "alloy/crates/signer-turnkey/src/signer.rs"
+    }
+  ],
+  "TurnkeyClient": [
+    {
+      "crate": "signer-turnkey",
+      "kind": "type",
+      "file": "alloy/crates/signer-turnkey/src/lib.rs"
+    }
+  ],
+  "TurnkeyClientBuilder": [
+    {
+      "crate": "signer-turnkey",
+      "kind": "type",
+      "file": "alloy/crates/signer-turnkey/src/lib.rs"
+    }
+  ],
+  "RpcResult": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/result.rs"
+    }
+  ],
+  "BorrowedRpcResult": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/result.rs"
+    }
+  ],
+  "RequestPacket": [
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/packet.rs"
+    }
+  ],
+  "ResponsePacket": [
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/packet.rs"
+    }
+  ],
+  "BorrowedResponsePacket": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/packet.rs"
+    }
+  ],
+  "SubId": [
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/notification.rs"
+    }
+  ],
+  "EthNotification": [
+    {
+      "crate": "json-rpc",
+      "kind": "struct",
+      "file": "alloy/crates/json-rpc/src/notification.rs"
+    }
+  ],
+  "PubSubItem": [
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/notification.rs"
+    }
+  ],
+  "Id": [
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/common.rs"
+    }
+  ],
+  "RequestMeta": [
+    {
+      "crate": "json-rpc",
+      "kind": "struct",
+      "file": "alloy/crates/json-rpc/src/request.rs"
+    }
+  ],
+  "Request": [
+    {
+      "crate": "json-rpc",
+      "kind": "struct",
+      "file": "alloy/crates/json-rpc/src/request.rs"
+    }
+  ],
+  "PartiallySerializedRequest": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/request.rs"
+    }
+  ],
+  "SerializedRequest": [
+    {
+      "crate": "json-rpc",
+      "kind": "struct",
+      "file": "alloy/crates/json-rpc/src/request.rs"
+    }
+  ],
+  "ResponsePayload": [
+    {
+      "crate": "json-rpc",
+      "kind": "enum",
+      "file": "alloy/crates/json-rpc/src/response/payload.rs"
+    }
+  ],
+  "BorrowedResponsePayload": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/response/payload.rs"
+    }
+  ],
+  "Response": [
+    {
+      "crate": "json-rpc",
+      "kind": "struct",
+      "file": "alloy/crates/json-rpc/src/response/mod.rs"
+    }
+  ],
+  "BorrowedResponse": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/response/mod.rs"
+    }
+  ],
+  "ErrorPayload": [
+    {
+      "crate": "json-rpc",
+      "kind": "struct",
+      "file": "alloy/crates/json-rpc/src/response/error.rs"
+    }
+  ],
+  "BorrowedErrorPayload": [
+    {
+      "crate": "json-rpc",
+      "kind": "type",
+      "file": "alloy/crates/json-rpc/src/response/error.rs"
+    }
+  ],
+  "AnyReceiptEnvelope": [
+    {
+      "crate": "consensus-any",
+      "kind": "struct",
+      "file": "alloy/crates/consensus-any/src/receipt/envelope.rs"
+    }
+  ],
+  "AnyHeader": [
+    {
+      "crate": "consensus-any",
+      "kind": "struct",
+      "file": "alloy/crates/consensus-any/src/block/header.rs"
+    }
+  ],
+  "MevSendBundle": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    },
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    }
+  ],
+  "Inclusion": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    }
+  ],
+  "BundleItem": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    }
+  ],
+  "SimBundleOverrides": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    }
+  ],
+  "SimBundleResponse": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    }
+  ],
+  "SimBundleLogs": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mev_calls.rs"
+    }
+  ],
+  "EventTransaction": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "EventTransactionLog": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "EventHistoryInfo": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "EventHistory": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "Hint": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "EventHistoryParams": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "FunctionSelector": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/mevshare.rs"
+    }
+  ],
+  "EthCallBundle": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthCallBundleResponse": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthCallBundleTransactionResult": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthCancelBundle": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthCancelPrivateTransaction": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthSendBundle": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthBundleHash": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthSendPrivateTransaction": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "PrivateTransactionPreferences": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthSendBlobs": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "EthSendEndOfBlockBundle": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/eth_calls.rs"
+    }
+  ],
+  "BundleStats": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-mev/src/stats.rs"
+    }
+  ],
+  "StatsSeen": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/stats.rs"
+    }
+  ],
+  "StatsSimulated": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/stats.rs"
+    }
+  ],
+  "UserStats": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/stats.rs"
+    }
+  ],
+  "FlashBlock": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/flashblocks.rs"
+    }
+  ],
+  "FlashBlockDiff": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/flashblocks.rs"
+    }
+  ],
+  "Metadata": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/flashblocks.rs"
+    },
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "ProtocolVersion": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "ConsideredByBuildersAt": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "SealedByBuildersAt": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "Validity": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "Privacy": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "PrivacyHint": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "Refund": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "RefundConfig": [
+    {
+      "crate": "rpc-types-mev",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-mev/src/common.rs"
+    }
+  ],
+  "WalletType": [
+    {
+      "crate": "signer-tempo",
+      "kind": "enum",
+      "file": "alloy/crates/signer-tempo/src/entry.rs"
+    }
+  ],
+  "KeyType": [
+    {
+      "crate": "signer-tempo",
+      "kind": "enum",
+      "file": "alloy/crates/signer-tempo/src/entry.rs"
+    }
+  ],
+  "TokenLimit": [
+    {
+      "crate": "signer-tempo",
+      "kind": "struct",
+      "file": "alloy/crates/signer-tempo/src/entry.rs"
+    }
+  ],
+  "RawKeyEntry": [
+    {
+      "crate": "signer-tempo",
+      "kind": "struct",
+      "file": "alloy/crates/signer-tempo/src/entry.rs"
+    }
+  ],
+  "EntrySummary": [
+    {
+      "crate": "signer-tempo",
+      "kind": "struct",
+      "file": "alloy/crates/signer-tempo/src/entry.rs"
+    }
+  ],
+  "TempoKeystore": [
+    {
+      "crate": "signer-tempo",
+      "kind": "struct",
+      "file": "alloy/crates/signer-tempo/src/keystore.rs"
+    }
+  ],
+  "TempoSignerError": [
+    {
+      "crate": "signer-tempo",
+      "kind": "enum",
+      "file": "alloy/crates/signer-tempo/src/error.rs"
+    }
+  ],
+  "TempoAccessKey": [
+    {
+      "crate": "signer-tempo",
+      "kind": "struct",
+      "file": "alloy/crates/signer-tempo/src/lookup.rs"
+    }
+  ],
+  "TempoLookup": [
+    {
+      "crate": "signer-tempo",
+      "kind": "enum",
+      "file": "alloy/crates/signer-tempo/src/lookup.rs"
+    }
+  ],
+  "TenderlyEstimateGasResult": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyGasPriceTier": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyGasPriceResult": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyGasPriceTiers": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyDecodedArgument": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyDecodeInputResult": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyFunctionInput": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyFunctionSignature": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyTransactionRangeParams": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyStorageQueryParams": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyStorageChange": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlySimulationResult": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyLog": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "DecodedValue": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyTrace": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "TenderlyCallType": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "AssetChange": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "AssetInfo": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "AssetStandard": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "AssetFungibility": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "ChangeType": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "BalanceChange": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "StateChange": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "StorageSlotChange": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "ValueChange": [
+    {
+      "crate": "rpc-types-tenderly",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-tenderly/src/lib.rs"
+    }
+  ],
+  "LedgerError": [
+    {
+      "crate": "signer-ledger",
+      "kind": "enum",
+      "file": "alloy/crates/signer-ledger/src/types.rs"
+    }
+  ],
+  "INS": [
+    {
+      "crate": "signer-ledger",
+      "kind": "enum",
+      "file": "alloy/crates/signer-ledger/src/types.rs"
+    }
+  ],
+  "P1": [
+    {
+      "crate": "signer-ledger",
+      "kind": "enum",
+      "file": "alloy/crates/signer-ledger/src/types.rs"
+    }
+  ],
+  "P2": [
+    {
+      "crate": "signer-ledger",
+      "kind": "enum",
+      "file": "alloy/crates/signer-ledger/src/types.rs"
+    }
+  ],
+  "LedgerSigner": [
+    {
+      "crate": "signer-ledger",
+      "kind": "struct",
+      "file": "alloy/crates/signer-ledger/src/signer.rs"
+    }
+  ],
+  "InclusionListStatusV1": [
+    {
+      "crate": "eip7547",
+      "kind": "struct",
+      "file": "alloy/crates/eip7547/src/summary.rs"
+    }
+  ],
+  "InclusionListSummaryEntryV1": [
+    {
+      "crate": "eip7547",
+      "kind": "struct",
+      "file": "alloy/crates/eip7547/src/summary.rs"
+    }
+  ],
+  "InclusionListSummaryV1": [
+    {
+      "crate": "eip7547",
+      "kind": "struct",
+      "file": "alloy/crates/eip7547/src/summary.rs"
+    }
+  ],
+  "OperationType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "InternalOperation": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "TraceEntry": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "InternalIssuance": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "OtsBlock": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "OtsSlimBlock": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "BlockDetails": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "OtsTransactionReceipt": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "OtsReceipt": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "OtsBlockTransactions": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "TransactionsWithReceipts": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "ContractCreator": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/otterscan.rs"
+    }
+  ],
+  "TraceType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "TraceResults": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "TraceResultsWithTransactionHash": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "ChangedType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "Delta": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "AccountDiff": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "StateDiff": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "Action": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "ActionType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "CallType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "CallAction": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "CreationMethod": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "CreateAction": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "RewardType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "RewardAction": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "SelfdestructAction": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "CallOutput": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "CreateOutput": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "TraceOutput": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "TransactionTrace": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "LocalizedTransactionTrace": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "VmTrace": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "VmInstruction": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "VmExecutedOperation": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "MemoryDelta": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "StorageDelta": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/parity.rs"
+    }
+  ],
+  "TraceCallRequest": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/tracerequest.rs"
+    }
+  ],
+  "BlockOpcodeGas": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/opcode.rs"
+    }
+  ],
+  "TransactionOpcodeGas": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/opcode.rs"
+    }
+  ],
+  "OpcodeGas": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/opcode.rs"
+    }
+  ],
+  "TraceFilter": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/filter.rs"
+    }
+  ],
+  "TraceFilterMode": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/filter.rs"
+    }
+  ],
+  "AddressFilter": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/filter.rs"
+    }
+  ],
+  "TraceFilterMatcher": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/filter.rs"
+    }
+  ],
+  "TraceResult": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/common.rs"
+    },
+    {
+      "crate": "rpc-types-trace",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "NoopFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/noop.rs"
+    }
+  ],
+  "FourByteFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/four_byte.rs"
+    }
+  ],
+  "UnexpectedTracerError": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "BlockTraceResult": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "DefaultFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "StructLog": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethTrace": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethDebugBuiltInTracerType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethDebugTracerType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethDebugTracerConfig": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethDebugTracingOptions": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethDefaultTracingOptions": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "GethDebugTracingCallOptions": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mod.rs"
+    }
+  ],
+  "PreStateFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "PreStateMode": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "DiffMode": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "DiffStateKind": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "AccountChangeKind": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "PreStateConfig": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/pre_state.rs"
+    }
+  ],
+  "MuxConfig": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mux.rs"
+    }
+  ],
+  "MuxFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/mux.rs"
+    }
+  ],
+  "CallFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "CallLogFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "CallConfig": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "FlatCallFrame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "FlatCallConfig": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "CallKind": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "CallFrameIter": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/call.rs"
+    }
+  ],
+  "Erc7562Frame": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/erc7562.rs"
+    }
+  ],
+  "AccessedSlots": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/erc7562.rs"
+    }
+  ],
+  "ContractSize": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/erc7562.rs"
+    }
+  ],
+  "CallFrameType": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-trace/src/geth/erc7562.rs"
+    }
+  ],
+  "Erc7562Config": [
+    {
+      "crate": "rpc-types-trace",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-trace/src/geth/erc7562.rs"
+    }
+  ],
+  "BeaconWithdrawal": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/withdrawals.rs"
+    }
+  ],
+  "GenesisResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/genesis.rs"
+    }
+  ],
+  "GenesisData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/genesis.rs"
+    }
+  ],
+  "GetExecutionPayloadHeaderResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadHeaderData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadHeaderMessage": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "BeaconBlockData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "BeaconBlockMessage": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "BeaconBlockBody": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "ExecutionPayloadHeader": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/payload.rs"
+    }
+  ],
+  "DepositContractResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/config.rs"
+    }
+  ],
+  "DepositContract": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/config.rs"
+    }
+  ],
+  "ForkScheduleResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/config.rs"
+    }
+  ],
+  "SpecResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/config.rs"
+    }
+  ],
+  "ValidatorsResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/validator.rs"
+    }
+  ],
+  "ValidatorResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/validator.rs"
+    }
+  ],
+  "ValidatorData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/validator.rs"
+    }
+  ],
+  "Validator": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/validator.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "ProposerDutiesResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/proposer.rs"
+    }
+  ],
+  "ProposerDuty": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/proposer.rs"
+    }
+  ],
+  "BeaconBlobBundle": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/sidecar.rs"
+    }
+  ],
+  "GetBlobsResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/sidecar.rs"
+    }
+  ],
+  "SidecarIterator": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/sidecar.rs"
+    }
+  ],
+  "BlobData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/sidecar.rs"
+    }
+  ],
+  "HealthStatus": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "VersionData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "NodeIdentity": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "IdentityMetadata": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "PeerDirection": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "PeerState": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "PeersMeta": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "PeersResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "PeerCount": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/node.rs"
+    }
+  ],
+  "ValidatorRegistration": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "ValidatorRegistrationMessage": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BidTrace": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidTrace": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidSubmissionV1": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidSubmissionV2": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidSubmissionV3": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidSubmissionV4": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidSubmissionV5": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SignedBidSubmissionV6": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SubmitBlockRequest": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "SubmitBlockRequestQuery": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockValidationRequest": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockValidationRequestV2": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockValidationRequestV3": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockValidationRequestV4": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockValidationRequestV5": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockValidationRequestV6": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlockReceived": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "ProposerPayloadsDeliveredQuery": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "ProposerPayloadDelivered": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "OrderBy": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BuilderBlocksReceivedQuery": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "ValidateBuilderSubmissionEqualityError": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/relay.rs"
+    }
+  ],
+  "BlockRewardsResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "BlockRewards": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "SyncCommitteeRewardsResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "SyncCommitteeReward": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "AttestationRewardsResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "AttestationRewards": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "IdealAttestationReward": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "TotalAttestationReward": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/rewards.rs"
+    }
+  ],
+  "CommitteesResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "Committee": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "SyncCommitteesResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "SyncCommittee": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "FinalityCheckpointsResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "FinalityCheckpoints": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "ValidatorBalancesResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "ValidatorBalance": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "RandaoResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "RandaoData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "StateRootResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "StateRootData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/state.rs"
+    }
+  ],
+  "ExecutionRequestsV4": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/requests.rs"
+    }
+  ],
+  "TryFromRequestsError": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/requests.rs"
+    }
+  ],
+  "ForkResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/fork.rs"
+    }
+  ],
+  "Fork": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/fork.rs"
+    }
+  ],
+  "HeadersResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/header.rs"
+    }
+  ],
+  "HeaderResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/header.rs"
+    }
+  ],
+  "HeaderData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/header.rs"
+    }
+  ],
+  "BeaconBlockHeader": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/header.rs"
+    }
+  ],
+  "AttesterDutiesResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/duties.rs"
+    }
+  ],
+  "AttesterDuty": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/duties.rs"
+    }
+  ],
+  "SyncCommitteeDutiesResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/duties.rs"
+    }
+  ],
+  "SyncCommitteeDuty": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/duties.rs"
+    }
+  ],
+  "BlsSignature": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/lib.rs"
+    }
+  ],
+  "BlsPublicKey": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/lib.rs"
+    }
+  ],
+  "BlockResponse": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlock": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlock": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "Eth1Data": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "Checkpoint": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "AttestationData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/attestation.rs"
+    }
+  ],
+  "Attestation": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "IndexedAttestation": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "ProposerSlashing": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockHeader": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "AttesterSlashing": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "DepositData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "Deposit": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "VoluntaryExit": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedVoluntaryExit": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SyncAggregate": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_optimistic.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_finality.rs"
+    }
+  ],
+  "BlsToExecutionChange": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBlsToExecutionChange": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlockBodyPhase0": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlockBodyAltair": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlockBodyBellatrix": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlockBodyCapella": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlockBodyDeneb": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "BeaconBlockBodyElectra": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockPhase0": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockAltair": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockBellatrix": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockCapella": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockDeneb": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "SignedBeaconBlockElectra": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-beacon/src/block.rs"
+    }
+  ],
+  "LightClientOptimisticData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_optimistic.rs"
+    }
+  ],
+  "AttestedHeader": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_optimistic.rs"
+    },
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_finality.rs"
+    }
+  ],
+  "BeaconNodeEventTopic": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "PayloadAttributesEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "HeadEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "BlockEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "AttestationEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "VoluntaryExitEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "VoluntaryExitMessage": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "BlsToExecutionChangeEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "BlsToExecutionChangeMessage": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "FinalizedCheckpointEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "ChainReorgEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "ContributionAndProofEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "ContributionAndProofMessage": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "Contribution": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "LightClientFinalityUpdateEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "LightClientOptimisticUpdateEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "BlobSidecarEvent": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "PayloadAttributesData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/mod.rs"
+    }
+  ],
+  "LightClientFinalityData": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_finality.rs"
+    }
+  ],
+  "FinalizedHeader": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/light_client_finality.rs"
+    }
+  ],
+  "Source": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/attestation.rs"
+    }
+  ],
+  "Target": [
+    {
+      "crate": "rpc-types-beacon",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-beacon/src/events/attestation.rs"
+    }
+  ],
+  "Genesis": [
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    }
+  ],
+  "GenesisAccount": [
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    }
+  ],
+  "ChainConfig": [
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    },
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    }
+  ],
+  "EthashConfig": [
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    }
+  ],
+  "CliqueConfig": [
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    }
+  ],
+  "ParliaConfig": [
+    {
+      "crate": "genesis",
+      "kind": "struct",
+      "file": "alloy/crates/genesis/src/lib.rs"
+    }
+  ],
+  "ClientBuilder": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/builder.rs"
+    }
+  ],
+  "WeakClient": [
+    {
+      "crate": "rpc-client",
+      "kind": "type",
+      "file": "alloy/crates/rpc-client/src/client.rs"
+    }
+  ],
+  "ClientRef": [
+    {
+      "crate": "rpc-client",
+      "kind": "type",
+      "file": "alloy/crates/rpc-client/src/client.rs"
+    }
+  ],
+  "NoParams": [
+    {
+      "crate": "rpc-client",
+      "kind": "type",
+      "file": "alloy/crates/rpc-client/src/client.rs"
+    }
+  ],
+  "RpcClient": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/client.rs"
+    }
+  ],
+  "RpcClientInner": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/client.rs"
+    }
+  ],
+  "BuiltInConnectionString": [
+    {
+      "crate": "rpc-client",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-client/src/builtin.rs"
+    }
+  ],
+  "ConnectionConfig": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/builtin.rs"
+    }
+  ],
+  "PollerBuilder": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/poller.rs"
+    }
+  ],
+  "PollerStream": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/poller.rs"
+    }
+  ],
+  "PollChannel": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/poller.rs"
+    }
+  ],
+  "RpcCall": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/call.rs"
+    }
+  ],
+  "Channel": [
+    {
+      "crate": "rpc-client",
+      "kind": "type",
+      "file": "alloy/crates/rpc-client/src/batch.rs"
+    }
+  ],
+  "ChannelMap": [
+    {
+      "crate": "rpc-client",
+      "kind": "type",
+      "file": "alloy/crates/rpc-client/src/batch.rs"
+    }
+  ],
+  "BatchRequest": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/batch.rs"
+    }
+  ],
+  "Waiter": [
+    {
+      "crate": "rpc-client",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-client/src/batch.rs"
+    }
+  ],
+  "BatchFuture": [
+    {
+      "crate": "rpc-client",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-client/src/batch.rs"
+    }
+  ],
+  "ReqwestClient": [
+    {
+      "crate": "rpc-client",
+      "kind": "type",
+      "file": "alloy/crates/rpc-client/src/lib.rs"
+    }
+  ],
+  "MnemonicBuilder": [
+    {
+      "crate": "signer-local",
+      "kind": "struct",
+      "file": "alloy/crates/signer-local/src/mnemonic.rs"
+    }
+  ],
+  "MnemonicKey": [
+    {
+      "crate": "signer-local",
+      "kind": "struct",
+      "file": "alloy/crates/signer-local/src/mnemonic.rs"
+    }
+  ],
+  "MnemonicSignerIter": [
+    {
+      "crate": "signer-local",
+      "kind": "struct",
+      "file": "alloy/crates/signer-local/src/mnemonic.rs"
+    }
+  ],
+  "MnemonicBuilderError": [
+    {
+      "crate": "signer-local",
+      "kind": "enum",
+      "file": "alloy/crates/signer-local/src/mnemonic.rs"
+    }
+  ],
+  "LocalSignerError": [
+    {
+      "crate": "signer-local",
+      "kind": "enum",
+      "file": "alloy/crates/signer-local/src/error.rs"
+    }
+  ],
+  "Secp256k1Credential": [
+    {
+      "crate": "signer-local",
+      "kind": "struct",
+      "file": "alloy/crates/signer-local/src/secp256k1.rs"
+    }
+  ],
+  "PrivateKeySigner": [
+    {
+      "crate": "signer-local",
+      "kind": "type",
+      "file": "alloy/crates/signer-local/src/lib.rs"
+    }
+  ],
+  "Secp256k1Signer": [
+    {
+      "crate": "signer-local",
+      "kind": "type",
+      "file": "alloy/crates/signer-local/src/lib.rs"
+    }
+  ],
+  "YubiSigner": [
+    {
+      "crate": "signer-local",
+      "kind": "type",
+      "file": "alloy/crates/signer-local/src/lib.rs"
+    }
+  ],
+  "LocalSigner": [
+    {
+      "crate": "signer-local",
+      "kind": "struct",
+      "file": "alloy/crates/signer-local/src/lib.rs"
+    }
+  ],
+  "AnyRpcHeader": [
+    {
+      "crate": "rpc-types-any",
+      "kind": "type",
+      "file": "alloy/crates/rpc-types-any/src/block.rs"
+    }
+  ],
+  "AnyTransactionReceipt": [
+    {
+      "crate": "rpc-types-any",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-any/src/transaction/receipt.rs"
+    }
+  ],
+  "NodeError": [
+    {
+      "crate": "node-bindings",
+      "kind": "enum",
+      "file": "alloy/crates/node-bindings/src/node.rs"
+    }
+  ],
+  "GracefulShutdown": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/utils.rs"
+    }
+  ],
+  "AnvilInstance": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/anvil.rs"
+    }
+  ],
+  "Anvil": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/anvil.rs"
+    }
+  ],
+  "RethInstance": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/reth.rs"
+    }
+  ],
+  "Reth": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/reth.rs"
+    }
+  ],
+  "NodeMode": [
+    {
+      "crate": "node-bindings",
+      "kind": "enum",
+      "file": "alloy/crates/node-bindings/src/nodes/geth.rs"
+    }
+  ],
+  "DevOptions": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/geth.rs"
+    }
+  ],
+  "PrivateNetOptions": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/geth.rs"
+    }
+  ],
+  "GethInstance": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/geth.rs"
+    }
+  ],
+  "Geth": [
+    {
+      "crate": "node-bindings",
+      "kind": "struct",
+      "file": "alloy/crates/node-bindings/src/nodes/geth.rs"
+    }
+  ],
+  "BlobParams": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7840.rs"
+    }
+  ],
+  "SerdeHelper": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7840.rs"
+    }
+  ],
+  "DepositRequest": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip6110.rs"
+    }
+  ],
+  "Withdrawal": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4895.rs"
+    }
+  ],
+  "Withdrawals": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4895.rs"
+    }
+  ],
+  "BlobScheduleEntry": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip7892.rs"
+    }
+  ],
+  "BlobScheduleBlobParams": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7892.rs"
+    }
+  ],
+  "ConsolidationRequest": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7251.rs"
+    }
+  ],
+  "WithdrawalRequest": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7002.rs"
+    }
+  ],
+  "EthForkConfig": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7910.rs"
+    }
+  ],
+  "SystemContract": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip7910.rs"
+    }
+  ],
+  "BlockWithParent": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "RpcBlockHash": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "BlockNumberOrTag": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "LenientBlockNumberOrTag": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "ParseBlockNumberError": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "HexStringMissingPrefixError": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "BlockId": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "ParseBlockIdError": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "NumHash": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "ForkBlock": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "BlockNumHash": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "HashOrNumber": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "BlockHashOrNumber": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "ParseBlockHashOrNumberError": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1898.rs"
+    }
+  ],
+  "Requests": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7685.rs"
+    }
+  ],
+  "RequestsOrHash": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip7685.rs"
+    }
+  ],
+  "Eip2718Error": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip2718.rs"
+    }
+  ],
+  "Eip2718Result": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip2718.rs"
+    }
+  ],
+  "WithEncoded": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip2718.rs"
+    }
+  ],
+  "Eip1559Estimation": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1559/helpers.rs"
+    }
+  ],
+  "BaseFeeParams": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip1559/basefee.rs"
+    }
+  ],
+  "G1Points": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/trusted_setup_points.rs"
+    }
+  ],
+  "G2Points": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/trusted_setup_points.rs"
+    }
+  ],
+  "KzgErrors": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip4844/trusted_setup_points.rs"
+    }
+  ],
+  "BlobAndProofV1": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/engine.rs"
+    }
+  ],
+  "BlobAndProofV2": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/engine.rs"
+    }
+  ],
+  "BlobCellsAndProofsV1": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/engine.rs"
+    }
+  ],
+  "Blob": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip4844/mod.rs"
+    }
+  ],
+  "HeapBlob": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/mod.rs"
+    }
+  ],
+  "InvalidBlobLength": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/mod.rs"
+    }
+  ],
+  "Bytes48": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip4844/mod.rs"
+    }
+  ],
+  "PartialSidecar": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/builder.rs"
+    }
+  ],
+  "SimpleCoder": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/builder.rs"
+    }
+  ],
+  "SidecarBuilder": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/builder.rs"
+    }
+  ],
+  "IndexedBlobHash": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/sidecar.rs"
+    }
+  ],
+  "BlobTransactionSidecar": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/sidecar.rs"
+    }
+  ],
+  "BlobTransactionSidecarItem": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/sidecar.rs"
+    }
+  ],
+  "BlobTransactionValidationError": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip4844/sidecar.rs"
+    }
+  ],
+  "VersionedHashIter": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/sidecar.rs"
+    }
+  ],
+  "EnvKzgSettings": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip4844/env_settings.rs"
+    }
+  ],
+  "WholeFe": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip4844/utils.rs"
+    }
+  ],
+  "Cell": [
+    {
+      "crate": "eips",
+      "kind": "type",
+      "file": "alloy/crates/eips/src/eip7594/mod.rs"
+    }
+  ],
+  "BlobTransactionSidecarVariant": [
+    {
+      "crate": "eips",
+      "kind": "enum",
+      "file": "alloy/crates/eips/src/eip7594/sidecar.rs"
+    },
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7594/sidecar.rs"
+    }
+  ],
+  "BlobTransactionSidecarEip7594": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7594/sidecar.rs"
+    }
+  ],
+  "BlobCellMask": [
+    {
+      "crate": "eips",
+      "kind": "struct",
+      "file": "alloy/crates/eips/src/eip7594/sidecar.rs"
+    }
+  ],
+  "Paused": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/blocks.rs"
+    }
+  ],
+  "NewBlocks": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/blocks.rs"
+    }
+  ],
+  "PendingTransactionError": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "PendingTransactionBuilder": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "PendingTransactionConfig": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "WatchTxError": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "PendingTransaction": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "HeartbeatHandle": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "Heartbeat": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/heart.rs"
+    }
+  ],
+  "Identity": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/builder.rs"
+    }
+  ],
+  "Stack": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/builder.rs"
+    }
+  ],
+  "ProviderBuilder": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/builder.rs"
+    }
+  ],
+  "EstimatorFunction": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/utils.rs"
+    }
+  ],
+  "Eip1559Estimator": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/utils.rs"
+    }
+  ],
+  "JoinedRecommendedFillers": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/utils.rs"
+    }
+  ],
+  "ImpersonateConfig": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/ext/anvil.rs"
+    }
+  ],
+  "FlashbotsSignatureError": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/ext/mev/with_auth.rs"
+    }
+  ],
+  "MevBuilder": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/ext/mev/with_auth.rs"
+    }
+  ],
+  "TraceBuilder": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/ext/trace/with_block.rs"
+    }
+  ],
+  "TraceParams": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/ext/trace/with_block.rs"
+    }
+  ],
+  "TraceCallList": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/ext/trace/mod.rs"
+    }
+  ],
+  "GasFillable": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/fillers/gas.rs"
+    }
+  ],
+  "GasFiller": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/gas.rs"
+    }
+  ],
+  "BlobGasEstimatorFunction": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/fillers/gas.rs"
+    }
+  ],
+  "BlobGasEstimator": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/fillers/gas.rs"
+    }
+  ],
+  "BlobGasFiller": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/gas.rs"
+    }
+  ],
+  "SimpleNonceManager": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/nonce.rs"
+    }
+  ],
+  "CachedNonceManager": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/nonce.rs"
+    }
+  ],
+  "NonceFiller": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/nonce.rs"
+    }
+  ],
+  "RecommendedFiller": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/fillers/mod.rs"
+    }
+  ],
+  "FillEnvelopeError": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/fillers/mod.rs"
+    }
+  ],
+  "FillerControlFlow": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/fillers/mod.rs"
+    }
+  ],
+  "FillProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/mod.rs"
+    }
+  ],
+  "WalletFiller": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/wallet.rs"
+    }
+  ],
+  "ChainIdFiller": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/chain_id.rs"
+    }
+  ],
+  "JoinFill": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/fillers/join_fill.rs"
+    }
+  ],
+  "AnvilLayer": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/anvil.rs"
+    }
+  ],
+  "AnvilProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/anvil.rs"
+    }
+  ],
+  "ChainLayer": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/chain.rs"
+    }
+  ],
+  "BlockIdLayer": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/block_id.rs"
+    }
+  ],
+  "BlockIdProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/block_id.rs"
+    }
+  ],
+  "CallBatchLayer": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/batch.rs"
+    }
+  ],
+  "CallBatchProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/batch.rs"
+    }
+  ],
+  "CacheLayer": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/cache.rs"
+    }
+  ],
+  "CacheProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/cache.rs"
+    }
+  ],
+  "SharedCache": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/layers/cache.rs"
+    }
+  ],
+  "ParamsWithBlock": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/with_block.rs"
+    }
+  ],
+  "RpcWithBlock": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/with_block.rs"
+    }
+  ],
+  "Web3Signer": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/web3_signer.rs"
+    }
+  ],
+  "GetSubscription": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/subscription.rs"
+    }
+  ],
+  "RootProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/root.rs"
+    }
+  ],
+  "RootProviderInner": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/root.rs"
+    }
+  ],
+  "SendableTx": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/provider/sendable.rs"
+    }
+  ],
+  "SendableTxErr": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/sendable.rs"
+    }
+  ],
+  "DynProvider": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/erased.rs"
+    }
+  ],
+  "BoxedFut": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/provider/prov_call.rs"
+    },
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/provider/prov_call.rs"
+    }
+  ],
+  "ProviderCall": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/provider/prov_call.rs"
+    }
+  ],
+  "EthGetBlockParams": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/get_block.rs"
+    }
+  ],
+  "EthGetBlock": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/get_block.rs"
+    }
+  ],
+  "WatchBlocks": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/get_block.rs"
+    }
+  ],
+  "WatchHeaders": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/get_block.rs"
+    }
+  ],
+  "SubFullBlocks": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/get_block.rs"
+    }
+  ],
+  "FilterPollerBuilder": [
+    {
+      "crate": "provider",
+      "kind": "type",
+      "file": "alloy/crates/provider/src/provider/trait.rs"
+    }
+  ],
+  "EthCallParams": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/eth_call/params.rs"
+    }
+  ],
+  "EthCallManyParams": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/eth_call/params.rs"
+    }
+  ],
+  "EthCallMany": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/eth_call/call_many.rs"
+    }
+  ],
+  "CallManyFut": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/eth_call/call_many.rs"
+    }
+  ],
+  "Failure": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/multicall/inner_types.rs"
+    }
+  ],
+  "CallItemBuilder": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/multicall/inner_types.rs"
+    }
+  ],
+  "CallItem": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/multicall/inner_types.rs"
+    }
+  ],
+  "Dynamic": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/multicall/inner_types.rs"
+    }
+  ],
+  "MulticallError": [
+    {
+      "crate": "provider",
+      "kind": "enum",
+      "file": "alloy/crates/provider/src/provider/multicall/inner_types.rs"
+    }
+  ],
+  "MulticallBuilder": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/multicall/mod.rs"
+    }
+  ],
+  "Empty": [
+    {
+      "crate": "provider",
+      "kind": "struct",
+      "file": "alloy/crates/provider/src/provider/multicall/tuple.rs"
+    }
+  ],
+  "TxpoolInspectSummary": [
+    {
+      "crate": "rpc-types-txpool",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-txpool/src/txpool.rs"
+    }
+  ],
+  "TxpoolContent": [
+    {
+      "crate": "rpc-types-txpool",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-txpool/src/txpool.rs"
+    }
+  ],
+  "TxpoolContentFrom": [
+    {
+      "crate": "rpc-types-txpool",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-txpool/src/txpool.rs"
+    }
+  ],
+  "TxpoolInspect": [
+    {
+      "crate": "rpc-types-txpool",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-txpool/src/txpool.rs"
+    }
+  ],
+  "TxpoolStatus": [
+    {
+      "crate": "rpc-types-txpool",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-txpool/src/txpool.rs"
+    }
+  ],
+  "JsonStorageKey": [
+    {
+      "crate": "serde",
+      "kind": "enum",
+      "file": "alloy/crates/serde/src/storage.rs"
+    }
+  ],
+  "OtherFields": [
+    {
+      "crate": "serde",
+      "kind": "struct",
+      "file": "alloy/crates/serde/src/other/mod.rs"
+    }
+  ],
+  "WithOtherFields": [
+    {
+      "crate": "serde",
+      "kind": "struct",
+      "file": "alloy/crates/serde/src/other/mod.rs"
+    }
+  ],
+  "NodeInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    },
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "Ports": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "ProtocolInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "EthProtocolInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "SnapProtocolInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "PeerProtocolInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "EthPeerInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "EthInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "SnapPeerInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "SnapInfo": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "PeerEventType": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "PeerEvent": [
+    {
+      "crate": "rpc-types-admin",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-admin/src/admin.rs"
+    }
+  ],
+  "Forking": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "NodeEnvironment": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "NodeForkConfig": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "ForkedNetwork": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "MineOptions": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "ReorgOptions": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "struct",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ],
+  "TransactionData": [
+    {
+      "crate": "rpc-types-anvil",
+      "kind": "enum",
+      "file": "alloy/crates/rpc-types-anvil/src/lib.rs"
+    }
+  ]
+}

@@ -1,0 +1,2316 @@
+
+// ===== Account  (consensus) =====
+
+pub type Account = TrieAccount;
+
+// ===== AccountInfo  (rpc-types-eth) =====
+
+pub struct AccountInfo {
+    /// Account balance
+    pub balance: U256,
+    /// Account nonce
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub nonce: u64,
+    /// Account code
+    pub code: Bytes,
+    /// Chain-specific account payload.
+    #[cfg(feature = "account-ext")]
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "alloy_trie::AccountExtension::is_empty")
+    )]
+    pub extension: alloy_trie::AccountExtension,
+}
+
+// ===== AccountOverride  (rpc-types-eth) =====
+ rename_all = "camelCase", deny_unknown_fields))]
+pub struct AccountOverride {
+    /// Fake balance to set for the account before executing the call, in wei.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub balance: Option<U256>,
+    /// Fake nonce to set for the account before executing the call.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub nonce: Option<u64>,
+    /// Fake EVM bytecode to inject into the account before executing the call.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub code: Option<Bytes>,
+    /// Fake key-value mapping to override all slots in the account storage before executing the
+    /// call.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub state: Option<B256HashMap<B256>>,
+    /// Fake key-value mapping to override individual slots in the account storage before executing
+    /// the call.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub state_diff: Option<B256HashMap<B256>>,
+    /// Moves addresses precompile into the specified address. This move is done before the 'code'
+    /// override is set. When the specified address is not a precompile, the behaviour is undefined
+    /// and different clients might behave differently.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            rename = "movePrecompileToAddress",
+            alias = "MovePrecompileToAddress"
+        )
+    )]
+    pub move_precompile_to: Option<Address>,
+}
+
+// ===== AccountStorage  (rpc-types-eth) =====
+
+pub enum AccountStorage {
+    /// Expected storage root hash of the account.
+    RootHash(B256),
+    /// Explicit storage slots and their expected values.
+    Slots(HashMap<U256, B256>),
+}
+
+// ===== Authorization  (transport) =====
+
+pub enum Authorization {
+    /// [RFC7617](https://datatracker.ietf.org/doc/html/rfc7617) HTTP Basic Auth.
+    Basic(String),
+    /// [RFC6750](https://datatracker.ietf.org/doc/html/rfc6750) Bearer Auth.
+    Bearer(String),
+    /// Raw auth string.
+    Raw(String),
+}
+
+// ===== Blob  (eips) =====
+
+pub type Blob = FixedBytes<BYTES_PER_BLOB>;
+
+// ===== BlobParams  (eips) =====
+#[cfg_attr(feature = "borsh", derive(borsh::BorshSerialize, borsh::BorshDeserialize))]
+pub struct BlobParams {
+    /// Target blob count for the block.
+    pub target_blob_count: u64,
+    /// Max blob count for the block.
+    pub max_blob_count: u64,
+    /// Update fraction for excess blob gas calculation.
+    pub update_fraction: u128,
+    /// Minimum gas price for a data blob.
+    ///
+    /// Not required per EIP-7840 and assumed to be the default
+    /// [`eip4844::BLOB_TX_MIN_BLOB_GASPRICE`] if not set.
+    pub min_blob_fee: u128,
+    /// Maximum number of blobs per transaction.
+    ///
+    /// Defaults to `max_blob_count` unless set otherwise.
+    pub max_blobs_per_tx: u64,
+    /// Minimum execution gas required to include a blob in a block.
+    ///
+    /// Defaults to `0` for Cancun and Prague hardforks, and [`BLOB_BASE_COST`] for Osaka and
+    /// later.
+    pub blob_base_cost: u64,
+}
+
+// ===== BlobTransactionSidecar  (eips) =====
+
+pub struct BlobTransactionSidecar {
+    /// The blob data.
+    #[cfg_attr(feature = "serde", serde(deserialize_with = "crate::eip4844::deserialize_blobs"))]
+    pub blobs: Vec<Blob>,
+    /// The blob commitments.
+    pub commitments: Vec<Bytes48>,
+    /// The blob proofs.
+    pub proofs: Vec<Bytes48>,
+}
+
+// ===== BlobTransactionSidecarEip7594  (eips) =====
+
+pub struct BlobTransactionSidecarEip7594 {
+    /// The blob data.
+    #[cfg_attr(feature = "serde", serde(deserialize_with = "crate::eip4844::deserialize_blobs"))]
+    pub blobs: Vec<Blob>,
+    /// The blob commitments.
+    pub commitments: Vec<Bytes48>,
+    /// List of cell proofs for all blobs in the sidecar, including the proofs for the extension
+    /// indices, for a total of `CELLS_PER_EXT_BLOB` proofs per blob (`CELLS_PER_EXT_BLOB` is the
+    /// number of cells for an extended blob, defined in
+    /// [the consensus specs](https://github.com/ethereum/consensus-specs/tree/9d377fd53d029536e57cfda1a4d2c700c59f86bf/specs/fulu/polynomial-commitments-sampling.md#cells))
+    pub cell_proofs: Vec<Bytes48>,
+}
+
+// ===== BlobTransactionSidecarVariant  (eips) =====
+
+pub enum BlobTransactionSidecarVariant {
+    /// EIP-4844 style blob transaction sidecar.
+    Eip4844(BlobTransactionSidecar),
+    /// EIP-7594 style blob transaction sidecar with cell proofs.
+    Eip7594(BlobTransactionSidecarEip7594),
+}
+
+// ===== Block  (consensus) =====
+
+pub struct Block<T, H = Header> {
+    /// Block header.
+    #[deref]
+    pub header: H,
+    /// Block body.
+    pub body: BlockBody<T, H>,
+}
+
+// ===== BlockBody  (consensus) =====
+
+pub struct BlockBody<T, H = Header> {
+    /// Transactions in this block.
+    pub transactions: Vec<T>,
+    /// Ommers/uncles header.
+    pub ommers: Vec<H>,
+    /// Block withdrawals.
+    pub withdrawals: Option<Withdrawals>,
+}
+
+// ===== BlockId  (eips) =====
+
+pub enum BlockId {
+    /// A block hash and an optional bool that defines if it's canonical
+    Hash(RpcBlockHash),
+    /// A block number
+    Number(BlockNumberOrTag),
+}
+
+// ===== BlockNumberOrTag  (eips) =====
+
+pub enum BlockNumberOrTag {
+    /// Latest block
+    #[default]
+    Latest,
+    /// Finalized block accepted as canonical
+    Finalized,
+    /// Safe head block
+    Safe,
+    /// Earliest block (genesis)
+    Earliest,
+    /// Pending block (not yet part of the blockchain)
+    Pending,
+    /// Block by number from canonical chain
+    Number(u64),
+}
+
+// ===== BlockOverrides  (rpc-types-eth) =====
+
+pub struct BlockOverrides {
+    /// Overrides the block number.
+    ///
+    /// For `eth_callMany` this will be the block number of the first simulated block. Each
+    /// following block increments its block number by 1
+    // Note: geth uses `number`, erigon uses `blockNumber`
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none", alias = "blockNumber")
+    )]
+    pub number: Option<U256>,
+    /// Overrides the difficulty of the block.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub difficulty: Option<U256>,
+    /// Overrides the timestamp of the block.
+    // Note: geth uses `time`, erigon uses `timestamp`
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            alias = "timestamp",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub time: Option<u64>,
+    /// Overrides the gas limit of the block.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub gas_limit: Option<u64>,
+    /// Overrides the coinbase address of the block.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none", alias = "feeRecipient")
+    )]
+    pub coinbase: Option<Address>,
+    /// Overrides the prevrandao of the block.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none", alias = "prevRandao")
+    )]
+    pub random: Option<B256>,
+    /// Overrides the basefee of the block.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none", alias = "baseFeePerGas")
+    )]
+    pub base_fee: Option<U256>,
+    /// Overrides the blob base fee of the block.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub blob_base_fee: Option<U256>,
+    /// Overrides the parent beacon block root of the block.
+    ///
+    /// Only used by `eth_simulateV1` — not applicable to `eth_call` or `eth_estimateGas`.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none", alias = "parentBeaconBlockRoot")
+    )]
+    pub beacon_root: Option<B256>,
+    /// A dictionary that maps blockNumber to a user-defined hash. It can be queried from the
+    /// EVM opcode BLOCKHASH.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub block_hash: Option<BTreeMap<u64, B256>>,
+}
+
+// ===== BloomFilter  (rpc-types-eth) =====
+
+pub struct BloomFilter(Vec<Bloom>);
+
+// ===== Bundle  (rpc-types-eth) =====
+
+pub struct Bundle<TxReq = TransactionRequest> {
+    /// All transactions to execute
+    pub transactions: Vec<TxReq>,
+    /// Block overrides to apply
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub block_override: Option<BlockOverrides>,
+}
+
+// ===== Bytes48  (eips) =====
+
+pub type Bytes48 = FixedBytes<48>;
+
+// ===== ChainConfig  (genesis) =====
+
+pub struct ChainConfig {
+    /// The network's chain ID.
+    pub chain_id: u64,
+
+    /// The homestead switch block (None = no fork, 0 = already homestead).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub homestead_block: Option<u64>,
+
+    /// The DAO fork switch block (None = no fork).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub dao_fork_block: Option<u64>,
+
+    /// Whether or not the node supports the DAO hard-fork.
+    pub dao_fork_support: bool,
+
+    /// The [EIP-150](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-150.md) hard fork block (None = no fork).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub eip150_block: Option<u64>,
+
+    /// The [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) hard fork block.
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub eip155_block: Option<u64>,
+
+    /// The [EIP-158](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-158.md) hard fork block.
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub eip158_block: Option<u64>,
+
+    /// The Byzantium hard fork block (None = no fork, 0 = already on byzantium).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub byzantium_block: Option<u64>,
+
+    /// The Constantinople hard fork block (None = no fork, 0 = already on constantinople).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub constantinople_block: Option<u64>,
+
+    /// The Petersburg hard fork block (None = no fork, 0 = already on petersburg).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub petersburg_block: Option<u64>,
+
+    /// The Istanbul hard fork block (None = no fork, 0 = already on istanbul).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub istanbul_block: Option<u64>,
+
+    /// The Muir Glacier hard fork block (None = no fork, 0 = already on muir glacier).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub muir_glacier_block: Option<u64>,
+
+    /// The Berlin hard fork block (None = no fork, 0 = already on berlin).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub berlin_block: Option<u64>,
+
+    /// The London hard fork block (None = no fork, 0 = already on london).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub london_block: Option<u64>,
+
+    /// The Arrow Glacier hard fork block (None = no fork, 0 = already on arrow glacier).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub arrow_glacier_block: Option<u64>,
+
+    /// The Gray Glacier hard fork block (None = no fork, 0 = already on gray glacier).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub gray_glacier_block: Option<u64>,
+
+    /// Virtual fork after the merge to use as a network splitter.
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub merge_netsplit_block: Option<u64>,
+
+    /// Shanghai switch time (None = no fork, 0 = already on shanghai).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub shanghai_time: Option<u64>,
+
+    /// Cancun switch time (None = no fork, 0 = already on cancun).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub cancun_time: Option<u64>,
+
+    /// Prague switch time (None = no fork, 0 = already on prague).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub prague_time: Option<u64>,
+
+    /// Osaka switch time (None = no fork, 0 = already on osaka).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub osaka_time: Option<u64>,
+
+    /// Amsterdam switch time (None = no fork, 0 = already on amsterdam).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub amsterdam_time: Option<u64>,
+
+    /// Bogota switch time (None = no fork, 0 = already on bogota).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub bogota_time: Option<u64>,
+
+    /// BPO1 switch time (None = no fork, 0 = already on BPO1).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub bpo1_time: Option<u64>,
+
+    /// BPO2 switch time (None = no fork, 0 = already on BPO2).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub bpo2_time: Option<u64>,
+
+    /// BPO3 switch time (None = no fork, 0 = already on BPO3).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub bpo3_time: Option<u64>,
+
+    /// BPO4 switch time (None = no fork, 0 = already on BPO4).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub bpo4_time: Option<u64>,
+
+    /// BPO5 switch time (None = no fork, 0 = already on BPO5).
+    #[serde(skip_serializing_if = "Option::is_none", deserialize_with = "deserialize_u64_opt")]
+    pub bpo5_time: Option<u64>,
+
+    /// Total difficulty reached that triggers the merge consensus upgrade.
+    #[serde(skip_serializing_if = "Option::is_none", with = "alloy_serde::ttd")]
+    pub terminal_total_difficulty: Option<U256>,
+
+    /// A flag specifying that the network already passed the terminal total difficulty. Its
+    /// purpose is to disable legacy sync without having seen the TTD locally.
+    pub terminal_total_difficulty_passed: bool,
+
+    /// Ethash parameters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ethash: Option<EthashConfig>,
+
+    /// Clique parameters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub clique: Option<CliqueConfig>,
+
+    /// Parlia parameters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub parlia: Option<ParliaConfig>,
+
+    /// Additional fields specific to each chain.
+    #[serde(flatten, default)]
+    #[cfg_attr(feature = "borsh", borsh(skip))]
+    pub extra_fields: OtherFields,
+
+    /// The deposit contract address
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub deposit_contract_address: Option<Address>,
+
+    /// The blob schedule for the chain, indexed by hardfork name.
+    ///
+    /// See [EIP-7840](https://github.com/ethereum/EIPs/tree/master/EIPS/eip-7840.md).
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub blob_schedule: BTreeMap<String, BlobParams>,
+
+    /// Non-exhaustive field to allow adding new fields to the struct without breaking changes.
+    #[doc(hidden)]
+    #[serde(skip)]
+    pub _non_exhaustive: (),
+}
+
+// ===== CliqueConfig  (genesis) =====
+
+pub struct CliqueConfig {
+    /// Number of seconds between blocks to enforce.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub period: Option<u64>,
+
+    /// Epoch length to reset votes and checkpoints.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub epoch: Option<u64>,
+}
+
+// ===== DevOptions  (node-bindings) =====
+
+pub struct DevOptions {
+    /// The interval at which the dev chain will mine new blocks.
+    pub block_time: Option<u64>,
+}
+
+// ===== EIP1186AccountProofResponse  (rpc-types-eth) =====
+
+pub struct EIP1186AccountProofResponse {
+    /// The account address.
+    pub address: Address,
+    /// The account balance.
+    pub balance: U256,
+    /// The hash of the code of the account.
+    pub code_hash: B256,
+    /// The account nonce.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub nonce: u64,
+    /// The hash of the storage of the account.
+    pub storage_hash: B256,
+    /// The account proof.
+    pub account_proof: Vec<Bytes>,
+    /// The storage proof.
+    pub storage_proof: Vec<EIP1186StorageProof>,
+}
+
+// ===== EIP1186StorageProof  (rpc-types-eth) =====
+
+pub struct EIP1186StorageProof {
+    /// Storage key.
+    pub key: alloy_serde::storage::JsonStorageKey,
+    /// Value that the key holds
+    pub value: U256,
+    /// proof for the pair
+    pub proof: Vec<Bytes>,
+}
+
+// ===== Eip658Value  (consensus) =====
+
+pub enum Eip658Value {
+    /// A boolean `statusCode` introduced by [EIP-658].
+    ///
+    /// [EIP-658]: https://eips.ethereum.org/EIPS/eip-658
+    Eip658(bool),
+    /// A pre-[EIP-658] hash value.
+    ///
+    /// [EIP-658]: https://eips.ethereum.org/EIPS/eip-658
+    PostState(B256),
+}
+
+// ===== Empty  (provider) =====
+
+pub struct Empty;
+
+// ===== Error  (contract) =====
+
+pub enum Error {
+    /// Unknown function referenced.
+    #[error("unknown function: function {0} does not exist")]
+    UnknownFunction(String),
+    /// Unknown function selector referenced.
+    #[error("unknown function: function with selector {0} does not exist")]
+    UnknownSelector(Selector),
+    /// Called `deploy` with a transaction that is not a deployment transaction.
+    #[error("transaction is not a deployment transaction")]
+    NotADeploymentTransaction,
+    /// Contract was not deployed: either the deployment transaction reverted or `contractAddress`
+    /// was not found in the receipt.
+    #[error("contract not deployed: deployment transaction failed")]
+    ContractNotDeployed,
+    /// The contract returned no data.
+    #[error("contract call to `{0}` returned no data (\"0x\"); the called address might not be a contract")]
+    ZeroData(String, #[source] AbiError),
+    /// An error occurred ABI encoding or decoding.
+    #[error(transparent)]
+    AbiError(#[from] AbiError),
+    /// An error occurred interacting with a contract over RPC.
+    #[error(transparent)]
+    TransportError(#[from] TransportError),
+    /// An error occurred while waiting for a pending transaction.
+    #[error(transparent)]
+    PendingTransactionError(#[from] PendingTransactionError),
+}
+
+// ===== EthBundleHash  (rpc-types-mev) =====
+
+pub struct EthBundleHash {
+    /// Hash of the bundle bodies.
+    pub bundle_hash: B256,
+}
+
+// ===== EthCallBundle  (rpc-types-mev) =====
+
+pub struct EthCallBundle {
+    /// A list of hex-encoded signed transactions
+    pub txs: Vec<Bytes>,
+    /// hex encoded block number for which this bundle is valid on
+    #[serde(with = "alloy_serde::quantity")]
+    pub block_number: u64,
+    /// Either a hex encoded number or a block tag for which state to base this simulation on
+    pub state_block_number: BlockNumberOrTag,
+    /// Inclusive number of tx to replay in block. -1 means replay all
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub transaction_index: Option<TransactionIndex>,
+    /// the coinbase to use for this bundle simulation
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub coinbase: Option<Address>,
+    /// the timestamp to use for this bundle simulation, in seconds since the unix epoch
+    #[serde(default, with = "alloy_serde::quantity::opt", skip_serializing_if = "Option::is_none")]
+    pub timestamp: Option<u64>,
+    /// the timeout to apply to execution of this bundle, in milliseconds
+    #[serde(default, with = "alloy_serde::quantity::opt", skip_serializing_if = "Option::is_none")]
+    pub timeout: Option<u64>,
+    /// gas limit of the block to use for this simulation
+    #[serde(default, with = "alloy_serde::quantity::opt", skip_serializing_if = "Option::is_none")]
+    pub gas_limit: Option<u64>,
+    /// difficulty of the block to use for this simulation
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub difficulty: Option<U256>,
+    /// basefee of the block to use for this simulation
+    #[serde(default, with = "alloy_serde::quantity::opt", skip_serializing_if = "Option::is_none")]
+    pub base_fee: Option<u128>,
+}
+
+// ===== EthCallBundleResponse  (rpc-types-mev) =====
+
+pub struct EthCallBundleResponse {
+    /// The hash of the bundle bodies.
+    pub bundle_hash: B256,
+    /// The gas price of the entire bundle
+    #[serde(with = "u256_numeric_string")]
+    pub bundle_gas_price: U256,
+    /// The difference in Ether sent to the coinbase after all transactions in the bundle
+    #[serde(with = "u256_numeric_string")]
+    pub coinbase_diff: U256,
+    /// The total amount of Ether sent to the coinbase after all transactions in the bundle
+    #[serde(with = "u256_numeric_string")]
+    pub eth_sent_to_coinbase: U256,
+    /// The total gas fees paid for all transactions in the bundle
+    #[serde(with = "u256_numeric_string")]
+    pub gas_fees: U256,
+    /// Results of individual transactions within the bundle
+    pub results: Vec<EthCallBundleTransactionResult>,
+    /// The block number used as a base for this simulation
+    pub state_block_number: u64,
+    /// The total gas used by all transactions in the bundle
+    pub total_gas_used: u64,
+}
+
+// ===== EthCallBundleTransactionResult  (rpc-types-mev) =====
+
+pub struct EthCallBundleTransactionResult {
+    /// The difference in Ether sent to the coinbase after the transaction
+    #[serde(with = "u256_numeric_string")]
+    pub coinbase_diff: U256,
+    /// The amount of Ether sent to the coinbase after the transaction
+    #[serde(with = "u256_numeric_string")]
+    pub eth_sent_to_coinbase: U256,
+    /// The address from which the transaction originated
+    pub from_address: Address,
+    /// The gas fees paid for the transaction
+    #[serde(with = "u256_numeric_string")]
+    pub gas_fees: U256,
+    /// The gas price used for the transaction
+    #[serde(with = "u256_numeric_string")]
+    pub gas_price: U256,
+    /// The amount of gas used by the transaction
+    pub gas_used: u64,
+    /// The address to which the transaction is sent (optional)
+    pub to_address: Option<Address>,
+    /// The transaction hash
+    pub tx_hash: B256,
+    /// Contains the return data if the transaction succeeded
+    ///
+    /// Note: this is mutually exclusive with `revert`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Bytes>,
+    /// Contains the return data if the transaction reverted
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub revert: Option<Bytes>,
+}
+
+// ===== EthCallResponse  (rpc-types-eth) =====
+
+pub struct EthCallResponse {
+    /// eth_call output (if no error)
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+    pub value: Option<Bytes>,
+    /// eth_call output (if error)
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+    pub error: Option<String>,
+}
+
+// ===== EthCancelBundle  (rpc-types-mev) =====
+
+pub struct EthCancelBundle {
+    /// The replacement UUID of the bundle to be canceled
+    pub replacement_uuid: String,
+}
+
+// ===== EthCancelPrivateTransaction  (rpc-types-mev) =====
+
+pub struct EthCancelPrivateTransaction {
+    /// Transaction hash of the transaction to be canceled
+    pub tx_hash: B256,
+}
+
+// ===== EthCapabilities  (rpc-eth-types) =====
+
+pub struct EthCapabilities {
+    /// Current chain head.
+    pub head: EthCapabilitiesHead,
+    /// Account and storage state availability.
+    pub state: EthCapabilitiesResource,
+    /// Transaction lookup availability.
+    pub tx: EthCapabilitiesResource,
+    /// Log query availability.
+    pub logs: EthCapabilitiesResource,
+    /// Receipt availability.
+    pub receipts: EthCapabilitiesResource,
+    /// Block header and body availability.
+    pub blocks: EthCapabilitiesResource,
+    /// State proof availability.
+    #[serde(rename = "stateproofs")]
+    pub state_proofs: EthCapabilitiesResource,
+}
+
+// ===== EthCapabilitiesDeleteStrategy  (rpc-eth-types) =====
+
+pub struct EthCapabilitiesDeleteStrategy {
+    /// Strategy type.
+    #[serde(rename = "type")]
+    pub strategy_type: EthCapabilitiesDeleteStrategyKind,
+    /// Number of blocks retained by the sliding window.
+    #[serde(with = "alloy_serde::quantity")]
+    pub retention_blocks: u64,
+}
+
+// ===== EthCapabilitiesDeleteStrategyKind  (rpc-eth-types) =====
+
+pub enum EthCapabilitiesDeleteStrategyKind {
+    /// Sliding window deletion.
+    #[serde(rename = "window")]
+    Window,
+}
+
+// ===== EthCapabilitiesHead  (rpc-eth-types) =====
+
+pub struct EthCapabilitiesHead {
+    /// Head block number.
+    #[serde(with = "alloy_serde::quantity")]
+    pub number: u64,
+    /// Head block hash.
+    pub hash: B256,
+}
+
+// ===== EthCapabilitiesResource  (rpc-eth-types) =====
+
+pub struct EthCapabilitiesResource {
+    /// Whether this resource is unavailable.
+    pub disabled: bool,
+    /// Oldest block expected to be served correctly.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub oldest_block: Option<U64>,
+    /// Deletion strategy, if the resource is pruned by a sliding window.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub delete_strategy: Option<EthCapabilitiesDeleteStrategy>,
+}
+
+// ===== EthConfig  (rpc-eth-types) =====
+
+pub struct EthConfig {
+    /// Settings for the caching layer
+    pub cache: EthStateCacheConfig,
+    /// Settings for the gas price oracle
+    pub gas_oracle: GasPriceOracleConfig,
+    /// The maximum number of blocks into the past for generating state proofs.
+    pub eth_proof_window: u64,
+    /// The maximum number of tracing calls that can be executed in concurrently.
+    pub max_tracing_requests: usize,
+    /// The maximum number of blocking IO calls that can be executed in concurrently.
+    ///
+    /// Requests such as `eth_call`, `eth_estimateGas` and alike require evm execution, which is
+    /// considered blocking since it's usually more heavy on the IO side but also CPU constrained.
+    /// It is expected that these are spawned as short lived blocking tokio tasks. This config
+    /// determines how many can be spawned concurrently, to avoid a build up in the tokio's
+    /// blocking pool queue since there's only a limited number of threads available. This setting
+    /// restricts how many tasks are spawned concurrently.
+    pub max_blocking_io_requests: usize,
+    /// Maximum number of blocks for `trace_filter` requests.
+    pub max_trace_filter_blocks: u64,
+    /// Maximum number of blocks that could be scanned per filter request in `eth_getLogs` calls.
+    pub max_blocks_per_filter: u64,
+    /// Maximum number of logs that can be returned in a single response in `eth_getLogs` calls.
+    pub max_logs_per_response: usize,
+    /// Gas limit for `eth_call`, `eth_estimateGas`, and call tracing RPC methods.
+    ///
+    /// Defaults to [`RPC_DEFAULT_GAS_CAP`]
+    pub rpc_gas_cap: u64,
+    /// Max number of blocks for `eth_simulateV1`.
+    pub rpc_max_simulate_blocks: u64,
+    /// Whether to compute state roots for `eth_simulateV1` responses.
+    pub compute_state_root_for_eth_simulate: bool,
+    ///
+    /// Sets TTL for stale filters
+    pub stale_filter_ttl: Duration,
+    /// Settings for the fee history cache
+    pub fee_history_cache: FeeHistoryCacheConfig,
+    /// The maximum number of getproof calls that can be executed concurrently.
+    pub proof_permits: usize,
+    /// Maximum batch size for transaction pool insertions.
+    pub max_batch_size: usize,
+    /// Controls how pending blocks are built when requested via RPC methods
+    pub pending_block_kind: PendingBlockKind,
+    /// The raw transaction forwarder.
+    pub raw_tx_forwarder: ForwardConfig,
+    /// Timeout duration for `send_raw_transaction_sync` RPC method.
+    pub send_raw_transaction_sync_timeout: Duration,
+    /// Maximum memory the EVM can allocate per RPC request.
+    pub rpc_evm_memory_limit: u64,
+    /// Whether to force upcasting EIP-4844 blob sidecars to EIP-7594 format when Osaka is active.
+    ///
+    /// This is disabled by default, allowing blob transactions with EIP-4844 sidecars to be
+    /// submitted without automatic conversion.
+    pub force_blob_sidecar_upcasting: bool,
+}
+
+// ===== EthSendBundle  (rpc-types-mev) =====
+
+pub struct EthSendBundle {
+    /// A list of hex-encoded signed transactions
+    pub txs: Vec<Bytes>,
+    /// hex-encoded block number for which this bundle is valid
+    #[serde(with = "alloy_serde::quantity")]
+    pub block_number: u64,
+    /// unix timestamp when this bundle becomes active
+    #[serde(
+        default,
+        deserialize_with = "alloy_serde::quantity::opt::deserialize",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub min_timestamp: Option<u64>,
+    /// unix timestamp how long this bundle stays valid
+    #[serde(
+        default,
+        deserialize_with = "alloy_serde::quantity::opt::deserialize",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub max_timestamp: Option<u64>,
+    /// list of hashes of possibly reverting txs
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub reverting_tx_hashes: Vec<TxHash>,
+    /// UUID that can be used to cancel/replace this bundle
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub replacement_uuid: Option<String>,
+    /// A list of tx hashes that are allowed to be discarded
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub dropping_tx_hashes: Vec<TxHash>,
+    /// The percent that should be refunded to refund recipient
+    #[serde(
+        default,
+        deserialize_with = "alloy_serde::quantity::opt::deserialize",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub refund_percent: Option<u8>,
+    /// The address that receives the refund
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub refund_recipient: Option<Address>,
+    /// A list of tx hashes used to determine the refund
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub refund_tx_hashes: Vec<TxHash>,
+    /// Additional fields that are specific to the builder
+    #[serde(flatten, default)]
+    pub extra_fields: OtherFields,
+}
+
+// ===== EthSendPrivateTransaction  (rpc-types-mev) =====
+
+pub struct EthSendPrivateTransaction {
+    /// raw signed transaction
+    pub tx: Bytes,
+    /// Hex-encoded number string, optional. Highest block number in which the transaction should
+    /// be included.
+    #[serde(default, with = "alloy_serde::quantity::opt", skip_serializing_if = "Option::is_none")]
+    pub max_block_number: Option<u64>,
+    /// Preferences for private transaction.
+    #[serde(default, skip_serializing_if = "PrivateTransactionPreferences::is_empty")]
+    pub preferences: PrivateTransactionPreferences,
+}
+
+// ===== EthStateCacheConfig  (rpc-eth-types) =====
+
+pub struct EthStateCacheConfig {
+    /// Max number of blocks in cache.
+    ///
+    /// Default is 1000.
+    pub max_blocks: u32,
+    /// Max number of blocks' receipts in cache.
+    ///
+    /// Default is 500.
+    pub max_receipts: u32,
+    /// Max number of EVM BALs in cache.
+    ///
+    /// Default is 1000.
+    pub max_bals: u32,
+    /// Maximum estimated memory retained by the block cache, in bytes.
+    ///
+    /// Defaults to 2 GiB. Zero disables caching. The entry count limit also applies.
+    pub max_blocks_bytes: usize,
+    /// Maximum estimated memory retained by the receipts cache, in bytes.
+    ///
+    /// Defaults to 1 GiB. Zero disables caching. The entry count limit also applies.
+    pub max_receipts_bytes: usize,
+    /// Maximum estimated memory retained by the BAL cache, in bytes.
+    ///
+    /// Defaults to 500 MiB. Zero disables caching. The entry count limit also applies.
+    pub max_bals_bytes: usize,
+    /// Duration after which an unused block, receipts collection, or BAL is evicted.
+    ///
+    /// Defaults to one hour. Successful lookups refresh the timeout. Zero disables expiration.
+    /// Periodic cleanup starts at least once per minute and removes expired entries in bounded
+    /// batches.
+    pub idle_timeout: Duration,
+    /// Cache BALs computed by RPC requests for transaction tracing. Disabled by default.
+    #[serde(default)]
+    pub cache_computed_bals: bool,
+    /// Prewarm BALs until native BAL support, optionally replaying this many recent blocks on
+    /// startup. `Some(0)` prewarms only new canonical blocks; `None` disables prewarming.
+    ///
+    /// Implies caching of BALs computed by RPC requests.
+    #[serde(default)]
+    pub prewarm_bals: Option<usize>,
+    /// Max number of concurrent database requests.
+    ///
+    /// Default is 512.
+    pub max_concurrent_db_requests: usize,
+    /// Maximum number of transaction hashes to cache for transaction lookups.
+    pub max_cached_tx_hashes: u32,
+}
+
+// ===== EthashConfig  (genesis) =====
+
+pub struct EthashConfig {}
+
+// ===== Ethereum  (network) =====
+
+pub struct Ethereum {
+    _private: (),
+}
+
+// ===== FeeHistory  (rpc-types-eth) =====
+
+pub struct FeeHistory {
+    /// An array of block base fees, in wei per gas.
+    /// This includes the next block after the newest of the returned range,
+    /// because this value can be derived from the newest block. Zeroes are
+    /// returned for pre-EIP-1559 blocks.
+    ///
+    /// # Note
+    ///
+    /// Empty list is skipped only for compatibility with Erigon and Geth.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Vec::is_empty", with = "alloy_serde::quantity::vec")
+    )]
+    pub base_fee_per_gas: Vec<u128>,
+    /// An array of block gas used ratios. These are calculated as the ratio
+    /// of `gasUsed` and `gasLimit`.
+    #[cfg_attr(feature = "serde", serde(deserialize_with = "alloy_serde::null_as_default"))]
+    pub gas_used_ratio: Vec<f64>,
+    /// An array of block base fees per blob gas, in wei per blob gas. This includes the next block
+    /// after the newest of the returned range, because this value can be derived from the newest
+    /// block. Zeroes are returned for pre-EIP-4844 blocks.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Vec::is_empty", with = "alloy_serde::quantity::vec")
+    )]
+    pub base_fee_per_blob_gas: Vec<u128>,
+    /// An array of block blob gas used ratios. These are calculated as the ratio of gasUsed and
+    /// gasLimit.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Vec::is_empty"))]
+    pub blob_gas_used_ratio: Vec<f64>,
+    /// Lowest number block of the returned range.
+    #[cfg_attr(feature = "serde", serde(default, with = "alloy_serde::quantity"))]
+    pub oldest_block: u64,
+    /// An optional array of effective priority fees, in wei per gas, grouped by block.
+    ///
+    /// Columns follow the requested percentile order. All zeroes are returned if a block is empty.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::u128_vec_vec_opt"
+        )
+    )]
+    pub reward: Option<Vec<Vec<u128>>>,
+}
+
+// ===== FeeHistoryCacheConfig  (rpc-eth-types) =====
+
+pub struct FeeHistoryCacheConfig {
+    /// Max number of blocks in cache.
+    ///
+    /// Default is [`MAX_HEADER_HISTORY`] plus some change to also serve slightly older blocks from
+    /// cache, since `fee_history` supports the entire range
+    pub max_blocks: u64,
+    /// Percentile approximation resolution
+    ///
+    /// Default is 4 which means 0.25
+    pub resolution: u64,
+}
+
+// ===== FillTransaction  (rpc-types-eth) =====
+
+pub struct FillTransaction<T = TypedTransaction> {
+    /// RLP-encoded signed transaction bytes.
+    pub raw: Bytes,
+    /// Filled transaction request with populated default values.
+    pub tx: T,
+}
+
+// ===== Filter  (rpc-types-eth) =====
+
+pub struct Filter {
+    /// Filter block options, specifying on which blocks the filter should match.
+    // https://eips.ethereum.org/EIPS/eip-234
+    pub block_option: FilterBlockOption,
+    /// Contract addresses to match.
+    ///
+    /// Multiple addresses are ORed. An empty set is a wildcard and is omitted during
+    /// serialization.
+    pub address: FilterSet<Address>,
+    /// Topic filters, with at most four positions.
+    ///
+    /// Values within a position use OR semantics; populated positions use AND semantics. An empty
+    /// position is a wildcard and serializes as `null` when followed by a populated position.
+    pub topics: [Topic; 4],
+}
+
+// ===== FilterBlockOption  (rpc-types-eth) =====
+
+pub enum FilterBlockOption {
+    /// Represents a range of blocks with optional from and to blocks
+    ///
+    /// Note: ranges are considered to be __inclusive__
+    Range {
+        /// The block number or tag this filter should start at.
+        from_block: Option<BlockNumberOrTag>,
+        /// The block number or that this filter should end at.
+        to_block: Option<BlockNumberOrTag>,
+    },
+    /// The hash of the block if the filter only targets a single block
+    AtBlockHash(BlockHash),
+}
+
+// ===== FilterChanges  (rpc-types-eth) =====
+
+pub enum FilterChanges<T = Transaction, L = RpcLog> {
+    /// Empty result.
+    #[cfg_attr(feature = "serde", serde(with = "empty_array"))]
+    #[default]
+    Empty,
+    /// New logs.
+    Logs(Vec<L>),
+    /// New hashes (block or transactions).
+    Hashes(Vec<B256>),
+    /// New transactions.
+    Transactions(Vec<T>),
+}
+
+// ===== FilterId  (rpc-types-eth) =====
+
+pub enum FilterId {
+    /// Numeric id
+    Num(u64),
+    /// String id
+    Str(String),
+}
+
+// ===== FilterSet  (rpc-types-eth) =====
+
+pub struct FilterSet<T: Eq + Hash> {
+    set: HashSet<T>,
+
+    #[cfg(feature = "std")]
+    #[cfg_attr(feature = "serde", serde(skip, default))]
+    bloom_filter: std::sync::OnceLock<BloomFilter>,
+}
+
+// ===== ForwardConfig  (rpc-eth-types) =====
+
+pub struct ForwardConfig {
+    /// The raw transaction forwarder.
+    ///
+    /// Default is `None`
+    pub tx_forwarder: Option<Url>,
+}
+
+// ===== GasPriceOracleConfig  (rpc-eth-types) =====
+
+pub struct GasPriceOracleConfig {
+    /// The number of populated blocks to produce the gas price estimate
+    pub blocks: u32,
+
+    /// The percentile of gas prices to use for the estimate
+    pub percentile: u32,
+
+    /// The maximum number of headers to keep in the cache
+    pub max_header_history: u64,
+
+    /// The maximum number of blocks for estimating gas price
+    pub max_block_history: u64,
+
+    /// The maximum number for reward percentiles.
+    ///
+    /// This effectively limits how many transactions and receipts are fetched to compute the
+    /// reward percentile.
+    pub max_reward_percentile_count: u64,
+
+    /// The default gas price to use if there are no blocks to use
+    pub default_suggested_fee: Option<U256>,
+
+    /// The maximum gas price to use for the estimate
+    pub max_price: Option<U256>,
+
+    /// The minimum gas price, under which the sample will be ignored
+    pub ignore_price: Option<U256>,
+}
+
+// ===== Genesis  (genesis) =====
+
+pub struct Genesis {
+    /// The fork configuration for this network.
+    #[serde(default)]
+    pub config: ChainConfig,
+    /// The genesis header nonce.
+    #[serde(with = "alloy_serde::quantity")]
+    pub nonce: u64,
+    /// The genesis header timestamp.
+    #[serde(with = "alloy_serde::quantity")]
+    pub timestamp: u64,
+    /// The genesis header extra data.
+    pub extra_data: Bytes,
+    /// The genesis header gas limit.
+    #[serde(with = "alloy_serde::quantity")]
+    pub gas_limit: u64,
+    /// The genesis header difficulty.
+    pub difficulty: U256,
+    /// The genesis header mix hash.
+    pub mix_hash: B256,
+    /// The genesis header coinbase address.
+    pub coinbase: Address,
+    /// The initial state of accounts in the genesis block.
+    pub alloc: BTreeMap<Address, GenesisAccount>,
+    // NOTE: the following fields:
+    // * base_fee_per_gas
+    // * excess_blob_gas
+    // * blob_gas_used
+    // * slot_number
+    // * number
+    // should NOT be set in a real genesis file, but are included here for compatibility with
+    // consensus tests, which have genesis files with these fields populated.
+    /// The genesis header base fee
+    #[serde(default, skip_serializing_if = "Option::is_none", with = "alloy_serde::quantity::opt")]
+    pub base_fee_per_gas: Option<u128>,
+    /// The genesis header excess blob gas
+    #[serde(default, skip_serializing_if = "Option::is_none", with = "alloy_serde::quantity::opt")]
+    pub excess_blob_gas: Option<u64>,
+    /// The genesis header blob gas used
+    #[serde(default, skip_serializing_if = "Option::is_none", with = "alloy_serde::quantity::opt")]
+    pub blob_gas_used: Option<u64>,
+    /// The genesis header slot number (EIP-7843)
+    #[serde(default, skip_serializing_if = "Option::is_none", with = "alloy_serde::quantity::opt")]
+    pub slot_number: Option<u64>,
+    /// The genesis block number
+    #[serde(default, skip_serializing_if = "Option::is_none", with = "alloy_serde::quantity::opt")]
+    pub number: Option<u64>,
+    /// The parent hash
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub parent_hash: Option<B256>,
+}
+
+// ===== GenesisAccount  (genesis) =====
+
+pub struct GenesisAccount {
+    /// The nonce of the account at genesis.
+    #[serde(skip_serializing_if = "Option::is_none", with = "alloy_serde::quantity::opt", default)]
+    pub nonce: Option<u64>,
+    /// The balance of the account at genesis.
+    pub balance: U256,
+    /// The account's bytecode at genesis.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<Bytes>,
+    /// The account's storage at genesis.
+    #[serde(
+        default,
+        skip_serializing_if = "Option::is_none",
+        deserialize_with = "deserialize_storage_map"
+    )]
+    pub storage: Option<BTreeMap<B256, B256>>,
+    /// The account's private key. Should only be used for testing.
+    #[serde(
+        rename = "secretKey",
+        default,
+        skip_serializing_if = "Option::is_none",
+        deserialize_with = "deserialize_private_key"
+    )]
+    pub private_key: Option<B256>,
+    /// Raw chain-specific bytes, encoded as a fifth RLP string in the account trie leaf.
+    #[cfg(feature = "account-ext")]
+    #[serde(default, skip_serializing_if = "alloy_trie::AccountExtension::is_empty")]
+    pub extension: alloy_trie::AccountExtension,
+}
+
+// ===== Geth  (node-bindings) =====
+
+pub struct Geth {
+    program: Option<PathBuf>,
+    host: Option<String>,
+    port: Option<u16>,
+    authrpc_port: Option<u16>,
+    ipc_path: Option<PathBuf>,
+    ipc_enabled: bool,
+    data_dir: Option<PathBuf>,
+    chain_id: Option<u64>,
+    insecure_unlock: bool,
+    keep_err: bool,
+    timeout: Option<u64>,
+    genesis: Option<Genesis>,
+    mode: NodeMode,
+    clique_private_key: Option<SigningKey>,
+    args: Vec<OsString>,
+}
+
+// ===== Header  (consensus) =====
+
+pub struct Header {
+    /// The Keccak 256-bit hash of the parent
+    /// block’s header, in its entirety; formally Hp.
+    pub parent_hash: B256,
+    /// The Keccak 256-bit hash of the ommers list portion of this block; formally Ho.
+    #[cfg_attr(feature = "serde", serde(rename = "sha3Uncles", alias = "ommersHash"))]
+    pub ommers_hash: B256,
+    /// The 160-bit address to which all fees collected from the successful mining of this block
+    /// be transferred; formally Hc.
+    #[cfg_attr(feature = "serde", serde(rename = "miner", alias = "beneficiary"))]
+    pub beneficiary: Address,
+    /// The Keccak 256-bit hash of the root node of the state trie, after all transactions are
+    /// executed and finalisations applied; formally Hr.
+    pub state_root: B256,
+    /// The Keccak 256-bit hash of the root node of the trie structure populated with each
+    /// transaction in the transactions list portion of the block; formally Ht.
+    pub transactions_root: B256,
+    /// The Keccak 256-bit hash of the root node of the trie structure populated with the receipts
+    /// of each transaction in the transactions list portion of the block; formally He.
+    pub receipts_root: B256,
+    /// The Bloom filter composed from indexable information (logger address and log topics)
+    /// contained in each log entry from the receipt of each transaction in the transactions list;
+    /// formally Hb.
+    pub logs_bloom: Bloom,
+    /// A scalar value corresponding to the difficulty level of this block. This can be calculated
+    /// from the previous block’s difficulty level and the timestamp; formally Hd.
+    pub difficulty: U256,
+    /// A scalar value equal to the number of ancestor blocks. The genesis block has a number of
+    /// zero; formally Hi.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub number: BlockNumber,
+    /// A scalar value equal to the current limit of gas expenditure per block; formally Hl.
+    /// Under [EIP-8037](https://eips.ethereum.org/EIPS/eip-8037) it bounds each of the block's two
+    /// gas dimensions (execution and state) separately, not their sum.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub gas_limit: u64,
+    /// A scalar value equal to the total gas used in transactions in this block; formally Hg.
+    /// Under [EIP-8037](https://eips.ethereum.org/EIPS/eip-8037) this is the larger of the block's
+    /// execution-gas and state-gas totals, counted before refunds ([EIP-7778](https://eips.ethereum.org/EIPS/eip-7778)),
+    /// so it need not equal the last receipt's `cumulativeGasUsed`. State totals remain net of
+    /// state refills.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub gas_used: u64,
+    /// A scalar value equal to the reasonable output of Unix’s time() at this block’s inception;
+    /// formally Hs.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub timestamp: u64,
+    /// An arbitrary byte array containing data relevant to this block. This must be 32 bytes or
+    /// fewer; formally Hx.
+    pub extra_data: Bytes,
+    /// A 256-bit hash which, combined with the
+    /// nonce, proves that a sufficient amount of computation has been carried out on this block;
+    /// formally Hm.
+    pub mix_hash: B256,
+    /// A 64-bit value which, combined with the mixhash, proves that a sufficient amount of
+    /// computation has been carried out on this block; formally Hn.
+    pub nonce: B64,
+    /// A scalar representing EIP1559 base fee which can move up or down each block according
+    /// to a formula which is a function of gas used in parent block and gas target
+    /// (block gas limit divided by elasticity multiplier) of parent block.
+    /// The algorithm results in the base fee per gas increasing when blocks are
+    /// above the gas target, and decreasing when blocks are below the gas target. The base fee per
+    /// gas is burned.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub base_fee_per_gas: Option<u64>,
+    /// The Keccak 256-bit hash of the withdrawals list portion of this block.
+    /// <https://eips.ethereum.org/EIPS/eip-4895>
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub withdrawals_root: Option<B256>,
+    /// The total amount of blob gas consumed by the transactions within the block, added in
+    /// EIP-4844.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub blob_gas_used: Option<u64>,
+    /// A running total of blob gas consumed in excess of the target, prior to the block. Blocks
+    /// with above-target blob gas consumption increase this value, blocks with below-target blob
+    /// gas consumption decrease it (bounded at 0). This was added in EIP-4844.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub excess_blob_gas: Option<u64>,
+    /// The hash of the parent beacon block's root is included in execution blocks, as proposed by
+    /// EIP-4788.
+    ///
+    /// This enables trust-minimized access to consensus state, supporting staking pools, bridges,
+    /// and more.
+    ///
+    /// The beacon roots contract handles root storage, enhancing Ethereum's functionalities.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub parent_beacon_block_root: Option<B256>,
+    /// The Keccak 256-bit hash of the an RLP encoded list with each
+    /// [EIP-7685] request in the block body.
+    ///
+    /// [EIP-7685]: https://eips.ethereum.org/EIPS/eip-7685
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub requests_hash: Option<B256>,
+    /// The Keccak 256-bit hash of the block's access list.
+    ///
+    /// When no state changes are present, this field is the hash of an empty RLP list:
+    /// `keccak256(rlp.encode([]))` =
+    /// `0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347`
+    ///
+    /// [EIP-7928]: https://eips.ethereum.org/EIPS/eip-7928
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub block_access_list_hash: Option<B256>,
+    /// The slot number corresponding to this block, calculated in the consensus layer.
+    ///
+    /// [EIP-7843]: https://eips.ethereum.org/EIPS/eip-7843
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub slot_number: Option<u64>,
+}
+
+// ===== HttpError  (transport) =====
+pub struct HttpError {
+    /// The HTTP status code.
+    pub status: u16,
+    /// The HTTP response body.
+    pub body: String,
+}
+
+// ===== Id  (json-rpc) =====
+
+pub enum Id {
+    /// A number.
+    Number(u64),
+    /// A string.
+    String(String),
+    /// Null.
+    None,
+}
+
+// ===== Index  (rpc-types-eth) =====
+
+pub struct Index(pub usize);
+
+// ===== JsonStorageKey  (serde) =====
+
+pub enum JsonStorageKey {
+    /// A full 32-byte key (tried first during deserialization)
+    Hash(B256),
+    /// A number (fallback if B256 deserialization fails)
+    Number(U256),
+}
+
+// ===== Log  (rpc-types-eth) =====
+
+pub struct Log {
+    /// Contract that emitted this log.
+    pub address: Address,
+    /// Topics of the log. The number of logs depend on what `LOG` opcode is used.
+    pub topics: Vec<B256>,
+    /// Arbitrary length data.
+    pub data: Bytes,
+}
+
+// ===== NodeMode  (node-bindings) =====
+
+pub enum NodeMode {
+    /// Options that can be set in dev mode
+    Dev(DevOptions),
+    /// Options that cannot be set in dev mode
+    NonDev(PrivateNetOptions),
+}
+
+// ===== Optional  (rpc-types-engine) =====
+
+pub struct Optional<T>(Option<T>);
+
+// ===== OtherFields  (serde) =====
+
+pub struct OtherFields {
+    inner: BTreeMap<String, serde_json::Value>,
+}
+
+// ===== Params  (rpc-types-eth) =====
+
+pub enum Params {
+    /// No parameters passed.
+    #[default]
+    None,
+    /// Log parameters.
+    Logs(Box<Filter>),
+    /// Boolean parameter for new pending transactions.
+    Bool(bool),
+    /// Transaction receipts parameters.
+    TransactionReceipts(TransactionReceiptsParams),
+}
+
+// ===== ParliaConfig  (genesis) =====
+
+pub struct ParliaConfig {
+    /// Number of seconds between blocks to enforce.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub period: Option<u64>,
+
+    /// Epoch length to update validator set.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub epoch: Option<u64>,
+}
+
+// ===== PendingBlockKind  (rpc-eth-types) =====
+
+pub enum PendingBlockKind {
+    /// Return a pending block with header only, no transactions included
+    Empty,
+    /// Return null/no pending block
+    None,
+    /// Return a pending block with all transactions from the mempool (default behavior)
+    #[default]
+    Full,
+}
+
+// ===== PendingTransactionError  (provider) =====
+
+pub enum PendingTransactionError {
+    /// Failed to register pending transaction in heartbeat.
+    #[error("failed to register pending transaction to watch")]
+    FailedToRegister,
+
+    /// Underlying transport error.
+    #[error(transparent)]
+    TransportError(#[from] TransportError),
+
+    /// Error occurred while getting response from the heartbeat.
+    #[error(transparent)]
+    Recv(#[from] oneshot::error::RecvError),
+
+    /// Errors that may occur when watching a transaction.
+    #[error(transparent)]
+    TxWatcher(#[from] WatchTxError),
+}
+
+// ===== PendingTransactionFilterKind  (rpc-types-eth) =====
+
+pub enum PendingTransactionFilterKind {
+    /// Receive only the hashes of the transactions.
+    #[default]
+    Hashes,
+    /// Receive full details of the transactions.
+    Full,
+}
+
+// ===== Privacy  (rpc-types-mev) =====
+
+pub struct Privacy {
+    /// Hints on what data should be shared about the bundle and its transactions
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hints: Option<PrivacyHint>,
+    /// Names of the builders that should be allowed to see the bundle/transaction.
+    /// <https://github.com/flashbots/dowg/blob/main/builder-registrations.json>
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub builders: Option<Vec<String>>,
+}
+
+// ===== PrivacyHint  (rpc-types-mev) =====
+
+pub struct PrivacyHint {
+    /// The calldata of the bundle's transactions should be shared.
+    pub calldata: bool,
+    /// The address of the bundle's transactions should be shared.
+    pub contract_address: bool,
+    /// The logs of the bundle's transactions should be shared.
+    pub logs: bool,
+    /// The function selector of the bundle's transactions should be shared.
+    pub function_selector: bool,
+    /// The hash of the bundle's transactions should be shared.
+    pub hash: bool,
+    /// The hash of the bundle should be shared.
+    pub tx_hash: bool,
+}
+
+// ===== PrivateNetOptions  (node-bindings) =====
+
+pub struct PrivateNetOptions {
+    /// The p2p port to use.
+    pub p2p_port: Option<u16>,
+
+    /// Whether or not peer discovery is enabled.
+    pub discovery: bool,
+}
+
+// ===== PrivateTransactionPreferences  (rpc-types-mev) =====
+
+pub struct PrivateTransactionPreferences {
+    /// Indicates whether the transaction should be processed in fast mode.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fast: Option<bool>,
+    /// Requirements for the bundle to be included in the block.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub validity: Option<Validity>,
+    /// Preferences on what data should be shared about the bundle and its transactions
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub privacy: Option<Privacy>,
+}
+
+// ===== PubSubSyncStatus  (rpc-types-eth) =====
+
+pub enum PubSubSyncStatus {
+    /// If not currently syncing, this should always be `false`.
+    Simple(bool),
+    /// Syncing metadata.
+    Detailed(SyncStatusMetadata),
+}
+
+// ===== Receipt  (consensus) =====
+
+pub struct Receipt<T = Log> {
+    /// If transaction is executed successfully.
+    ///
+    /// This is the `statusCode`
+    #[cfg_attr(feature = "serde", serde(flatten))]
+    pub status: Eip658Value,
+    /// Cumulative gas used in the block up to and including this transaction.
+    /// See [`TxReceipt::cumulative_gas_used`].
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub cumulative_gas_used: u64,
+    /// Log send from contracts.
+    pub logs: Vec<T>,
+}
+
+// ===== Receipts  (consensus) =====
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub struct Receipts<T> {
+    /// A two-dimensional vector of [`Receipt`] instances.
+    pub receipt_vec: Vec<Vec<T>>,
+}
+
+// ===== Recovered  (consensus) =====
+
+pub struct Recovered<T> {
+    /// Signer of the type
+    signer: Address,
+    /// Signed object
+    #[deref]
+    #[as_ref]
+    #[cfg_attr(feature = "serde", serde(flatten))]
+    inner: T,
+}
+
+// ===== Refund  (rpc-types-mev) =====
+
+pub struct Refund {
+    /// The index of the transaction in the bundle.
+    #[serde(with = "alloy_serde::quantity")]
+    pub body_idx: u64,
+    /// The minimum percent of the bundle's earnings to redistribute.
+    #[serde(with = "alloy_serde::quantity")]
+    pub percent: u64,
+}
+
+// ===== RefundConfig  (rpc-types-mev) =====
+
+pub struct RefundConfig {
+    /// The address to refund.
+    pub address: Address,
+    /// The minimum percent of the bundle's earnings to redistribute.
+    #[serde(with = "alloy_serde::quantity")]
+    pub percent: u64,
+}
+
+// ===== Requests  (eips) =====
+
+pub struct Requests(Vec<Bytes>);
+
+// ===== RpcBlockHash  (eips) =====
+
+pub struct RpcBlockHash {
+    /// A block hash
+    pub block_hash: BlockHash,
+    /// Whether the block must be a canonical block
+    pub require_canonical: Option<bool>,
+}
+
+// ===== RpcError  (rpc-eth-api) =====
+
+pub type RpcError<T> = <T as EthApiTypes>::Error;
+
+// ===== Signed  (consensus) =====
+
+pub struct Signed<T, Sig = Signature> {
+    #[doc(alias = "transaction")]
+    tx: T,
+    signature: Sig,
+    #[doc(alias = "tx_hash", alias = "transaction_hash")]
+    hash: OnceLock<B256>,
+}
+
+// ===== SimBlock  (rpc-types-eth) =====
+pub struct SimBlock<TxReq = TransactionRequest> {
+    /// Modifications to the default block characteristics.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub block_overrides: Option<BlockOverrides>,
+    /// State modifications to apply before executing the transactions.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub state_overrides: Option<StateOverride>,
+    /// A vector of transactions to be simulated.
+    #[cfg_attr(feature = "serde", serde(default = "Vec::new"))]
+    pub calls: Vec<TxReq>,
+}
+
+// ===== SimCallResult  (rpc-types-eth) =====
+
+pub struct SimCallResult {
+    /// The raw bytes returned by the transaction.
+    pub return_data: Bytes,
+    /// Logs generated during the execution of the transaction.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub logs: Vec<Log>,
+    /// The amount of gas used by the transaction.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub gas_used: u64,
+    /// Maximum gas consumed during execution, before refunds.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub max_used_gas: Option<u64>,
+    /// The final status of the transaction, typically indicating success or failure.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub status: bool,
+    /// Error in case the call failed
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub error: Option<SimulateError>,
+}
+
+// ===== SimulateError  (rpc-types-eth) =====
+
+pub struct SimulateError {
+    /// Error code.
+    ///
+    /// Known values:
+    /// - [`Self::EXECUTION_REVERTED_CODE`] for `Execution reverted`
+    /// - [`Self::VM_EXECUTION_ERROR_CODE`] for `VM execution error`
+    pub code: i32,
+    /// Message error
+    pub message: String,
+    /// Data for the error, e.g. revert reason.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub data: Option<Bytes>,
+}
+
+// ===== SimulatePayload  (rpc-types-eth) =====
+pub struct SimulatePayload<TxReq = TransactionRequest> {
+    /// Array of block state calls to be executed at specific, optional block/state.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub block_state_calls: Vec<SimBlock<TxReq>>,
+    /// Flag to determine whether to trace ERC20/ERC721 token transfers within transactions.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub trace_transfers: bool,
+    /// Flag to enable or disable validation of the transaction sequence in the blocks.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub validation: bool,
+    /// Flag to decide if full transactions should be returned instead of just their hashes.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub return_full_transactions: bool,
+}
+
+// ===== SimulatedBlock  (rpc-types-eth) =====
+
+pub struct SimulatedBlock<B = Block> {
+    /// The simulated block.
+    #[cfg_attr(feature = "serde", serde(flatten))]
+    pub inner: B,
+    /// A vector of results for each call in the block.
+    pub calls: Vec<SimCallResult>,
+}
+
+// ===== Stage  (rpc-types-eth) =====
+
+pub struct Stage {
+    /// The name of the sync stage.
+    #[cfg_attr(feature = "serde", serde(alias = "stage_name"))]
+    pub name: String,
+    /// Indicates the progress of the sync stage.
+    #[cfg_attr(feature = "serde", serde(alias = "block_number", with = "alloy_serde::quantity"))]
+    pub block: u64,
+}
+
+// ===== StateContext  (rpc-types-eth) =====
+
+pub struct StateContext {
+    /// Block Number
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+    pub block_number: Option<BlockId>,
+    /// Inclusive number of tx to replay in block. -1 means replay all
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
+    #[doc(alias = "tx_index")]
+    pub transaction_index: Option<TransactionIndex>,
+}
+
+// ===== StateOverride  (rpc-types-eth) =====
+
+pub type StateOverride = AddressHashMap<AccountOverride>;
+
+// ===== SubscriptionKind  (rpc-types-eth) =====
+
+pub enum SubscriptionKind {
+    /// New block headers subscription.
+    ///
+    /// Fires a notification each time a new header is appended to the chain, including chain
+    /// reorganizations. In case of a chain reorganization the subscription will emit all new
+    /// headers for the new chain. Therefore the subscription can emit multiple headers on the same
+    /// height.
+    NewHeads,
+    /// Logs subscription.
+    ///
+    /// Returns logs that are included in new imported blocks and match the given filter criteria.
+    /// In case of a chain reorganization previous sent logs that are on the old chain will be
+    /// resent with the removed property set to true. Logs from transactions that ended up in the
+    /// new chain are emitted. Therefore, a subscription can emit logs for the same transaction
+    /// multiple times.
+    Logs,
+    /// New Pending Transactions subscription.
+    ///
+    /// Returns the hash or full tx for all transactions that are added to the pending state and
+    /// are signed with a key that is available in the node. When a transaction that was
+    /// previously part of the canonical chain isn't part of the new canonical chain after a
+    /// reorganization its again emitted.
+    NewPendingTransactions,
+    /// Node syncing status subscription.
+    ///
+    /// Indicates when the node starts or stops synchronizing. The result can either be a boolean
+    /// indicating that the synchronization has started (true), finished (false) or an object with
+    /// various progress indicators.
+    Syncing,
+    /// New transaction receipts subscription.
+    ///
+    /// Returns transaction receipts that are included in new imported blocks and match the given
+    /// filter criteria. In case of a chain reorganization the subscription will emit transaction
+    /// receipts for the new chain if they match the filter criteria. Therefore, the subscription
+    /// can emit same transaction receipts multiple times.
+    TransactionReceipts,
+}
+
+// ===== SubscriptionResult  (rpc-types-eth) =====
+
+pub enum SubscriptionResult<T = Transaction, R = TransactionReceipt> {
+    /// New block header.
+    Header(Box<WithOtherFields<Header>>),
+    /// Log
+    Log(Box<Log>),
+    /// Transaction hash
+    TransactionHash(B256),
+    /// Full Transaction
+    FullTransaction(Box<T>),
+    /// SyncStatus
+    SyncState(PubSubSyncStatus),
+    /// Transaction Receipts
+    TransactionReceipts(Vec<R>),
+}
+
+// ===== SyncInfo  (rpc-types-eth) =====
+
+pub struct SyncInfo {
+    /// Starting block
+    pub starting_block: U256,
+    /// Current block
+    pub current_block: U256,
+    /// Highest block seen so far
+    pub highest_block: U256,
+    /// Warp sync snapshot chunks total.
+    pub warp_chunks_amount: Option<U256>,
+    /// Warp sync snapshot chunks processed.
+    pub warp_chunks_processed: Option<U256>,
+    /// The details of the sync stages as a list of entries; each `Stage` contains the
+    /// stage name and the latest processed block for that stage.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub stages: Option<Vec<Stage>>,
+}
+
+// ===== SyncStatus  (rpc-types-eth) =====
+
+pub enum SyncStatus {
+    /// Info when syncing
+    Info(Box<SyncInfo>),
+    /// Not syncing
+    None,
+}
+
+// ===== SyncStatusMetadata  (rpc-types-eth) =====
+
+pub struct SyncStatusMetadata {
+    /// Whether the node is currently syncing.
+    pub syncing: bool,
+    /// The starting block.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub starting_block: u64,
+    /// The current block.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub current_block: u64,
+    /// The highest block.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub highest_block: Option<u64>,
+}
+
+// ===== Target  (rpc-types-beacon) =====
+
+pub struct Target {
+    /// The epoch number of the target checkpoint, serialized as a string.
+    #[serde_as(as = "DisplayFromStr")]
+    pub epoch: u64,
+    /// The root of the target checkpoint.
+    pub root: B256,
+}
+
+// ===== Topic  (rpc-types-eth) =====
+
+pub type Topic = FilterSet<B256>;
+
+// ===== Transaction  (rpc-types-eth) =====
+#[doc(alias = "Tx")]
+pub struct Transaction<T = TxEnvelope> {
+    /// The inner transaction object
+    pub inner: Recovered<T>,
+
+    /// Hash of block where transaction was included, `None` if pending
+    pub block_hash: Option<BlockHash>,
+
+    /// Number of block where transaction was included, `None` if pending
+    pub block_number: Option<u64>,
+
+    /// Transaction Index
+    pub transaction_index: Option<u64>,
+
+    /// Deprecated effective gas price value.
+    pub effective_gas_price: Option<u128>,
+
+    /// The Unix block_timestamp (in seconds) when the block containing this transaction was mined.
+    ///
+    /// `None` if the transaction is pending.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub block_timestamp: Option<u64>,
+}
+
+// ===== TransactionConditional  (rpc-types-eth) =====
+
+pub struct TransactionConditional {
+    /// A map of account addresses to their expected storage states.
+    /// Each account can have a specified storage root or explicit slot-value pairs.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub known_accounts: AddressHashMap<AccountStorage>,
+    /// The minimal block number at which the transaction can be included.
+    /// `None` indicates no minimum block number constraint.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub block_number_min: Option<BlockNumber>,
+    /// The maximal block number at which the transaction can be included.
+    /// `None` indicates no maximum block number constraint.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub block_number_max: Option<BlockNumber>,
+    /// The minimal timestamp at which the transaction can be included.
+    /// `None` indicates no minimum timestamp constraint.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub timestamp_min: Option<u64>,
+    /// The maximal timestamp at which the transaction can be included.
+    /// `None` indicates no maximum timestamp constraint.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            with = "alloy_serde::quantity::opt",
+            skip_serializing_if = "Option::is_none"
+        )
+    )]
+    pub timestamp_max: Option<u64>,
+}
+
+// ===== TransactionIndex  (rpc-types-eth) =====
+
+pub enum TransactionIndex {
+    /// -1 means all transactions
+    #[default]
+    All,
+    /// Transaction index
+    Index(usize),
+}
+
+// ===== TransactionInput  (rpc-types-eth) =====
+
+pub struct TransactionInput {
+    /// Transaction data
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub input: Option<Bytes>,
+    /// Transaction data
+    ///
+    /// This is the same as `input` but is used for backwards compatibility: <https://github.com/ethereum/go-ethereum/issues/15628>
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub data: Option<Bytes>,
+}
+
+// ===== TransactionReceipt  (rpc-types-eth) =====
+
+pub struct TransactionReceipt<T = ReceiptEnvelope<Log>> {
+    /// The receipt envelope, which contains the consensus receipt data.
+    #[cfg_attr(feature = "serde", serde(flatten))]
+    pub inner: T,
+    /// Transaction Hash.
+    #[doc(alias = "tx_hash")]
+    pub transaction_hash: TxHash,
+    /// Index within the block.
+    #[cfg_attr(feature = "serde", serde(default, with = "alloy_serde::quantity::opt"))]
+    #[doc(alias = "tx_index")]
+    pub transaction_index: Option<u64>,
+    /// Hash of the block this transaction was included within.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub block_hash: Option<BlockHash>,
+    /// Number of the block this transaction was included within.
+    #[cfg_attr(feature = "serde", serde(default, with = "alloy_serde::quantity::opt"))]
+    pub block_number: Option<u64>,
+    /// Total gas charged for this transaction alone, after refunds and the applicable calldata
+    /// floor.
+    ///
+    /// Includes intrinsic gas and, on networks with [EIP-8037](https://eips.ethereum.org/EIPS/eip-8037),
+    /// both regular (execution) gas and net state gas. Do not add trace `stateGasUsed` again.
+    /// Before EIP-8037, state creation costs are included under the ordinary gas schedule.
+    /// Excludes blob gas and network-specific fee components. This is not a sufficient gas limit:
+    /// execution can require gas that is later refunded or returned. Use `eth_estimateGas` to
+    /// estimate.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub gas_used: u64,
+    /// The price paid post-execution by the transaction, in wei per gas (base fee plus priority
+    /// fee). Both fee fields in EIP-1559 transactions are maximums; the amount actually paid can
+    /// only be determined post-execution.
+    ///
+    /// Deserialization also accepts the legacy `gasPrice` name and defaults to zero if neither
+    /// name is present.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub effective_gas_price: u128,
+    /// Blob gas used by the EIP-4844 transaction, in blob gas units.
+    ///
+    /// This is None for non eip-4844 transactions
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt",
+            default
+        )
+    )]
+    pub blob_gas_used: Option<u64>,
+    /// The price paid by the EIP-4844 transaction, in wei per blob gas.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt",
+            default
+        )
+    )]
+    pub blob_gas_price: Option<u128>,
+    /// Address of the sender
+    pub from: Address,
+    /// Address of the receiver. None when its a contract creation transaction.
+    pub to: Option<Address>,
+    /// Contract address created, or None if not a deployment.
+    pub contract_address: Option<Address>,
+}
+
+// ===== TransactionReceiptsParams  (rpc-types-eth) =====
+
+pub struct TransactionReceiptsParams {
+    /// Optional list of transaction hashes to filter by.
+    ///
+    /// If not provided or empty, all transaction receipts will be returned.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub transaction_hashes: Option<Vec<B256>>,
+}
+
+// ===== TransactionRequest  (rpc-types-eth) =====
+
+pub struct TransactionRequest {
+    /// The address of the transaction author.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub from: Option<Address>,
+    /// The destination address of the transaction.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub to: Option<TxKind>,
+    /// The legacy gas price.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub gas_price: Option<u128>,
+    /// The max base fee per gas the sender is willing to pay.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub max_fee_per_gas: Option<u128>,
+    /// The max priority fee per gas the sender is willing to pay, also called the miner tip.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub max_priority_fee_per_gas: Option<u128>,
+    /// The max fee per blob gas for EIP-4844 blob transactions.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub max_fee_per_blob_gas: Option<u128>,
+    /// The gas limit for the transaction, including intrinsic costs.
+    ///
+    /// Under [EIP-8037](https://eips.ethereum.org/EIPS/eip-8037) this single limit funds both execution
+    /// and state gas; the protocol splits it into regular gas and a state reservoir. A receipt's
+    /// `gasUsed` or a trace's net consumption can be too low as a limit, because gas may be needed
+    /// before a later refund or state refill. Use `eth_estimateGas` against the target network.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub gas: Option<u64>,
+    /// The value transferred in the transaction, in wei.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub value: Option<U256>,
+    /// Transaction data.
+    #[cfg_attr(feature = "serde", serde(default, flatten))]
+    pub input: TransactionInput,
+    /// The nonce of the transaction.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub nonce: Option<u64>,
+    /// The chain ID for the transaction.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    pub chain_id: Option<ChainId>,
+    /// An EIP-2930 access list, which lowers cost for accessing accounts and storages in the list. See [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) for more information.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub access_list: Option<AccessList>,
+    /// The EIP-2718 transaction type reported to or received from RPC.
+    ///
+    /// This is wire metadata and does not select the type used by the transaction build methods.
+    /// See [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718) for more information.
+    #[cfg_attr(
+        feature = "serde",
+        serde(
+            default,
+            rename = "type",
+            skip_serializing_if = "Option::is_none",
+            with = "alloy_serde::quantity::opt"
+        )
+    )]
+    #[doc(alias = "tx_type")]
+    pub transaction_type: Option<u8>,
+    /// Blob versioned hashes for EIP-4844 transactions.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub blob_versioned_hashes: Option<Vec<B256>>,
+    /// Blob sidecar for EIP-4844 transactions.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, flatten, skip_serializing_if = "Option::is_none")
+    )]
+    pub sidecar: Option<BlobTransactionSidecarVariant>,
+    /// Authorization list for EIP-7702 transactions.
+    #[cfg_attr(feature = "serde", serde(default, skip_serializing_if = "Option::is_none"))]
+    pub authorization_list: Option<Vec<SignedAuthorization>>,
+}
+
+// ===== TransportError  (transport) =====
+
+pub type TransportError<ErrResp = Box<RawValue>> = RpcError<TransportErrorKind, ErrResp>;
+
+// ===== TransportErrorKind  (transport) =====
+
+pub enum TransportErrorKind {
+    /// Missing batch response.
+    ///
+    /// This error is returned when a batch request is sent and the response
+    /// does not contain a response for a request. For convenience the ID is
+    /// specified.
+    #[error("missing response for request with ID {0}")]
+    MissingBatchResponse(Id),
+
+    /// Backend connection task has stopped.
+    #[error("backend connection task has stopped")]
+    BackendGone,
+
+    /// Pubsub service is not available for the current provider.
+    #[error("subscriptions are not available on this provider")]
+    PubsubUnavailable,
+
+    /// HTTP Error with code and body
+    #[error("{0}")]
+    HttpError(#[from] HttpError),
+
+    /// HTTP error with a server-provided retry delay.
+    ///
+    /// Error statuses (4xx/5xx) are always considered retryable since the server explicitly
+    /// requested a retry. Redirects are not: `Retry-After` on a 3xx delays the redirected
+    /// request, not a replay of the original one.
+    #[error("{error}")]
+    HttpErrorWithRetryAfter {
+        /// The HTTP error.
+        #[source]
+        error: HttpError,
+        /// The delay requested by the server.
+        retry_after: Duration,
+    },
+
+    /// Custom error.
+    #[error("{0}")]
+    Custom(#[source] Box<dyn StdError + Send + Sync + 'static>),
+
+    /// Deterministic, terminal failure that retry loops should not retry.
+    ///
+    /// Use this when the operation is guaranteed to fail again on retry —
+    /// for example a malformed request, a permission error, or any other
+    /// protocol-level failure that is not a transient socket / IO problem.
+    #[error("{0}")]
+    NonRetryable(#[source] Box<dyn StdError + Send + Sync + 'static>),
+}
+
+// ===== TxpoolContent  (rpc-types-txpool) =====
+
+pub struct TxpoolContent<T = Transaction> {
+    /// Transactions currently executable by sender and decimal nonce string.
+    #[serde(serialize_with = "serialize_checksum_address_map")]
+    pub pending: BTreeMap<Address, BTreeMap<String, T>>,
+    /// Transactions queued for future execution by sender and decimal nonce string.
+    #[serde(serialize_with = "serialize_checksum_address_map")]
+    pub queued: BTreeMap<Address, BTreeMap<String, T>>,
+}
+
+// ===== TxpoolContentFrom  (rpc-types-txpool) =====
+
+pub struct TxpoolContentFrom<T = Transaction> {
+    /// pending tx
+    pub pending: BTreeMap<String, T>,
+    /// queued tx
+    pub queued: BTreeMap<String, T>,
+}
+
+// ===== TxpoolInspect  (rpc-types-txpool) =====
+
+pub struct TxpoolInspect {
+    /// pending tx
+    #[serde(serialize_with = "serialize_checksum_address_map")]
+    pub pending: BTreeMap<Address, BTreeMap<String, TxpoolInspectSummary>>,
+    /// queued tx
+    #[serde(serialize_with = "serialize_checksum_address_map")]
+    pub queued: BTreeMap<Address, BTreeMap<String, TxpoolInspectSummary>>,
+}
+
+// ===== TxpoolInspectSummary  (rpc-types-txpool) =====
+
+pub struct TxpoolInspectSummary {
+    /// Recipient (None when contract creation)
+    pub to: Option<Address>,
+    /// Transferred value, in wei.
+    pub value: U256,
+    /// Gas amount
+    pub gas: u64,
+    /// Gas price or fee cap, in wei per gas.
+    pub gas_price: u128,
+}
+
+// ===== TxpoolStatus  (rpc-types-txpool) =====
+
+pub struct TxpoolStatus {
+    /// number of pending tx
+    #[serde(with = "alloy_serde::quantity")]
+    pub pending: u64,
+    /// number of queued tx
+    #[serde(with = "alloy_serde::quantity")]
+    pub queued: u64,
+}
+
+// ===== Validity  (rpc-types-mev) =====
+
+pub struct Validity {
+    /// Specifies the minimum percent of a given bundle's earnings to redistribute
+    /// for it to be included in a builder's block.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub refund: Option<Vec<Refund>>,
+    /// Specifies what addresses should receive what percent of the overall refund for this bundle,
+    /// if it is enveloped by another bundle (eg. a searcher backrun).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub refund_config: Option<Vec<RefundConfig>>,
+}
+
+// ===== WatchTxError  (provider) =====
+
+pub enum WatchTxError {
+    /// Transaction was not confirmed after configured timeout.
+    #[error("transaction was not confirmed within the timeout")]
+    Timeout,
+}
+
+// ===== WithOtherFields  (serde) =====
+
+pub struct WithOtherFields<T> {
+    /// The inner struct.
+    #[serde(flatten)]
+    pub inner: T,
+    /// All fields not present in the inner struct.
+    #[serde(flatten)]
+    pub other: OtherFields,
+}
+
+// ===== Withdrawal  (eips) =====
+
+pub struct Withdrawal {
+    /// Monotonically increasing identifier issued by consensus layer.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub index: u64,
+    /// Index of validator associated with withdrawal.
+    #[cfg_attr(
+        feature = "serde",
+        serde(with = "alloy_serde::quantity", rename = "validatorIndex")
+    )]
+    pub validator_index: u64,
+    /// Target address for withdrawn ether.
+    pub address: Address,
+    /// Value of the withdrawal in gwei.
+    #[cfg_attr(feature = "serde", serde(with = "alloy_serde::quantity"))]
+    pub amount: u64,
+}
+
+// ===== Withdrawals  (eips) =====
+feature = "borsh", derive(borsh::BorshSerialize, borsh::BorshDeserialize))]
+pub struct Withdrawals(pub Vec<Withdrawal>);
+
+// ===== Work  (rpc-types-eth) =====
+
+pub struct Work {
+    /// The proof-of-work hash.
+    pub pow_hash: B256,
+    /// The seed hash.
+    pub seed_hash: B256,
+    /// The target.
+    pub target: B256,
+    /// The block number: this isn't always stored.
+    pub number: Option<u64>,
+}
